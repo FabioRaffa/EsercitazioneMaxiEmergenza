@@ -180,6 +180,26 @@ function wireNav() {
   if (restart) restart.addEventListener('click', () => location.reload());
 }
 
+// Modale "Info & Credits" (pulsante "i" in alto a sinistra)
+function wireInfoModal() {
+  const btn = document.getElementById('info-button');
+  const modal = document.getElementById('info-modal');
+  if (!btn || !modal) return;
+  const content = modal.querySelector('.modal-content');
+  const open = () => {
+    modal.classList.remove('invisible', 'opacity-0');
+    if (content) content.classList.remove('scale-95');
+  };
+  const close = () => {
+    modal.classList.add('invisible', 'opacity-0');
+    if (content) content.classList.add('scale-95');
+  };
+  btn.addEventListener('click', open);
+  modal.querySelectorAll('.close-modal').forEach(b => b.addEventListener('click', close));
+  modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+}
+
 // Overlay iniziale "Affronta la Maxi-Emergenza!"
 function startExperience() {
   const overlay = document.getElementById('start-activity-button-overlay');
@@ -207,6 +227,7 @@ async function init() {
   app.classList.remove('wizard-preinit');
 
   wireNav();
+  wireInfoModal();
   showStep(0);
 
   const startBtn = document.getElementById('wizard-start-btn');
