@@ -18,8 +18,11 @@ const SECTIONS = [
   { id: 'attivazione-chiamata',  label: 'Attivazione Chiamata',  file: 'sections/02-attivazione-chiamata.html' },
   { id: 'scenario',              label: 'Valutazione Scenario',  file: 'sections/03-scenario.html' },
   { id: 'fasi',                  label: 'Fasi di Risposta',      file: 'sections/04-fasi.html' },
-  { id: 'attori',                label: 'Attori Chiave',         file: 'sections/05-attori.html' },
-  { id: 'mezzi',                 label: 'Mezzi e Strutture',     file: 'sections/06-mezzi.html' },
+  { id: 'attori-ruoli',          label: 'Attori: Ruoli',         file: 'sections/05a-attori-ruoli.html' },
+  { id: 'attori-colori',         label: 'Attori: Gioco Colori',  file: 'sections/05b-attori-colori.html' },
+  { id: 'attori-enti',           label: 'Attori: Altri Enti',    file: 'sections/05c-attori-enti.html' },
+  { id: 'mezzi',                 label: 'Mezzi e Strutture',     file: 'sections/06a-mezzi.html' },
+  { id: 'mezzi-triage',          label: 'Il Triage (START)',     file: 'sections/06b-mezzi-triage.html' },
   { id: 'msb-game-section',      label: 'Primo MSB',             file: 'sections/07-msb-game-section.html' },
   { id: 'compiti-referente',     label: 'Compiti Referente',     file: 'sections/08-compiti-referente.html' },
   { id: 'comunicazione-soreu',   label: 'Comunicazione SOREU',   file: 'sections/09-comunicazione-soreu.html' },
@@ -35,7 +38,7 @@ const SECTIONS = [
 // Sezioni che richiedono il completamento corretto per proseguire (le altre sono
 // informative e si sbloccano subito).
 const REQUIRED = new Set([
-  'scenario', 'fasi', 'attori', 'msb-game-section', 'compiti-referente',
+  'scenario', 'fasi', 'attori-colori', 'msb-game-section', 'compiti-referente',
   'comunicazione-soreu', 'progetta-piano', 'crash', 'priority-intervention',
   'resource-management', 'radio-communication', 'ethical-dilemma', 'quiz',
 ]);

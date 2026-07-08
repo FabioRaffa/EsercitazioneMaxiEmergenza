@@ -1108,7 +1108,7 @@ initializeMsbGame();
 
                 if (roleColorFeedback) {
                     if (allCorrect && correctMatchesCount === roleColorData.length) {
-                        if (window.__markDone) window.__markDone('attori'); roleColorFeedback.innerHTML = '<p class="font-bold text-green-600">Complimenti! Tutti gli abbinamenti Ruolo-Colore sono corretti!</p>';
+                        if (window.__markDone) window.__markDone('attori-colori'); roleColorFeedback.innerHTML = '<p class="font-bold text-green-600">Complimenti! Tutti gli abbinamenti Ruolo-Colore sono corretti!</p>';
                     } else {
                         roleColorFeedback.innerHTML = `<p class="font-bold text-red-600">Rivedi gli abbinamenti. ${feedbackMessages.join('<br>')}</p>`;
                     }

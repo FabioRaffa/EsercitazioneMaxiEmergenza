@@ -1,0 +1,27 @@
+<section id="attori-colori" class="scroll-mt-20 py-12">
+    <div class="text-center mb-8">
+        <h3 class="text-3xl font-bold text-primary">Attori Chiave — Abbina il Ruolo al Colore</h3>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni ruolo sul giubbotto del colore corrispondente. Ricorda: ogni ruolo ha un colore specifico per una rapida identificazione sul campo.</p>
+    </div>
+    <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+                <h5 class="font-bold text-xl mb-4">Ruoli (Trascina)</h5>
+                <div id="role-draggable-container" class="grid grid-cols-2 gap-4 bg-gray-100 p-4 rounded-lg border border-color min-h-[200px]">
+                    </div>
+            </div>
+            <div>
+                <h5 class="font-bold text-xl mb-4">Colori (Rilascia qui)</h5>
+                <div id="color-dropzone-container" class="grid grid-cols-2 gap-4">
+                    </div>
+            </div>
+        </div>
+        <div id="role-color-feedback" class="mt-6 p-4 rounded-lg bg-gray-50 text-secondary border border-color min-h-[60px]">
+            <p class="text-sm">Trascina i ruoli sui giubbotti colorati.</p>
+        </div>
+        <div class="mt-6 flex justify-center space-x-4">
+            <button id="check-role-color-game" class="bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">Verifica Abbinamenti</button>
+            <button id="reset-role-color-game" class="bg-gray-300 text-gray-800 py-3 px-6 rounded-lg font-semibold hover:bg-gray-400 transition">Reset Gioco</button>
+        </div>
+    </div>
+</section>

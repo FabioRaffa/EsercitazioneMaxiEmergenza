@@ -683,8 +683,11 @@
                 <a href="#attivazione-chiamata" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Attivazione</a>
                 <a href="#scenario" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Scenario</a>
                 <a href="#fasi" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Fasi Risposta</a>
-                <a href="#attori" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Attori Chiave</a>
+                <a href="#attori-ruoli" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Attori: Ruoli</a>
+                <a href="#attori-colori" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Attori: Colori</a>
+                <a href="#attori-enti" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Attori: Altri Enti</a>
                 <a href="#mezzi" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Mezzi e Strutture</a>
+                <a href="#mezzi-triage" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Il Triage (START)</a>
 				<a href="#msb-game-section" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Primo MSB</a>
                 <a href="#compiti-referente" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Compiti Referente</a>
                 <a href="#comunicazione-soreu" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Comunicazione SOREU</a>
@@ -955,85 +958,93 @@
 		</div>
     </div>
 
-    <div class="wizard-step" id="step-attori">
-		<section id="attori" class="scroll-mt-20 py-12">
-            <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold text-primary">Gli Attori Chiave sul Campo</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">La risposta è un'orchestra di ruoli specializzati. Ogni funzione è identificata da un colore e ha responsabilità precise. Clicca su ogni ruolo per scoprire i dettagli.</p>
+    <div class="wizard-step" id="step-attori-ruoli">
+<section id="attori-ruoli" class="scroll-mt-20 py-12">
+    <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold text-primary">Gli Attori Chiave sul Campo</h3>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">La risposta è un'orchestra di ruoli specializzati. Ogni funzione è identificata da un colore e ha responsabilità precise. Clicca su ogni ruolo per scoprire i dettagli.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <button data-modal-target="modal-dss" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">DSS</div>
+                <h4 class="text-lg font-bold">Direttore Soccorsi Sanitari</h4>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <button data-modal-target="modal-dss" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">DSS</div>
-                        <h4 class="text-lg font-bold">Direttore Soccorsi Sanitari</h4>
-                    </div>
-                </button>
-                <button data-modal-target="modal-dpma" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center">
-						<div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">DPMA</div>
-                        <h4 class="text-lg font-bold">Direttore Posto Medico Avanzato</h4>
-                    </div>
-                </button>
-                <button data-modal-target="modal-tro" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center">
-						<div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">TRO</div>
-                        <h4 class="text-lg font-bold">Direttore di Triage</h4>
-                    </div>
-                </button>
-                <button data-modal-target="modal-alo" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center">
-						<div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">ALO</div>
-                        <h4 class="text-lg font-bold">Direttore dei Trasporti</h4>
-                    </div>
-                </button>
+        </button>
+        <button data-modal-target="modal-dpma" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">DPMA</div>
+                <h4 class="text-lg font-bold">Direttore Posto Medico Avanzato</h4>
             </div>
+        </button>
+        <button data-modal-target="modal-tro" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">TRO</div>
+                <h4 class="text-lg font-bold">Direttore di Triage</h4>
+            </div>
+        </button>
+        <button data-modal-target="modal-alo" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">ALO</div>
+                <h4 class="text-lg font-bold">Direttore dei Trasporti</h4>
+            </div>
+        </button>
+    </div>
+</section>
+    </div>
 
-            <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 mt-12">
-                <div class="text-center mb-8">
-                    <h4 class="text-2xl font-bold text-primary">Gioco: Abbina il Ruolo al Colore</h4>
-                    <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni ruolo sul giubbotto del colore corrispondente. Ricorda: ogni ruolo ha un colore specifico per una rapida identificazione sul campo.</p>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div>
-                        <h5 class="font-bold text-xl mb-4">Ruoli (Trascina)</h5>
-                        <div id="role-draggable-container" class="grid grid-cols-2 gap-4 bg-gray-100 p-4 rounded-lg border border-color min-h-[200px]">
-                            </div>
+    <div class="wizard-step" id="step-attori-colori">
+<section id="attori-colori" class="scroll-mt-20 py-12">
+    <div class="text-center mb-8">
+        <h3 class="text-3xl font-bold text-primary">Attori Chiave — Abbina il Ruolo al Colore</h3>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni ruolo sul giubbotto del colore corrispondente. Ricorda: ogni ruolo ha un colore specifico per una rapida identificazione sul campo.</p>
+    </div>
+    <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+                <h5 class="font-bold text-xl mb-4">Ruoli (Trascina)</h5>
+                <div id="role-draggable-container" class="grid grid-cols-2 gap-4 bg-gray-100 p-4 rounded-lg border border-color min-h-[200px]">
                     </div>
-                    <div>
-                        <h5 class="font-bold text-xl mb-4">Colori (Rilascia qui)</h5>
-                        <div id="color-dropzone-container" class="grid grid-cols-2 gap-4">
-                            </div>
-                    </div>
-                </div>
-                <div id="role-color-feedback" class="mt-6 p-4 rounded-lg bg-gray-50 text-secondary border border-color min-h-[60px]">
-                    <p class="text-sm">Trascina i ruoli sui giubbotti colorati.</p>
-                </div>
-                <div class="mt-6 flex justify-center space-x-4">
-                    <button id="check-role-color-game" class="bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">Verifica Abbinamenti</button>
-                    <button id="reset-role-color-game" class="bg-gray-300 text-gray-800 py-3 px-6 rounded-lg font-semibold hover:bg-gray-400 transition">Reset Gioco</button>
-                </div>
             </div>
+            <div>
+                <h5 class="font-bold text-xl mb-4">Colori (Rilascia qui)</h5>
+                <div id="color-dropzone-container" class="grid grid-cols-2 gap-4">
+                    </div>
+            </div>
+        </div>
+        <div id="role-color-feedback" class="mt-6 p-4 rounded-lg bg-gray-50 text-secondary border border-color min-h-[60px]">
+            <p class="text-sm">Trascina i ruoli sui giubbotti colorati.</p>
+        </div>
+        <div class="mt-6 flex justify-center space-x-4">
+            <button id="check-role-color-game" class="bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">Verifica Abbinamenti</button>
+            <button id="reset-role-color-game" class="bg-gray-300 text-gray-800 py-3 px-6 rounded-lg font-semibold hover:bg-gray-400 transition">Reset Gioco</button>
+        </div>
+    </div>
+</section>
+    </div>
 
-            <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 mt-12">
-                <div class="text-center mb-8">
-                    <h4 class="text-2xl font-bold text-primary">Gioco: Interagisci con gli Altri Enti</h4>
-                    <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Nelle maxi-emergenze, la collaborazione è fondamentale. Riconosci i responsabili delle altre forze e capisci con chi interagire in diverse situazioni.</p>
-                </div>
-                <div id="other-forces-game-content">
-                    <div id="other-forces-question-container" class="mb-6">
-                        <p class="text-lg font-semibold mb-4" id="other-forces-question-text"></p>
-                        <div id="other-forces-options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            </div>
+    <div class="wizard-step" id="step-attori-enti">
+<section id="attori-enti" class="scroll-mt-20 py-12">
+    <div class="text-center mb-8">
+        <h3 class="text-3xl font-bold text-primary">Attori Chiave — Interagisci con gli Altri Enti</h3>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Nelle maxi-emergenze, la collaborazione è fondamentale. Riconosci i responsabili delle altre forze e capisci con chi interagire in diverse situazioni.</p>
+    </div>
+    <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
+        <div id="other-forces-game-content">
+            <div id="other-forces-question-container" class="mb-6">
+                <p class="text-lg font-semibold mb-4" id="other-forces-question-text"></p>
+                <div id="other-forces-options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     </div>
-                    <div id="other-forces-feedback" class="p-3 rounded-lg text-sm font-medium hidden"></div>
-                    <div class="mt-4 flex justify-between items-center">
-                        <button id="other-forces-next-button" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition hidden">Prossima Situazione</button>
-                        <button id="other-forces-restart-button" class="bg-gray-300 text-gray-800 py-2 px-4 rounded-lg font-semibold hover:bg-gray-400 transition hidden">Ricomincia Gioco</button>
-                        <p id="other-forces-progress" class="text-sm text-secondary"></p>
-                    </div>
-                </div>
             </div>
-        </section>
+            <div id="other-forces-feedback" class="p-3 rounded-lg text-sm font-medium hidden"></div>
+            <div class="mt-4 flex justify-between items-center">
+                <button id="other-forces-next-button" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition hidden">Prossima Situazione</button>
+                <button id="other-forces-restart-button" class="bg-gray-300 text-gray-800 py-2 px-4 rounded-lg font-semibold hover:bg-gray-400 transition hidden">Ricomincia Gioco</button>
+                <p id="other-forces-progress" class="text-sm text-secondary"></p>
+            </div>
+        </div>
+    </div>
+</section>
     </div>
 
     <div class="wizard-step" id="step-mezzi">
@@ -1066,11 +1077,18 @@
                         <p id="pma-info-box" class="mt-4 text-center text-secondary h-10">Clicca su un'area del PMA per i dettagli.</p>
                 </div>
             </div>
+        </section>
+    </div>
 
-            <div class="mt-8 bg-surface rounded-xl shadow-lg p-6">
+    <div class="wizard-step" id="step-mezzi-triage">
+<section id="mezzi-triage" class="scroll-mt-20 py-12">
+    <div class="text-center mb-8">
+        <h3 class="text-3xl font-bold text-primary">Il Triage: Decidere in Pochi Secondi</h3>
+    </div>
+    <div class="bg-surface rounded-xl shadow-lg p-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div>
-                        <h4 class="font-bold text-xl mb-4">Il Triage: Decidere in Pochi Secondi</h4>
+                        
                         <p class="text-secondary mb-4">Il metodo START (Simple Triage And Rapid Treatment) è un algoritmo decisionale che permette ai soccorritori di classificare le vittime rapidamente. L'obiettivo non è curare, ma prioritizzare. Clicca sulla domanda per capire come viene assegnato un codice colore. **N.B.: Per i Soccorritori MSB, il codice NERO è sostituito dal ROSSO.**</p>
 
                         <div id="triage-flow-section" class="space-y-4 bg-gray-100 p-4 rounded-lg border border-color">
@@ -1091,7 +1109,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+</section>
     </div>
 
     <div class="wizard-step" id="step-msb-game-section">

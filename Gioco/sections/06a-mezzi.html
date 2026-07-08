@@ -27,29 +27,4 @@
                         <p id="pma-info-box" class="mt-4 text-center text-secondary h-10">Clicca su un'area del PMA per i dettagli.</p>
                 </div>
             </div>
-
-            <div class="mt-8 bg-surface rounded-xl shadow-lg p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <h4 class="font-bold text-xl mb-4">Il Triage: Decidere in Pochi Secondi</h4>
-                        <p class="text-secondary mb-4">Il metodo START (Simple Triage And Rapid Treatment) è un algoritmo decisionale che permette ai soccorritori di classificare le vittime rapidamente. L'obiettivo non è curare, ma prioritizzare. Clicca sulla domanda per capire come viene assegnato un codice colore. **N.B.: Per i Soccorritori MSB, il codice NERO è sostituito dal ROSSO.**</p>
-
-                        <div id="triage-flow-section" class="space-y-4 bg-gray-100 p-4 rounded-lg border border-color">
-							<h5 class="font-semibold text-primary mb-2">Passi del Triage S.T.A.R.T. (Semplificato)</h5>
-							<div id="triage-flow-steps" class="space-y-2 text-sm">
-								<div class="triage-step p-2 bg-gray-100 rounded" data-step="1"><strong>1. Cammina?</strong> → Se SÌ: <span class="font-bold text-green-600">VERDE</span>. Se NO, vai al passo 2.</div>
-								<div class="triage-step p-2 bg-gray-100 rounded hidden" data-step="2"><strong>2. Respira?</strong> (dopo apertura vie aeree) → Se NO: <span class="font-bold text-red-600">ROSSO</span>. Se SÌ, vai al passo 3.</div>
-								<div class="triage-step p-2 bg-gray-100 rounded hidden" data-step="3"><strong>3. Freq. Respiratoria > 30/min?</strong> → Se SÌ: <span class="font-bold text-red-600">ROSSO</span>. Se NO, vai al passo 4.</div>
-								<div class="triage-step p-2 bg-gray-100 rounded hidden" data-step="4"><strong>4. Perfusione?</strong> polso radiale assente → Se SÌ: <span class="font-bold text-red-600">ROSSO</span>. Se NO, vai al passo 5.</div>
-								<div class="triage-step p-2 bg-gray-100 rounded hidden" data-step="5"><strong>5. Esegue ordini semplici?</strong> → Se NO: <span class="font-bold text-red-600">ROSSO</span>. Se SÌ: <span class="font-bold text-yellow-500">GIALLO</span>.</div>
-								<button id="triage-flow-reset" class="mt-2 text-sm text-blue-600 hover:underline hidden">Ricomincia</button>
-							</div>
-						</div>
-                    </div>
-                    <div class="chart-container relative h-80 w-full max-w-sm mx-auto">
-                        <h4 class="font-semibold text-center mb-2">Distribuzione tipica dei codici (Triage Sweeping)</h4>
-                        <canvas id="triageChart"></canvas>
-                    </div>
-                </div>
-            </div>
         </section>

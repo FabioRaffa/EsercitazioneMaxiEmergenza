@@ -2,7 +2,8 @@
 
 Simulazione interattiva per la formazione nella gestione di una maxi-emergenza
 (scenario: deragliamento ferroviario con numerose vittime). L'utente attraversa
-**16 schermate sequenziali**, alcune informative e altre con mini-giochi
+**19 schermate sequenziali** (Attori e Mezzi sono suddivisi in più sotto-schermate
+per ridurre lo scroll), alcune informative e altre con mini-giochi
 (drag & drop, ordinamenti, quiz, posizionamento su mappa), navigando **un gioco
 alla volta** con i pulsanti Precedente/Successivo.
 
@@ -106,7 +107,11 @@ dei link in alto).
 
 ---
 
-## Le 16 schermate / giochi
+## Le schermate / giochi
+
+> Nota: per ridurre lo scroll, **Attori** è diviso in 3 schermate (Ruoli / Gioco
+> Colori / Altri Enti) e **Mezzi** in 2 (Mezzi e PMA / Il Triage) — 19 schermate totali.
+
 
 | # | id | Titolo | Interazione |
 |---|-----|--------|-------------|
@@ -167,6 +172,7 @@ La password è definita in `scripts/main.js` (`NAV_UNLOCK_PASSWORD`) ed è facil
 modificabile. **Attenzione:** essendo un sito statico, la password è *leggibile nel
 sorgente* — è una protezione "morbida" pensata per i formatori, **non** una password
 sicura. Per una vera protezione servirebbe un backend (non disponibile su GitHub Pages).
+Password attuale: maxi-sblocca-2025
 
 ## Pubblicazione online (GitHub Pages)
 
