@@ -252,12 +252,12 @@ const msbCheckButton = document.getElementById('msb-check-button'); // Nuovo ID
 const msbResetButton = document.getElementById('msb-reset-button'); // Nuovo ID
 const msbFeedbackDisplay = document.getElementById('msb-feedback-display'); // Nuovo ID
 
-// Funzione per aggiornare la visibilità del titolo nella drop zone
+// Il nome del ruolo resta SEMPRE visibile come intestazione della drop zone
+// (i compiti assegnati compaiono sotto di esso).
 const updateMsbDropZoneTitleVisibility = (zoneElement) => {
     const roleTitleSpan = zoneElement.querySelector('.msb-role-title'); // Nuovo selettore
     if (roleTitleSpan) {
-        const hasChildrenTasks = zoneElement.querySelector('.role-task-item') !== null;
-        roleTitleSpan.style.display = hasChildrenTasks ? 'none' : '';
+        roleTitleSpan.style.display = '';
     }
 };
 
