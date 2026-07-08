@@ -177,18 +177,22 @@ window.initGames = function initGames() {
 			} else if (triageFlowResetBtn) {
 				triageFlowResetBtn.classList.add('hidden');
 			}
-			// Aggiorna il grafico: dal solo VERDE (100%) alla distribuzione finale 60/30/10.
+			// Aggiorna il grafico: compaiono SOLO i colori "sbloccati" dai passi dell'algoritmo.
+			// Passo 1: solo VERDE (100%). Passi 2-4 (tutti ROSSO): si bilanciano VERDE + ROSSO.
+			// Ultimo passo: appare anche il GIALLO -> distribuzione finale 60/30/10.
 			if (window.__triageChart && triageFlowSteps.length > 1) {
 				const total = triageFlowSteps.length;
-				const t = (Math.min(stepNum, total) - 1) / (total - 1); // 0 (passo 1) -> 1 (ultimo passo)
-				const start = [100, 0, 0], end = [60, 30, 10];
-				window.__triageChart.data.datasets[0].data = end.map((v, i) => Math.round((start[i] + (v - start[i]) * t) * 10) / 10);
+				const s = Math.min(stepNum, total);
+				const finalVals = [60, 30, 10]; // [Verde, Giallo, Rosso]
+				const mask = [true, s >= total, s >= 2]; // Verde sempre; Giallo solo all'ultimo; Rosso dal passo 2
+				const activeSum = finalVals.reduce((acc, v, i) => acc + (mask[i] ? v : 0), 0);
+				window.__triageChart.data.datasets[0].data = finalVals.map((v, i) => mask[i] ? Math.round(v / activeSum * 1000) / 10 : 0);
 				window.__triageChart.update();
 				const cap = document.getElementById('triage-chart-caption');
 				if (cap) {
-					cap.innerHTML = (t >= 1)
-						? 'Distribuzione finale — <span class="text-green-600 font-semibold">Verde 60%</span> · <span class="text-yellow-500 font-semibold">Giallo 30%</span> · <span class="text-red-600 font-semibold">Rosso 10%</span>'
-						: 'Le fette si aggiornano man mano che avanzi nei passi del triage.';
+					if (s <= 1) cap.innerHTML = 'Al primo passo i deambulanti sono <span class="text-green-600 font-semibold">VERDI</span>.';
+					else if (s < total) cap.innerHTML = 'Compaiono i <span class="text-red-600 font-semibold">ROSSI</span> (codici critici).';
+					else cap.innerHTML = 'Distribuzione finale — <span class="text-green-600 font-semibold">Verde 60%</span> · <span class="text-yellow-500 font-semibold">Giallo 30%</span> · <span class="text-red-600 font-semibold">Rosso 10%</span>';
 				}
 			}
 		};
