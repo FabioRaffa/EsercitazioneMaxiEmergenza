@@ -148,7 +148,7 @@ function updateNav() {
     } else if (isCongrats) {
       hint.textContent = '';
     } else if (REQUIRED.has(SECTIONS[current].id) && !done.has(SECTIONS[current].id)) {
-      hint.textContent = '🔒 Completa correttamente il gioco per sbloccare il successivo';
+      hint.textContent = '🔒 Completa il gioco per proseguire';
       hint.className = 'wizard-hint locked';
     } else {
       hint.textContent = '';

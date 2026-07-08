@@ -567,29 +567,22 @@
     #app.wizard-preinit .wizard-step { display: block; }
     @keyframes wizardFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
-    .wizard-nav {
-        position: sticky; bottom: 0; z-index: 40;
-        display: flex; align-items: center; gap: 1rem;
-        background: rgba(255,255,255,0.95); backdrop-filter: blur(6px);
-        border-top: 1px solid #e2e8f0;
-        padding: 0.75rem 1rem;
-        box-shadow: 0 -4px 14px rgba(0,0,0,0.06);
-    }
+    /* Navigazione tra i giochi: integrata nell'header (al centro) */
     .wizard-btn {
         flex: 0 0 auto;
         background: #c53030; color: #fff; border: none; border-radius: 9999px;
-        padding: 0.6rem 1.3rem; font-weight: 600; font-size: 0.95rem; cursor: pointer;
+        padding: 0.4rem 0.9rem; font-weight: 600; font-size: 0.85rem; cursor: pointer;
         transition: background .2s, opacity .2s, transform .08s;
     }
     .wizard-btn:hover:not(:disabled) { background: #9b2c2c; }
     .wizard-btn:active:not(:disabled) { transform: scale(.97); }
     .wizard-btn:disabled { opacity: .4; cursor: not-allowed; }
-    .wizard-progress { flex: 1 1 auto; text-align: center; min-width: 0; }
-    .wizard-label { display: block; font-size: 0.8rem; font-weight: 600; color: #4a5568;
-        margin-bottom: 0.35rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .wizard-progress-track { height: 6px; background: #e2e8f0; border-radius: 9999px; overflow: hidden; }
+    .wizard-progress { flex: 1 1 auto; text-align: center; min-width: 0; max-width: 360px; }
+    .wizard-label { display: block; font-size: 0.75rem; font-weight: 600; color: #4a5568;
+        margin-bottom: 0.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .wizard-progress-track { height: 5px; background: #e2e8f0; border-radius: 9999px; overflow: hidden; }
     .wizard-progress-bar { height: 100%; width: 0; background: #c53030; border-radius: 9999px; transition: width .3s ease; }
-    .wizard-hint { display: block; font-size: 0.72rem; margin-top: 0.3rem; min-height: 0.9rem; color: #a0aec0; }
+    .wizard-hint { display: block; font-size: 0.68rem; margin-top: 0.1rem; min-height: 0.85rem; line-height: 1.1; color: #a0aec0; }
     .wizard-hint.locked { color: #c53030; }
     .nav-link.nav-locked, .nav-link-mobile.nav-locked { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
     #mobile-menu .nav-link-mobile { font-size: 0.82rem; padding: 0.4rem 0.55rem; overflow: hidden; text-overflow: ellipsis; }
@@ -645,8 +638,7 @@
     .wizard-step .triage-step.triage-step-next::after { content: '👆 clicca per il passo successivo';
         display: block; margin-top: .25rem; color: #2563eb; font-weight: 600; font-size: .72rem; }
     @media (max-width: 640px) {
-        .wizard-nav { gap: 0.5rem; padding: 0.6rem 0.6rem; }
-        .wizard-btn { padding: 0.5rem 0.9rem; font-size: 0.82rem; }
+        .wizard-btn { padding: 0.35rem 0.7rem; font-size: 0.8rem; }
         .wizard-label { font-size: 0.72rem; }
     }
     </style>
@@ -656,8 +648,8 @@
 
     <header class="bg-surface/80 backdrop-blur-sm sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0 flex items-center gap-2">
+            <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 py-1 lg:min-h-16">
+                <div class="flex-shrink-0 flex items-center gap-2 order-1">
                     <button id="info-button" type="button" title="Info e crediti" aria-label="Info e crediti"
                         class="w-7 h-7 rounded-full border border-color text-secondary hover:text-white hover:bg-red-600 hover:border-red-600 transition flex items-center justify-center text-sm font-bold italic leading-none">i</button>
                     <button id="unlock-button" type="button" title="Sblocca navigazione (formatori)" aria-label="Sblocca navigazione"
@@ -682,13 +674,22 @@
                         <a href="#quiz" class="nav-link px-3 py-2 rounded-md text-sm font-medium inactive-nav">Quiz</a>
                     </div>
                 </div>
-                <div>
+                <div class="order-2 lg:order-3">
                     <button id="mobile-menu-button" type="button" class="inline-flex items-center gap-2 py-2 px-3 rounded-lg text-secondary hover:text-primary hover:bg-gray-100 border border-color transition focus:outline-none">
                         <span class="hidden sm:inline text-sm font-semibold whitespace-nowrap">Vai al gioco</span>
                         <svg class="block h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
                     </button>
+                </div>
+                <div id="wizard-nav" class="flex items-center gap-2 sm:gap-3 order-3 lg:order-2 basis-full lg:basis-0 lg:flex-1 justify-center min-w-0 border-t lg:border-t-0 border-color pt-1.5 lg:pt-0 mt-0.5 lg:mt-0" aria-label="Navigazione esercitazione">
+                    <button id="prev-section-btn" class="wizard-btn" type="button"><span aria-hidden="true">&#8249;</span><span class="hidden sm:inline"> Precedente</span></button>
+                    <div class="wizard-progress min-w-0">
+                        <span id="section-label" class="wizard-label"></span>
+                        <div class="wizard-progress-track"><div id="wizard-progress-bar" class="wizard-progress-bar"></div></div>
+                        <span id="wizard-hint" class="wizard-hint"></span>
+                    </div>
+                    <button id="next-section-btn" class="wizard-btn" type="button"><span class="hidden sm:inline">Successivo </span><span aria-hidden="true">&#8250;</span></button>
                 </div>
             </div>
         </nav>
@@ -1450,17 +1451,6 @@
         </section>
     </div>
     </main>
-
-    <!-- Barra di navigazione tra i giochi -->
-    <nav id="wizard-nav" class="wizard-nav" aria-label="Navigazione esercitazione">
-        <button id="prev-section-btn" class="wizard-btn" type="button">&#8249; Precedente</button>
-        <div class="wizard-progress">
-            <span id="section-label" class="wizard-label"></span>
-            <div class="wizard-progress-track"><div id="wizard-progress-bar" class="wizard-progress-bar"></div></div>
-            <span id="wizard-hint" class="wizard-hint"></span>
-        </div>
-        <button id="next-section-btn" class="wizard-btn" type="button">Successivo &#8250;</button>
-    </nav>
 
     <footer class="text-center text-xs text-gray-400 py-2">
         <p>&copy; 2025 Fabio Raffaelli</p>
