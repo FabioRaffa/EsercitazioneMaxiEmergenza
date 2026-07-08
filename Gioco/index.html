@@ -621,8 +621,8 @@
     .wizard-step .min-h-\[180px\] { min-height: 7rem; }
     .wizard-step .space-y-4 > * + * { margin-top: 0.6rem; }
     .wizard-step .mb-6 { margin-bottom: 0.75rem; }
-    /* Didascalie di spiegazione: usano più larghezza (meno righe, meno altezza) */
-    .wizard-step .text-center .max-w-2xl { max-width: 64rem; }
+    /* Didascalie di spiegazione: piena larghezza della pagina (meno righe, meno altezza) */
+    .wizard-step .text-center .max-w-2xl { max-width: 100%; }
     /* Elementi-lista dei giochi (compiti/azioni/opzioni con testo lungo): più compatti */
     .wizard-step .role-task-item,
     .wizard-step .priority-action-item,
@@ -798,7 +798,7 @@
 		<section id="scenario" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-primary">Lo Scenario: Valuta l'Evento</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Osserva attentamente l'immagine e rispondi alle domande per valutare lo scenario dell'incidente ferroviario. Questo ti aiuterà a preparare la tua prima comunicazione alla SOREU.</p>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Osserva l'immagine e rispondi per valutare lo scenario: è la base della prima comunicazione alla SOREU.</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 grid md:grid-cols-2 gap-8 items-start">
                 <div class="md:col-span-1">
@@ -866,7 +866,7 @@
 		<section id="fasi" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-primary">Le Fasi della Risposta</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">La gestione di una catastrofe segue un ciclo definito. Ogni fase ha obiettivi e azioni specifiche, cruciali per passare dal caos a un intervento coordinato. Clicca su ogni fase per scoprire i dettagli.</p>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">La risposta segue un ciclo di fasi, ognuna con obiettivi e azioni specifiche. Clicca su una fase per i dettagli.</p>
             </div>
             <div>
                 <div class="mb-4 border-b border-color">
@@ -932,7 +932,7 @@
     <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
 			<div class="text-center mb-8">
 				<h4 class="text-2xl font-bold text-primary">Gioco: Abbina le Definizioni alle Zone Operative</h4>
-				<p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni descrizione nella zona operativa corretta. Un intervento si organizza in tre zone concentriche: dal <span class="text-red-600 font-bold">Punto di Crash</span> (massimo pericolo) al <span class="text-green-600 font-bold">Punto di Raccolta</span> (area sicura).</p>
+				<p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni descrizione nella zona corretta. Le tre zone concentriche vanno dal <span class="text-red-600 font-bold">Punto di Crash</span> (massimo pericolo) al <span class="text-green-600 font-bold">Punto di Raccolta</span> (area sicura).</p>
 			</div>
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 				<!-- Le tre zone operative: bersagli su cui trascinare -->
@@ -969,7 +969,7 @@
 <section id="attori-ruoli" class="scroll-mt-20 py-12">
     <div class="text-center mb-12">
         <h3 class="text-3xl font-bold text-primary">Gli Attori Chiave sul Campo</h3>
-        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">La risposta è un'orchestra di ruoli specializzati. Ogni funzione è identificata da un colore e ha responsabilità precise. Clicca su ogni ruolo per scoprire i dettagli.</p>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Ogni ruolo ha un colore e responsabilità precise. Clicca su un ruolo per i dettagli.</p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <button data-modal-target="modal-dss" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -1004,7 +1004,7 @@
 <section id="attori-colori" class="scroll-mt-20 py-12">
     <div class="text-center mb-8">
         <h3 class="text-3xl font-bold text-primary">Attori Chiave — Abbina il Ruolo al Colore</h3>
-        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni ruolo sul giubbotto del colore corrispondente. Ricorda: ogni ruolo ha un colore specifico per una rapida identificazione sul campo.</p>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni ruolo sul giubbotto del colore corretto: il colore lo identifica sul campo.</p>
     </div>
     <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -1034,7 +1034,7 @@
 <section id="attori-enti" class="scroll-mt-20 py-12">
     <div class="text-center mb-8">
         <h3 class="text-3xl font-bold text-primary">Attori Chiave — Interagisci con gli Altri Enti</h3>
-        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Nelle maxi-emergenze, la collaborazione è fondamentale. Riconosci i responsabili delle altre forze e capisci con chi interagire in diverse situazioni.</p>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Riconosci i responsabili delle altre forze e con chi interagire in ogni situazione.</p>
     </div>
     <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
         <div id="other-forces-game-content">
@@ -1058,7 +1058,7 @@
 		<section id="mezzi" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-primary">Mezzi e Strutture Operative</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Un'analisi degli strumenti e delle infrastrutture che rendono possibile la risposta sul campo: dai veicoli specializzati al cuore pulsante delle operazioni, il Posto Medico Avanzato.</p>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Gli strumenti della risposta sul campo: dai mezzi di soccorso al Posto Medico Avanzato (PMA).</p>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -1123,7 +1123,7 @@
 <section id="msb-game-section" class="scroll-mt-20 py-12">
     <div class="text-center mb-8">
         <h3 class="text-3xl font-bold text-primary">Il Primo MSB in Arrivo: Ruoli e Compiti</h3>
-        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Immagina di essere il primo Mezzo di Soccorso Base (MSB) a raggiungere la scena. Ogni membro dell'equipaggio ha compiti specifici da svolgere. Trascina ogni compito sul ruolo corretto, o seleziona il compito e clicca sul ruolo.</p>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Sei il primo MSB sulla scena. Assegna ogni compito al ruolo corretto: trascinalo, oppure selezionalo e clicca sul ruolo.</p>
     </div>
     <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
         <h4 class="font-bold text-xl mb-4 text-center">Ruoli dell'Equipaggio MSB</h4>
@@ -1150,7 +1150,7 @@
 		<section id="compiti-referente" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-primary">I Compiti del Referente: Ordina le Azioni</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Il referente del primo mezzo MSB ha un ruolo cruciale. Metti in ordine i suoi compiti prioritari.</p>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Metti in ordine di priorità i compiti del referente del primo MSB.</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -1177,7 +1177,7 @@
 <section id="comunicazione-soreu" class="scroll-mt-20 py-12">
     <div class="text-center mb-8">
         <h3 class="text-3xl font-bold text-primary">Comunicazione SOREU: il M.E.T.H.A.N.E. Game</h3>
-        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni lettera del M.E.T.H.A.N.E. sulla sua corretta definizione per comunicare efficacemente con la SOREU.</p>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni lettera del M.E.T.H.A.N.E. sulla definizione corretta.</p>
     </div>
     <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
         <h4 class="font-bold text-xl mb-4 text-center">Lettere M.E.T.H.A.N.E. <span class="text-secondary font-normal text-sm">(trascina sulle definizioni)</span></h4>
@@ -1201,7 +1201,7 @@
 		<section id="progetta-piano" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-primary">Progetta il Tuo Piano sul Campo</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Metti alla prova le tue conoscenze! Seleziona un'area dalla palette e poi clicca su una cella della griglia per posizionarla. L'obiettivo è ottimizzare il flusso e la sicurezza.</p>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Seleziona un'area dalla palette e clicca una cella per posizionarla, ottimizzando flusso e sicurezza.</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 grid lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-1">
@@ -1242,7 +1242,7 @@
 	   <section id="crash" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-primary">Crash: Simula il Flusso Mezzi</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Posiziona PMA, Triage, Area Verdi, 2 punti di accesso e 2 punti di uscita sull'immagine aerea. L'obiettivo è ottimizzare il flusso dei mezzi rispetto all'incidente e ai punti fissi (PMA, Triage, Area Verdi).</p>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Posiziona PMA, Triage, Area Verdi e i punti di accesso/uscita sulla mappa, ottimizzando il flusso dei mezzi.</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 grid lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-1">
@@ -1275,7 +1275,7 @@
         <section id="priority-intervention" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-primary">Priorità d'Intervento in Zona Crash: Incidente Ferroviario</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Sei il primo Referente sul campo. Valuta la scena e ordina le azioni da intraprendere dalla più alla meno prioritaria, considerando la tua sicurezza e l'immediatezza dell'intervento.</p>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Sei il primo Referente sul campo: ordina le azioni dalla più alla meno prioritaria, partendo dalla sicurezza.</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 grid lg:grid-cols-2 gap-8 items-center">
                 <div>
@@ -1305,7 +1305,7 @@
         <section id="resource-management" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-primary">Gestione delle Risorse: Incidente Ferroviario</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Un incidente ferroviario richiede un'allocazione strategica delle risorse. Assegna i mezzi e le squadre alle aree più adatte per ottimizzare il soccorso.</p>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Assegna mezzi e squadre alle aree più adatte per ottimizzare il soccorso.</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 grid lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-1">
@@ -1344,7 +1344,7 @@
         <section id="radio-communication" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-primary">Comunicazione Radio: Il Messaggio Giusto</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Scegli la risposta radio più appropriata, concisa e aderente ai protocolli per ogni situazione legata all'incidente ferroviario.</p>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Scegli per ogni situazione la risposta radio più corretta e aderente ai protocolli.</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
                 <div id="radio-scenario-container" class="mb-6 p-4 border border-color rounded-lg bg-gray-50">
@@ -1368,7 +1368,7 @@
         <section id="ethical-dilemma" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-primary">Dilemma Etico/Decisionale Rapido: Incidente Ferroviario</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Ogni secondo conta. Prendi decisioni rapide in scenari complessi con risorse limitate e implicazioni etiche, specifici per un incidente ferroviario.</p>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Ogni secondo conta: prendi decisioni rapide con risorse limitate e implicazioni etiche.</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
                 <button id="start-dilemma-game" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition mb-6">Inizia il Gioco dei Dilemmi</button>
@@ -1398,7 +1398,7 @@
 <section id="quiz" class="scroll-mt-20 py-12">
     <div class="text-center mb-8">
         <h3 class="text-3xl font-bold text-primary">Quiz: Metti alla Prova le Tue Conoscenze</h3>
-        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Rispondi alle domande per testare la tua comprensione del triage START e dei concetti chiave della gestione delle maxi-emergenze.</p>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Verifica la tua comprensione del triage START e dei concetti chiave delle maxi-emergenze.</p>
     </div>
     <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
         <div class="mb-4 border-b border-color">
