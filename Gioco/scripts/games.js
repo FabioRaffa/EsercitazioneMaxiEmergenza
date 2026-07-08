@@ -162,11 +162,14 @@ window.initGames = function initGames() {
 		// Funzione per mostrare i passi del triage fino a un certo punto
 		const showTriageFlowStep = (stepNum) => {
 			triageFlowSteps.forEach(step => {
-				if (parseInt(step.dataset.step) <= stepNum) {
+				const n = parseInt(step.dataset.step);
+				if (n <= stepNum) {
 					step.classList.remove('hidden');
 				} else {
 					step.classList.add('hidden');
 				}
+				// Evidenzia il passo corrente cliccabile (l'ultimo visibile, se non è l'ultimo in assoluto)
+				step.classList.toggle('triage-step-next', n === stepNum && stepNum < triageFlowSteps.length);
 			});
 			// Mostra il pulsante "Ricomincia" solo quando tutti i passi sono visibili
 			if (stepNum >= triageFlowSteps.length && triageFlowResetBtn) {
