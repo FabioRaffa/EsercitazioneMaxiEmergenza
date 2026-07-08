@@ -1,0 +1,30 @@
+		<section id="mezzi" class="scroll-mt-20 py-12">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-primary">Mezzi e Strutture Operative</h3>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Gli strumenti della risposta sul campo: dai mezzi di soccorso al Posto Medico Avanzato (PMA).</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-1 bg-surface rounded-xl shadow-lg p-6">
+                    <h4 class="font-bold text-xl mb-4">Mezzi di Soccorso</h4>
+                    <p class="text-secondary mb-4">La risposta si basa su una flotta diversificata. Il grafico mostra la composizione tipica dell'equipaggio dei principali tipi di ambulanza.</p>
+                    <div class="chart-container relative h-80 w-full max-w-md mx-auto">
+                        <canvas id="mezziChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 bg-surface rounded-xl shadow-lg p-6">
+                    <h4 class="font-bold text-xl mb-4">Il Posto Medico Avanzato (PMA)</h4>
+                    <p class="text-secondary mb-4">Il PMA è un ospedale da campo temporaneo, fulcro della catena sanitaria. La sua struttura modulare è progettata per gestire il flusso dei pazienti in modo ordinato. Clicca su un'area per scoprirne la funzione.</p>
+                    <div id="pma-layout" class="mt-4 grid grid-cols-3 grid-rows-3 gap-2 p-2 border-2 border-dashed border-color rounded-lg h-96">
+                        <div data-info="Area di raccolta mezzi e ingresso controllato per i feriti trasportati dalla 'Piccola Noria'." class="pma-area col-span-1 row-span-3 bg-blue-100 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer hover:bg-blue-200 transition">Area Mezzi e Ingresso</div>
+                        <div data-info="Prima valutazione all'ingresso del PMA (triage secondario). I pazienti vengono classificati per priorità di trattamento (Rosso, Giallo, Verde, Nero)." class="pma-area col-span-1 row-span-1 bg-yellow-200 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer hover:bg-yellow-300 transition">Triage</div>
+                        <div data-info="Trattamento dei feriti minori. I 'walking wounded' ricevono cure e supporto psicologico in attesa di un trasporto non urgente." class="pma-area col-span-1 row-span-1 bg-green-200 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer hover:bg-green-300 transition">Area Verdi</div>
+                        <div data-info="Area critica per la stabilizzazione e il trattamento intensivo dei pazienti con codici Rossi (pericolo di vita) e Gialli (lesioni gravi)." class="pma-area col-span-2 row-span-1 bg-red-200 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer hover:bg-red-300 transition">Area Rossi & Gialli</div>
+                        <div data-info="Area separata e protetta per la gestione delle vittime decedute, in attesa delle procedure di identificazione da parte dell'autorità giudiziaria." class="pma-area col-span-1 row-span-1 bg-gray-300 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer hover:bg-gray-400 transition">Area Deceduti</div>
+                        <div data-info="Punto di uscita organizzato dove i pazienti stabilizzati vengono imbarcati sui mezzi della 'Grande Noria' per il trasporto verso gli ospedali." class="pma-area col-span-1 row-span-1 bg-blue-100 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer hover:bg-blue-200 transition">Uscita / Evacuazione</div>
+                    </div>
+                        <p id="pma-info-box" class="mt-4 text-center text-secondary h-10">Clicca su un'area del PMA per i dettagli.</p>
+                </div>
+            </div>
+        </section>

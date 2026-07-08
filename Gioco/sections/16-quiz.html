@@ -1,179 +1,32 @@
 <section id="quiz" class="scroll-mt-20 py-12">
-    <div class="text-center mb-12">
-        <h3 class="text-3xl font-bold text-primary">Quiz Finale: Valutazione delle Competenze</h3>
-        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Test le tue conoscenze relative al metodo START di triage e alle istruzioni operative del MSB (Modulo di Soccorso di Base).</p>
+    <div class="text-center mb-8">
+        <h3 class="text-3xl font-bold text-primary">Quiz: Metti alla Prova le Tue Conoscenze</h3>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Verifica la tua comprensione del triage START e dei concetti chiave delle maxi-emergenze.</p>
     </div>
     <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
-        <div id="quiz-tabs" class="flex flex-wrap gap-2 mb-8 border-b border-color">
-            <button id="quiz-tab-start" class="quiz-tab active px-6 py-3 font-semibold border-b-2 border-blue-600 text-blue-600 hover:text-primary">
-                Metodo START di Triage
-            </button>
-            <button id="quiz-tab-msb" class="quiz-tab px-6 py-3 font-semibold border-b-2 border-transparent text-secondary hover:text-primary">
-                Istruzioni Operative MSB
-            </button>
+        <div class="mb-4 border-b border-color">
+            <nav class="flex -mb-px" id="quiz-tabs">
+                <button data-quiz-type="start" class="quiz-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-red-500 text-red-600">Quiz Triage START</button>
+                <button data-quiz-type="concepts" class="quiz-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">Quiz Istruzioni Operative MSB</button>
+            </nav>
         </div>
-        <div id="quiz-content-start" class="quiz-panel space-y-6">
-            <div class="quiz-question bg-gray-50 p-6 rounded-lg border border-color">
-                <div class="flex items-start gap-4 mb-4">
-                    <img id="quiz-q1-image" src="images/triage-start-1.jpg" alt="Triage START" class="w-24 h-24 object-cover rounded">
-                    <div class="flex-1">
-                        <h4 class="font-bold text-lg text-primary mb-2">Domanda 1: Primo Gesto del START</h4>
-                        <p class="text-secondary mb-4">Nel metodo START, qual è il primo gesto da compiere per ogni vittima incontrata?</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                                <input type="radio" name="q1" value="a" class="mr-3">
-                                <span class="text-sm">A. Controllare il respiro e le vie respiratorie</span>
-                            </label>
-                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                                <input type="radio" name="q1" value="b" class="mr-3">
-                                <span class="text-sm">B. Posizionare il paziente in posizione di recupero</span>
-                            </label>
-                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                                <input type="radio" name="q1" value="c" class="mr-3">
-                                <span class="text-sm">C. Valutare lo stato di coscienza e responsività</span>
-                            </label>
-                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                                <input type="radio" name="q1" value="d" class="mr-3">
-                                <span class="text-sm">D. Controllare la presenza di polso</span>
-                            </label>
-                        </div>
-                    </div>
+
+        <div id="quiz-content" class="grid md:grid-cols-2 gap-8 items-start">
+            <div>
+                <div id="quiz-question-container" class="mb-4">
+                    <p class="text-lg font-semibold mb-2" id="quiz-question-text"></p>
+                    <div class="space-y-2" id="quiz-options"></div>
+                </div>
+                <div id="quiz-feedback" class="p-3 rounded-lg text-sm font-medium hidden"></div>
+                <div class="mt-4 flex justify-between items-center">
+                    <button id="quiz-next-button" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition hidden">Prossima Domanda</button>
+                    <button id="quiz-restart-button" class="bg-gray-300 text-gray-800 py-2 px-4 rounded-lg font-semibold hover:bg-gray-400 transition hidden">Ricomincia Quiz</button>
+                    <p id="quiz-progress" class="text-sm text-secondary"></p>
                 </div>
             </div>
-            <div class="quiz-question bg-gray-50 p-6 rounded-lg border border-color">
-                <div class="flex items-start gap-4 mb-4">
-                    <img id="quiz-q2-image" src="images/respiration-check.jpg" alt="Respiration Check" class="w-24 h-24 object-cover rounded">
-                    <div class="flex-1">
-                        <h4 class="font-bold text-lg text-primary mb-2">Domanda 2: Valutazione della Respirazione</h4>
-                        <p class="text-secondary mb-4">Se una vittima non respira e non ha perdita di coscienza, quale colore di etichetta START viene assegnato?</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                                <input type="radio" name="q2" value="a" class="mr-3">
-                                <span class="text-sm">A. Verde (Minori/Lievi)</span>
-                            </label>
-                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                                <input type="radio" name="q2" value="b" class="mr-3">
-                                <span class="text-sm">B. Giallo (Intermedi/Moderati)</span>
-                            </label>
-                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                                <input type="radio" name="q2" value="c" class="mr-3">
-                                <span class="text-sm">C. Rosso (Gravi/Urgenti)</span>
-                            </label>
-                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                                <input type="radio" name="q2" value="d" class="mr-3">
-                                <span class="text-sm">D. Nero (Deceduti/Senza speranza)</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+            <div id="quiz-image-container" class="text-center order-first md:order-none">
+                <img id="quiz-image" src="images/quiz-start.jpg" alt="Immagine stilizzata di persone coinvolte in un incidente" class="w-full h-auto max-h-72 object-contain rounded-lg mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/400x300/cccccc/333333?text=Immagine+Quiz';" />
             </div>
-            <div class="quiz-question bg-gray-50 p-6 rounded-lg border border-color">
-                <div class="flex-1">
-                    <h4 class="font-bold text-lg text-primary mb-2">Domanda 3: Pressione Arteriosa nel START</h4>
-                    <p class="text-secondary mb-4">Nel sistema START, come viene valutata la pressione arteriosa?</p>
-                    <div class="space-y-2">
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q3" value="a" class="mr-3">
-                            <span class="text-sm">A. Mediante sfigmomanometro digitale</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q3" value="b" class="mr-3">
-                            <span class="text-sm">B. Controllando se il polso radiale è palpabile</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q3" value="c" class="mr-3">
-                            <span class="text-sm">C. Valutando il colore della pelle e il grado di umidità</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q3" value="d" class="mr-3">
-                            <span class="text-sm">D. Osservando la frequenza cardiaca apicale</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="quiz-content-msb" class="quiz-panel hidden space-y-6">
-            <div class="quiz-question bg-gray-50 p-6 rounded-lg border border-color">
-                <div class="flex-1">
-                    <h4 class="font-bold text-lg text-primary mb-2">Domanda 4: Composizione del MSB</h4>
-                    <p class="text-secondary mb-4">Un Modulo di Soccorso di Base (MSB) è normalmente composto da quanti operatori?</p>
-                    <div class="space-y-2">
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q4" value="a" class="mr-3">
-                            <span class="text-sm">A. 2 operatori (autista + soccorritore)</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q4" value="b" class="mr-3">
-                            <span class="text-sm">B. 3 operatori (referente + autista + terzo soccorritore)</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q4" value="c" class="mr-3">
-                            <span class="text-sm">C. 4 operatori (coordinatore + 3 soccorritori)</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q4" value="d" class="mr-3">
-                            <span class="text-sm">D. Variabile in base alla complessità dell'evento</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="quiz-question bg-gray-50 p-6 rounded-lg border border-color">
-                <div class="flex-1">
-                    <h4 class="font-bold text-lg text-primary mb-2">Domanda 5: Responsabilità del Referente</h4>
-                    <p class="text-secondary mb-4">Quale NON è una responsabilità del Referente di MSB in una maxi-emergenza?</p>
-                    <div class="space-y-2">
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q5" value="a" class="mr-3">
-                            <span class="text-sm">A. Coordinamento del modulo e gestione della squadra</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q5" value="b" class="mr-3">
-                            <span class="text-sm">B. Guida del veicolo verso la zona di crisi</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q5" value="c" class="mr-3">
-                            <span class="text-sm">C. Comunicazione con il SOREU e le strutture sanitarie</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q5" value="d" class="mr-3">
-                            <span class="text-sm">D. Supervisione del triage e organizzazione del flusso vittime</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="quiz-question bg-gray-50 p-6 rounded-lg border border-color">
-                <div class="flex-1">
-                    <h4 class="font-bold text-lg text-primary mb-2">Domanda 6: Protocolli di Sicurezza MSB</h4>
-                    <p class="text-secondary mb-4">Quale dispositivo di protezione è OBBLIGATORIO indossare al primo contatto con la zona di crisi?</p>
-                    <div class="space-y-2">
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q6" value="a" class="mr-3">
-                            <span class="text-sm">A. Tuta di protezione CBRN completa</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q6" value="b" class="mr-3">
-                            <span class="text-sm">B. Casco, giubbetto alta-visibilità, guanti monouso</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q6" value="c" class="mr-3">
-                            <span class="text-sm">C. Solo mascherina chirurgica e guanti lattice</span>
-                        </label>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition">
-                            <input type="radio" name="q6" value="d" class="mr-3">
-                            <span class="text-sm">D. Dipende dal tipo di incidente e valutazione iniziale</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mt-8 flex gap-4">
-            <button id="submit-quiz" class="flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Consegna Quiz</button>
-            <button id="reset-quiz" class="flex-1 bg-gray-300 text-gray-800 py-3 rounded-lg font-semibold hover:bg-gray-400 transition">Reset Risposte</button>
-        </div>
-        <div id="quiz-feedback-area" class="mt-4 p-4 bg-gray-50 border border-color rounded-lg text-secondary hidden">
-            <h4 class="font-bold mb-2">Risultati Quiz</h4>
-            <p id="quiz-result-message" class="text-sm"></p>
-            <p id="quiz-score" class="font-semibold mt-2">Punteggio: 0/6</p>
         </div>
     </div>
 </section>

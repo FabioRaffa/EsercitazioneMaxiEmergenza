@@ -1,0 +1,7 @@
+# Dipendenze Node (usate solo in locale da Gioco/tools/check_site.js)
+node_modules/
+Gioco/node_modules/
+
+# File di sistema
+Thumbs.db
+.DS_Store

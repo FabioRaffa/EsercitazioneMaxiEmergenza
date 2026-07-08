@@ -1,65 +1,65 @@
-<section id="scenario" class="scroll-mt-20 py-12">
-    <div class="text-center mb-12">
-        <h3 class="text-3xl font-bold text-primary">Lo Scenario: Valuta l'Evento</h3>
-        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Osserva attentamente l'immagine e rispondi alle domande per valutare lo scenario dell'incidente ferroviario. Questo ti aiuterà a preparare la tua prima comunicazione alla SOREU.</p>
-    </div>
-    <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 grid md:grid-cols-2 gap-8 items-start">
-        <div class="md:col-span-1">
-            <div class="mt-4 text-center">
-                <img id="scenario-game-image" src="images/evento.jpg" alt="Immagine di un treno deragliato" class="w-full h-auto rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Immagine+Scenario';" />
+		<section id="scenario" class="scroll-mt-20 py-12">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-primary">Lo Scenario: Valuta l'Evento</h3>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Osserva l'immagine e rispondi per valutare lo scenario: è la base della prima comunicazione alla SOREU.</p>
             </div>
-        </div>
-        <div class="md:col-span-1">
-            <h4 class="font-bold text-xl mb-4">La Tua Valutazione</h4>
-            <div class="space-y-6">
-                <div>
-                    <label class="block text-primary font-semibold mb-2">A) L'evento corrisponde a quanto riferito dal 118 (es. deragliamento treno)?</label>
-                    <div class="flex space-x-4">
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="event-match" value="si" class="form-radio text-blue-600">
-                            <span class="ml-2 text-secondary">SÌ</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="event-match" value="no" class="form-radio text-blue-600">
-                            <span class="ml-2 text-secondary">NO</span>
-                        </label>
+            <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 grid md:grid-cols-2 gap-8 items-start">
+                <div class="md:col-span-1">
+                    <div class="mt-4 text-center">
+                        <img id="scenario-game-image" src="images/evento.jpg" alt="Immagine di un treno deragliato" class="w-full h-auto rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Immagine+Scenario';" />
                     </div>
-                    <p id="event-match-feedback" class="text-sm mt-1"></p>
                 </div>
-                <div>
-                    <label for="scenario-description" class="block text-primary font-semibold mb-2">B) Cosa si vede? (Descrizione dello scenario, max 150 caratteri)</label>
-                    <textarea id="scenario-description" class="scenario-assessment-field resize-y" rows="4" placeholder="Descrivi in dettaglio l'incidente, la posizione del treno, fumo, ecc."></textarea>
-                    <p id="scenario-description-feedback" class="text-sm mt-1"></p>
-                </div>
-                <div>
-                    <label class="block text-primary font-semibold mb-2">C) C'è rischio evolutivo (es. incendio, crollo, sversamenti)?</label>
-                    <div class="flex space-x-4">
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="evolutive-risk" value="si" class="form-radio text-blue-600">
-                            <span class="ml-2 text-secondary">SÌ</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="evolutive-risk" value="no" class="form-radio text-blue-600">
-                            <span class="ml-2 text-secondary">NO</span>
-                        </label>
+                <div class="md:col-span-1">
+                    <h4 class="font-bold text-xl mb-4">La Tua Valutazione</h4>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-primary font-semibold mb-2">A) L'evento corrisponde a quanto riferito dal 118 (es. deragliamento treno)?</label>
+                            <div class="flex space-x-4">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="event-match" value="si" class="form-radio text-blue-600">
+                                    <span class="ml-2 text-secondary">SÌ</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="event-match" value="no" class="form-radio text-blue-600">
+                                    <span class="ml-2 text-secondary">NO</span>
+                                </label>
+                            </div>
+                            <p id="event-match-feedback" class="text-sm mt-1"></p>
+                        </div>
+                        <div>
+                            <label for="scenario-description" class="block text-primary font-semibold mb-2">B) Cosa si vede? (Descrizione dello scenario, max 150 caratteri)</label>
+                            <textarea id="scenario-description" class="scenario-assessment-field resize-y" rows="4" placeholder="Descrivi in dettaglio l'incidente, la posizione del treno, fumo, ecc."></textarea>
+                            <p id="scenario-description-feedback" class="text-sm mt-1"></p>
+                        </div>
+                        <div>
+                            <label class="block text-primary font-semibold mb-2">C) C'è rischio evolutivo (es. incendio, crollo, sversamenti)?</label>
+                            <div class="flex space-x-4">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="evolutive-risk" value="si" class="form-radio text-blue-600">
+                                    <span class="ml-2 text-secondary">SÌ</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="evolutive-risk" value="no" class="form-radio text-blue-600">
+                                    <span class="ml-2 text-secondary">NO</span>
+                                </label>
+                            </div>
+                            <p id="evolutive-risk-feedback" class="text-sm mt-1"></p>
+                        </div>
+                        <div>
+                            <label for="victims-involved" class="block text-primary font-semibold mb-2">D) Quante potrebbero essere le vittime coinvolte? (Quantificazione)</label>
+                            <input type="number" id="victims-involved" class="scenario-assessment-field" placeholder="Es: 100">
+                            <p id="victims-involved-feedback" class="text-sm mt-1"></p>
+                        </div>
+                        <div>
+                            <label for="prevalent-pathologies" class="block text-primary font-semibold mb-2">E) Quali potrebbero essere le patologie prevalenti?</label>
+                            <textarea id="prevalent-pathologies" class="scenario-assessment-field resize-y" rows="3" placeholder="Es: ustioni"></textarea>
+                            <p id="prevalent-pathologies-feedback" class="text-sm mt-1"></p>
+                        </div>
                     </div>
-                    <p id="evolutive-risk-feedback" class="text-sm mt-1"></p>
-                </div>
-                <div>
-                    <label for="victims-involved" class="block text-primary font-semibold mb-2">D) Quante potrebbero essere le vittime coinvolte? (Quantificazione)</label>
-                    <input type="number" id="victims-involved" class="scenario-assessment-field" placeholder="Es: 100">
-                    <p id="victims-involved-feedback" class="text-sm mt-1"></p>
-                </div>
-                <div>
-                    <label for="prevalent-pathologies" class="block text-primary font-semibold mb-2">E) Quali potrebbero essere le patologie prevalenti?</label>
-                    <textarea id="prevalent-pathologies" class="scenario-assessment-field resize-y" rows="3" placeholder="Es: ustioni"></textarea>
-                    <p id="prevalent-pathologies-feedback" class="text-sm mt-1"></p>
+                    <div class="mt-6 flex justify-end space-x-4">
+                        <button id="check-scenario-assessment" class="bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">Verifica Valutazione</button>
+                        <button id="reset-scenario-assessment" class="bg-gray-300 text-gray-800 py-3 px-6 rounded-lg font-semibold hover:bg-gray-400 transition shadow-md">Reset Valutazione</button>
+                    </div>
                 </div>
             </div>
-            <div class="mt-6 flex justify-end space-x-4">
-                <button id="check-scenario-assessment" class="bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">Verifica Valutazione</button>
-                <button id="reset-scenario-assessment" class="bg-gray-300 text-gray-800 py-3 px-6 rounded-lg font-semibold hover:bg-gray-400 transition shadow-md">Reset Valutazione</button>
-            </div>
-        </div>
-    </div>
-</section>
+		</section>

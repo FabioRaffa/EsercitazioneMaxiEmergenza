@@ -7,7 +7,18 @@ Questo progetto è una simulazione interattiva per la formazione nella gestione 
 
 ## Come si esegue
 
-Per utilizzare il progetto è sufficiente aprire il file **gioco.html** con il proprio browser, preferibilmente Google Chrome per una compatibilità ottimale. All'interno dell'esercitazione sono presenti filmati, quindi è necessario assicurarsi che l'audio del dispositivo sia attivato per poter seguire correttamente tutta la simulazione.
+Il progetto vive nella cartella **`Gioco/`** ed è organizzato come sito navigabile
+una schermata (gioco) alla volta, con pulsanti **Precedente/Successivo**, barra di
+avanzamento e link rapidi nella barra in alto.
+
+**È sufficiente aprire `Gioco/index.html`** con il browser (doppio click,
+consigliato Google Chrome): la pagina è autonoma e non richiede un server.
+All'interno sono presenti filmati, quindi assicurati che l'audio del dispositivo
+sia attivo per seguire correttamente tutta la simulazione.
+
+> In alternativa puoi servirlo con un piccolo web server locale
+> (`cd Gioco && npm install && npm start` → http://localhost:8000). Non è
+> necessario per l'uso normale, ma è comodo in sviluppo.
 
 ## Struttura
 
