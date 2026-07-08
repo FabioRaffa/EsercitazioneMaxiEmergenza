@@ -1167,33 +1167,27 @@
     </div>
 
     <div class="wizard-step" id="step-comunicazione-soreu">
-		<section id="comunicazione-soreu" class="scroll-mt-20 py-12">
-            <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold text-primary">Comunicazione SOREU: il M.E.T.H.A.N.E. Game</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni lettera del M.E.T.H.A.N.E. sulla sua corretta definizione per comunicare efficacemente con la SOREU.</p>
-            </div>
-            <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="font-bold text-xl mb-4">Lettere M.E.T.H.A.N.E.</h4>
-                        <div id="methane-letters-container" class="grid grid-cols-4 gap-4">
-                            </div>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-4">Definizioni</h4>
-                        <div id="methane-definitions-container" class="grid grid-cols-1 gap-4">
-                            </div>
-                    </div>
-                </div>
-                <div id="methane-game-feedback" class="mt-6 p-4 rounded-lg bg-gray-50 text-secondary border border-color min-h-[60px]">
-                    <p class="text-sm">Trascina le lettere sulle definizioni.</p>
-                </div>
-                <div class="mt-6 flex justify-center space-x-4">
-                    <button id="check-methane-game" class="bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">Verifica Abbinamenti</button>
-                    <button id="reset-methane-game" class="bg-gray-300 text-gray-800 py-3 px-6 rounded-lg font-semibold hover:bg-gray-400 transition">Reset Gioco</button>
-                </div>
-            </div>
-        </section>
+<section id="comunicazione-soreu" class="scroll-mt-20 py-12">
+    <div class="text-center mb-8">
+        <h3 class="text-3xl font-bold text-primary">Comunicazione SOREU: il M.E.T.H.A.N.E. Game</h3>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni lettera del M.E.T.H.A.N.E. sulla sua corretta definizione per comunicare efficacemente con la SOREU.</p>
+    </div>
+    <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
+        <h4 class="font-bold text-xl mb-4 text-center">Lettere M.E.T.H.A.N.E. <span class="text-secondary font-normal text-sm">(trascina sulle definizioni)</span></h4>
+        <div id="methane-letters-container" class="flex flex-wrap justify-center gap-3 mb-6"></div>
+
+        <h4 class="font-bold text-xl mb-4">Definizioni</h4>
+        <div id="methane-definitions-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+
+        <div id="methane-game-feedback" class="mt-6 p-4 rounded-lg bg-gray-50 text-secondary border border-color min-h-[60px]">
+            <p class="text-sm">Trascina le lettere sulle definizioni.</p>
+        </div>
+        <div class="mt-6 flex justify-center space-x-4">
+            <button id="check-methane-game" class="bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">Verifica Abbinamenti</button>
+            <button id="reset-methane-game" class="bg-gray-300 text-gray-800 py-3 px-6 rounded-lg font-semibold hover:bg-gray-400 transition">Reset Gioco</button>
+        </div>
+    </div>
+</section>
     </div>
 
     <div class="wizard-step" id="step-progetta-piano">
@@ -1394,40 +1388,38 @@
     </div>
 
     <div class="wizard-step" id="step-quiz">
-		<section id="quiz" class="scroll-mt-20 py-12">
-            <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold text-primary">Quiz: Metti alla Prova le Tue Conoscenze</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Rispondi alle domande per testare la tua comprensione del triage START e dei concetti chiave della gestione delle maxi-emergenze.</p>
-            </div>
-            <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
-                <div class="mb-4 border-b border-color">
-                    <nav class="flex -mb-px" id="quiz-tabs">
-                        <button data-quiz-type="start" class="quiz-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-red-500 text-red-600">Quiz Triage START</button>
-                        <button data-quiz-type="concepts" class="quiz-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">Quiz Istruzioni Operative MSB</button>
-                    </nav>
-                </div>
+<section id="quiz" class="scroll-mt-20 py-12">
+    <div class="text-center mb-8">
+        <h3 class="text-3xl font-bold text-primary">Quiz: Metti alla Prova le Tue Conoscenze</h3>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Rispondi alle domande per testare la tua comprensione del triage START e dei concetti chiave della gestione delle maxi-emergenze.</p>
+    </div>
+    <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
+        <div class="mb-4 border-b border-color">
+            <nav class="flex -mb-px" id="quiz-tabs">
+                <button data-quiz-type="start" class="quiz-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-red-500 text-red-600">Quiz Triage START</button>
+                <button data-quiz-type="concepts" class="quiz-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">Quiz Istruzioni Operative MSB</button>
+            </nav>
+        </div>
 
-                <div id="quiz-content" class="grid md:grid-cols-2 gap-8 items-center">
-                    <div class="md:col-span-1">
-                        <div id="quiz-image-container" class="mb-4 text-center">
-                            <img id="quiz-image" src="images/quiz-start.jpg" alt="Immagine stilizzata di persone coinvolte in un incidente" class="w-full h-auto rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/cccccc/333333?text=Immagine+Quiz';" />
-                        </div>
-                        <div id="quiz-question-container" class="mb-4">
-                            <p class="text-lg font-semibold mb-2" id="quiz-question-text"></p>
-                            <div class="space-y-2" id="quiz-options"></div>
-                        </div>
-                        <div id="quiz-feedback" class="p-3 rounded-lg text-sm font-medium hidden"></div>
-                        <div class="mt-4 flex justify-between items-center">
-                            <button id="quiz-next-button" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition hidden">Prossima Domanda</button>
-                            <button id="quiz-restart-button" class="bg-gray-300 text-gray-800 py-2 px-4 rounded-lg font-semibold hover:bg-gray-400 transition hidden">Ricomincia Quiz</button>
-                            <p id="quiz-progress" class="text-sm text-secondary"></p>
-                        </div>
-                    </div>
-                    <div class="md:col-span-1">
-                        </div>
+        <div id="quiz-content" class="grid md:grid-cols-2 gap-8 items-start">
+            <div>
+                <div id="quiz-question-container" class="mb-4">
+                    <p class="text-lg font-semibold mb-2" id="quiz-question-text"></p>
+                    <div class="space-y-2" id="quiz-options"></div>
+                </div>
+                <div id="quiz-feedback" class="p-3 rounded-lg text-sm font-medium hidden"></div>
+                <div class="mt-4 flex justify-between items-center">
+                    <button id="quiz-next-button" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition hidden">Prossima Domanda</button>
+                    <button id="quiz-restart-button" class="bg-gray-300 text-gray-800 py-2 px-4 rounded-lg font-semibold hover:bg-gray-400 transition hidden">Ricomincia Quiz</button>
+                    <p id="quiz-progress" class="text-sm text-secondary"></p>
                 </div>
             </div>
-        </section>
+            <div id="quiz-image-container" class="text-center order-first md:order-none">
+                <img id="quiz-image" src="images/quiz-start.jpg" alt="Immagine stilizzata di persone coinvolte in un incidente" class="w-full h-auto max-h-72 object-contain rounded-lg mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/400x300/cccccc/333333?text=Immagine+Quiz';" />
+            </div>
+        </div>
+    </div>
+</section>
     </div>
 
     <div class="wizard-step" id="step-congratulazioni">
