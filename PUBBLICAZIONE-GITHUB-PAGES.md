@@ -44,8 +44,10 @@ https://<tuo-utente>.github.io/<nome-repo>/
 ```
 
 Aprendo quel link, il redirect ti porterà direttamente all'esercitazione.
-
----
+Per questo progetto:
+```
+https://fabioraffa.github.io/EsercitazioneMaxiEmergenza/Gioco/index.html
+```
 
 ## 3. (Consigliato) Pubblicare da `main`
 
