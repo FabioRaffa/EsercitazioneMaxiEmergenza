@@ -541,10 +541,10 @@ initializeMsbGame();
 
         const correctScenarioAnswers = {
             eventMatch: 'si', 
-            scenarioDescriptionKeywords: ['treno', 'deragliato', 'vagoni', 'ribaltati', 'fumo', 'viadotto', 'accesso difficile', 'strade strette', 'ostacoli'],
+            scenarioDescriptionKeywords: ['treno', 'derag', 'vagon', 'ribalta', 'fumo', 'viadotto', 'incidente', 'ferro', 'binari', 'vittim', 'ferit', 'danni', 'ostacol'],
             evolutiveRisk: 'si',
-            victimsRange: [300, 500], 
-            prevalentPathologiesKeywords: ['traumi', 'ustioni', 'contusioni', 'fratture', 'emorragie', 'shock'],
+            victimsRange: [100, 1000],
+            prevalentPathologiesKeywords: ['traum', 'ustion', 'contusion', 'fratt', 'emorrag', 'shock', 'ferit', 'lesion', 'sangue'],
         };
 
         function resetScenarioAssessment() {
@@ -577,7 +577,7 @@ initializeMsbGame();
 
             const userDescription = scenarioDescriptionInput.value.toLowerCase();
             const hasEnoughKeywords = correctScenarioAnswers.scenarioDescriptionKeywords.some(keyword => userDescription.includes(keyword));
-            if (userDescription.length > 50 && hasEnoughKeywords) { 
+            if (userDescription.length > 15 && hasEnoughKeywords) {
                 scenarioFeedback.description.textContent = 'Descrizione sufficiente!';
                 scenarioFeedback.description.classList.add('text-green-600');
 				scenarioFeedback.description.classList.remove('text-red-600');
@@ -614,7 +614,7 @@ initializeMsbGame();
 
             const userPathologies = prevalentPathologiesInput.value.toLowerCase();
             const hasEnoughPathologyKeywords = correctScenarioAnswers.prevalentPathologiesKeywords.some(keyword => userPathologies.includes(keyword));
-            if (userPathologies.length > 20 && hasEnoughPathologyKeywords) {
+            if (userPathologies.length > 5 && hasEnoughPathologyKeywords) {
                 scenarioFeedback.pathologies.textContent = 'Patologie plausibili!';
                 scenarioFeedback.pathologies.classList.add('text-green-600');
 				scenarioFeedback.pathologies.classList.remove('text-red-600'); 
