@@ -572,7 +572,7 @@ initializeMsbGame();
                 scenarioFeedback.eventMatch.classList.add('text-green-600');
 				scenarioFeedback.eventMatch.classList.remove('text-red-600');
             } else {
-                scenarioFeedback.eventMatch.textContent = 'Sbagliato. L\'evento corrisponde a quanto riferito.';
+                scenarioFeedback.eventMatch.textContent = 'Rivedi: l\'immagine conferma l\'evento riferito dal 118. La risposta corretta è SÌ.';
                 scenarioFeedback.eventMatch.classList.add('text-red-600');
 				scenarioFeedback.eventMatch.classList.remove('text-green-600');
                 allCorrect = false;
@@ -585,7 +585,7 @@ initializeMsbGame();
                 scenarioFeedback.description.classList.add('text-green-600');
 				scenarioFeedback.description.classList.remove('text-red-600');
             } else {
-                scenarioFeedback.description.textContent = 'Descrizione insufficiente o poco dettagliata.';
+                scenarioFeedback.description.textContent = 'Rivedi la descrizione: scrivi almeno 15 caratteri e cita almeno 2 elementi visibili (es. treno, deragliato, vagoni, fumo).';
                 scenarioFeedback.description.classList.add('text-red-600');
 				scenarioFeedback.description.classList.remove('text-green-600');
                 allCorrect = false;
@@ -597,7 +597,7 @@ initializeMsbGame();
                 scenarioFeedback.evolutiveRisk.classList.add('text-green-600');
 				scenarioFeedback.evolutiveRisk.classList.remove('text-red-600');
             } else {
-                scenarioFeedback.evolutiveRisk.textContent = 'Sbagliato. Ci sono rischi evolutivi presenti.';
+                scenarioFeedback.evolutiveRisk.textContent = 'Rivedi: sono presenti rischi evolutivi (incendio, crollo, sversamenti). La risposta corretta è SÌ.';
                 scenarioFeedback.evolutiveRisk.classList.add('text-red-600');
 				scenarioFeedback.evolutiveRisk.classList.remove('text-green-600');
                 allCorrect = false;
@@ -609,7 +609,7 @@ initializeMsbGame();
                 scenarioFeedback.victims.classList.add('text-green-600');
 				scenarioFeedback.victims.classList.remove('text-red-600');
             } else {
-                scenarioFeedback.victims.textContent = `La stima delle vittime non è accurata. Si attendono circa ${correctScenarioAnswers.victimsRange[0]}-${correctScenarioAnswers.victimsRange[1]} coinvolti.`;
+                scenarioFeedback.victims.textContent = `Rivedi la stima delle vittime: per questo evento si attendono circa ${correctScenarioAnswers.victimsRange[0]}-${correctScenarioAnswers.victimsRange[1]} coinvolti.`;
                 scenarioFeedback.victims.classList.add('text-red-600');
 				scenarioFeedback.victims.classList.remove('text-green-600');			
                 allCorrect = false;
@@ -622,7 +622,7 @@ initializeMsbGame();
                 scenarioFeedback.pathologies.classList.add('text-green-600');
 				scenarioFeedback.pathologies.classList.remove('text-red-600'); 
             } else {
-                scenarioFeedback.pathologies.textContent = 'Descrizione delle patologie insufficiente o poco pertinente.';
+                scenarioFeedback.pathologies.textContent = 'Rivedi le patologie: indica almeno 2 tipi prevalenti (es. traumi, ustioni, fratture, emorragie).';
                 scenarioFeedback.pathologies.classList.add('text-red-600');
 				scenarioFeedback.pathologies.classList.remove('text-green-600');
                 allCorrect = false;
