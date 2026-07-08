@@ -546,7 +546,7 @@ initializeMsbGame();
             eventMatch: 'si', 
             scenarioDescriptionKeywords: ['treno', 'derag', 'vagon', 'ribalta', 'fumo', 'viadotto', 'incidente', 'ferro', 'binari', 'vittim', 'ferit', 'danni', 'ostacol'],
             evolutiveRisk: 'si',
-            victimsRange: [100, 1000],
+            victimsRange: [300, 500],
             prevalentPathologiesKeywords: ['traum', 'ustion', 'contusion', 'fratt', 'emorrag', 'shock', 'ferit', 'lesion', 'sangue'],
         };
 
@@ -579,7 +579,7 @@ initializeMsbGame();
             }
 
             const userDescription = scenarioDescriptionInput.value.toLowerCase();
-            const hasEnoughKeywords = correctScenarioAnswers.scenarioDescriptionKeywords.some(keyword => userDescription.includes(keyword));
+            const hasEnoughKeywords = correctScenarioAnswers.scenarioDescriptionKeywords.filter(keyword => userDescription.includes(keyword)).length >= 2;
             if (userDescription.length > 15 && hasEnoughKeywords) {
                 scenarioFeedback.description.textContent = 'Descrizione sufficiente!';
                 scenarioFeedback.description.classList.add('text-green-600');
@@ -616,7 +616,7 @@ initializeMsbGame();
             }
 
             const userPathologies = prevalentPathologiesInput.value.toLowerCase();
-            const hasEnoughPathologyKeywords = correctScenarioAnswers.prevalentPathologiesKeywords.some(keyword => userPathologies.includes(keyword));
+            const hasEnoughPathologyKeywords = correctScenarioAnswers.prevalentPathologiesKeywords.filter(keyword => userPathologies.includes(keyword)).length >= 2;
             if (userPathologies.length > 5 && hasEnoughPathologyKeywords) {
                 scenarioFeedback.pathologies.textContent = 'Patologie plausibili!';
                 scenarioFeedback.pathologies.classList.add('text-green-600');
