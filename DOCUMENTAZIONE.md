@@ -155,6 +155,19 @@ di congratulazioni** (`step-congratulazioni`) con un pulsante "Ricomincia da cap
 > allentarlo, si può cambiare la soglia dei giochi a punteggio in `games.js` o togliere
 > un id dall'insieme `REQUIRED` in `main.js`.
 
+### Sblocco navigazione (formatori)
+
+In alto a sinistra, accanto al pulsante info, c'è un pulsante **🔒**: inserendo la
+password sblocca la **libera navigazione** tra tutte le schermate senza dover
+completare i giochi (utile ai formatori). Lo stato resta attivo per la sessione del
+browser (`sessionStorage`, si azzera chiudendo la scheda); si può ri-bloccare
+cliccando di nuovo il pulsante (che diventa 🔓 quando sbloccato).
+
+La password è definita in `scripts/main.js` (`NAV_UNLOCK_PASSWORD`) ed è facilmente
+modificabile. **Attenzione:** essendo un sito statico, la password è *leggibile nel
+sorgente* — è una protezione "morbida" pensata per i formatori, **non** una password
+sicura. Per una vera protezione servirebbe un backend (non disponibile su GitHub Pages).
+
 ## Pubblicazione online (GitHub Pages)
 
 L'app è statica e usa solo percorsi relativi, quindi è pubblicabile su GitHub Pages:

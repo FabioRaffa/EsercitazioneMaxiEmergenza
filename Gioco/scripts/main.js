@@ -41,7 +41,17 @@ const REQUIRED = new Set([
 ]);
 
 const CONGRATS_INDEX = SECTIONS.length; // 16 -> schermata finale
+
+// === Sblocco navigazione (riservato ai formatori) ===
+// Password per navigare liberamente tra i giochi senza completarli.
+// NB: essendo un sito statico, questo valore è LEGGIBILE nel sorgente: è una
+// protezione "morbida" per i formatori, non una password sicura.
+// Per cambiarla, modifica la stringa qui sotto.
+const NAV_UNLOCK_PASSWORD = 'maxi-sblocca-2025';
+
 let current = 0;
+let navUnlocked = false;
+try { navUnlocked = sessionStorage.getItem('maxiNavUnlocked') === '1'; } catch (e) {}
 const done = new Set();                 // id delle sezioni-gioco completate
 const idToIndex = {};
 SECTIONS.forEach((s, i) => { idToIndex[s.id] = i; });
@@ -50,6 +60,7 @@ function appEl() { return document.getElementById('app'); }
 
 // Indice della prima sezione richiesta non ancora completata; se tutte fatte -> CONGRATS_INDEX
 function frontier() {
+  if (navUnlocked) return CONGRATS_INDEX; // formatore: tutte le schermate raggiungibili
   for (let i = 0; i < SECTIONS.length; i++) {
     if (REQUIRED.has(SECTIONS[i].id) && !done.has(SECTIONS[i].id)) return i;
   }
@@ -127,7 +138,10 @@ function updateNav() {
 
   // Messaggio di aiuto
   if (hint) {
-    if (isCongrats) {
+    if (navUnlocked) {
+      hint.textContent = '🔓 Navigazione sbloccata (formatore)';
+      hint.className = 'wizard-hint';
+    } else if (isCongrats) {
       hint.textContent = '';
     } else if (REQUIRED.has(SECTIONS[current].id) && !done.has(SECTIONS[current].id)) {
       hint.textContent = '🔒 Completa correttamente il gioco per sbloccare il successivo';
@@ -202,6 +216,63 @@ function wireInfoModal() {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 }
 
+// Sblocco navigazione (formatori)
+function setUnlockButtonState() {
+  const btn = document.getElementById('unlock-button');
+  if (!btn) return;
+  btn.innerHTML = navUnlocked ? '&#128275;' : '&#128274;'; // 🔓 / 🔒
+  btn.classList.toggle('nav-unlocked-btn', navUnlocked);
+  btn.title = navUnlocked
+    ? 'Navigazione sbloccata — clicca per ri-bloccare'
+    : 'Sblocca navigazione (formatori)';
+}
+
+function applyUnlock(state) {
+  navUnlocked = state;
+  try { sessionStorage.setItem('maxiNavUnlocked', state ? '1' : '0'); } catch (e) {}
+  setUnlockButtonState();
+  if (!state && current > frontier()) showStep(frontier()); // ri-bloccando, riporta alla frontiera
+  else updateNav();
+}
+
+function wireUnlock() {
+  const btn = document.getElementById('unlock-button');
+  const modal = document.getElementById('unlock-modal');
+  if (!btn || !modal) return;
+  const content = modal.querySelector('.modal-content');
+  const input = document.getElementById('unlock-password');
+  const feedback = document.getElementById('unlock-feedback');
+
+  const openM = () => {
+    modal.classList.remove('invisible', 'opacity-0');
+    if (content) content.classList.remove('scale-95');
+    if (feedback) { feedback.textContent = ''; feedback.className = 'text-sm h-5'; }
+    if (input) { input.value = ''; setTimeout(() => input.focus(), 50); }
+  };
+  const closeM = () => {
+    modal.classList.add('invisible', 'opacity-0');
+    if (content) content.classList.add('scale-95');
+  };
+  const trySubmit = () => {
+    if (input.value === NAV_UNLOCK_PASSWORD) {
+      applyUnlock(true);
+      if (feedback) { feedback.textContent = '✔️ Navigazione sbloccata'; feedback.className = 'text-sm h-5 text-green-600'; }
+      setTimeout(closeM, 700);
+    } else if (feedback) {
+      feedback.textContent = '❌ Password errata'; feedback.className = 'text-sm h-5 text-red-600';
+    }
+  };
+
+  btn.addEventListener('click', () => { navUnlocked ? applyUnlock(false) : openM(); });
+  const submit = document.getElementById('unlock-submit');
+  if (submit) submit.addEventListener('click', trySubmit);
+  if (input) input.addEventListener('keydown', (e) => { if (e.key === 'Enter') trySubmit(); });
+  modal.querySelectorAll('.close-modal').forEach(b => b.addEventListener('click', closeM));
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeM(); });
+
+  setUnlockButtonState();
+}
+
 // Overlay iniziale "Affronta la Maxi-Emergenza!"
 function startExperience() {
   const overlay = document.getElementById('start-activity-button-overlay');
@@ -230,6 +301,7 @@ async function init() {
 
   wireNav();
   wireInfoModal();
+  wireUnlock();
   showStep(0);
 
   const startBtn = document.getElementById('wizard-start-btn');

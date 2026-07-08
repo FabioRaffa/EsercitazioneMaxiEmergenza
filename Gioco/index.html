@@ -206,25 +206,9 @@
             display: block;
             line-height: 1.2;
         }
-        #zone-diagram-game .zone-slot .role-title::before {
-            display: block;
-            font-size: 1.7rem;
-            margin-bottom: .1rem;
-        }
-        #zone-diagram-game .zone-slot .role-title::after {
-            content: attr(data-hint);
-            display: block;
-            font-size: .68rem;
-            font-weight: 500;
-            opacity: .7;
-            margin-top: .15rem;
-        }
         .zone-slot-red    { background: #fef2f2; border-color: #fca5a5; }
         .zone-slot-yellow { background: #fefce8; border-color: #fde047; }
         .zone-slot-green  { background: #f0fdf4; border-color: #86efac; }
-        .zone-slot-red    .role-title::before { content: "\1F525"; } /* 🔥 */
-        .zone-slot-yellow .role-title::before { content: "\1FA7A"; } /* 🩺 */
-        .zone-slot-green  .role-title::before { content: "\2795"; }  /* ➕ */
         #zone-diagram-game .zone-slot.active-drop {
             border-style: solid;
             transform: translateY(-2px);
@@ -607,7 +591,17 @@
     .wizard-progress-bar { height: 100%; width: 0; background: #c53030; border-radius: 9999px; transition: width .3s ease; }
     .wizard-hint { display: block; font-size: 0.72rem; margin-top: 0.3rem; min-height: 0.9rem; color: #a0aec0; }
     .wizard-hint.locked { color: #c53030; }
-    .nav-link.nav-locked, .nav-link-mobile.nav-locked { opacity: 0.4; cursor: not-allowed; }
+    .nav-link.nav-locked, .nav-link-mobile.nav-locked { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+    #mobile-menu .nav-link-mobile { font-size: 0.82rem; padding: 0.4rem 0.55rem; overflow: hidden; text-overflow: ellipsis; }
+    #mobile-menu .nav-link-mobile.active-nav { background: #fef2f2; color: #c53030; }
+    /* Evita overflow orizzontale: grafici e contenuti non superano la larghezza */
+    .wizard-step { overflow-x: hidden; }
+    .wizard-step canvas { max-width: 100%; }
+    @media (max-width: 640px) {
+        #fasi-tabs .fase-tab { white-space: normal; font-size: 0.66rem; padding-left: 0.1rem; padding-right: 0.1rem; line-height: 1.15; }
+    }
+    #unlock-button.nav-unlocked-btn { color: #16a34a; border-color: #16a34a; }
+    #unlock-button.nav-unlocked-btn:hover { background: #16a34a; border-color: #16a34a; color: #fff; }
     #wizard-loading { text-align: center; padding: 4rem 1rem; color: #4a5568; }
 
     /* Compattazione verticale delle schermate-gioco: meno scroll, più leggibilità */
@@ -643,9 +637,11 @@
                 <div class="flex-shrink-0 flex items-center gap-2">
                     <button id="info-button" type="button" title="Info e crediti" aria-label="Info e crediti"
                         class="w-7 h-7 rounded-full border border-color text-secondary hover:text-white hover:bg-red-600 hover:border-red-600 transition flex items-center justify-center text-sm font-bold italic leading-none">i</button>
-                    <h1 class="text-xl font-bold text-primary">Maxi-Emergenza</h1>
+                    <button id="unlock-button" type="button" title="Sblocca navigazione (formatori)" aria-label="Sblocca navigazione"
+                        class="w-7 h-7 rounded-full border border-color text-secondary hover:text-white hover:bg-gray-700 hover:border-gray-700 transition flex items-center justify-center text-xs leading-none">&#128274;</button>
+                    <h1 class="text-base sm:text-xl font-bold text-primary whitespace-nowrap">Maxi-Emergenza</h1>
                 </div>
-                <div class="hidden md:block">
+                <div class="hidden">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="#attivazione-chiamata" class="nav-link px-3 py-2 rounded-md text-sm font-medium inactive-nav">Attivazione</a>
                         <a href="#scenario" class="nav-link px-3 py-2 rounded-md text-sm font-medium inactive-nav">Scenario</a>
@@ -663,18 +659,18 @@
                         <a href="#quiz" class="nav-link px-3 py-2 rounded-md text-sm font-medium inactive-nav">Quiz</a>
                     </div>
                 </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                        <span class="sr-only">Apri menu</span>
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <div>
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center gap-2 py-2 px-3 rounded-lg text-secondary hover:text-primary hover:bg-gray-100 border border-color transition focus:outline-none">
+                        <span class="hidden sm:inline text-sm font-semibold whitespace-nowrap">Vai al gioco</span>
+                        <svg class="block h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
                     </button>
                 </div>
             </div>
         </nav>
-        <div id="mobile-menu" class="md:hidden hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div id="mobile-menu" class="hidden absolute right-3 mt-1 w-80 max-w-[92vw] bg-surface shadow-2xl rounded-lg border border-color z-50">
+            <div class="p-2 grid grid-cols-2 gap-1">
                 <a href="#attivazione-chiamata" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Attivazione</a>
                 <a href="#scenario" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Scenario</a>
                 <a href="#fasi" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-secondary hover:bg-gray-200">Fasi Risposta</a>
@@ -924,13 +920,13 @@
 				<!-- Le tre zone operative: bersagli su cui trascinare -->
 				<div id="zone-diagram-game" class="space-y-4">
 					<div class="role-drop-zone zone-slot zone-slot-red" data-drop-zone-for="Punto di Crash">
-						<span class="role-title" data-hint="Zona rossa · massimo pericolo">Punto di Crash</span>
+						<span class="role-title">Zona rossa</span>
 					</div>
 					<div class="role-drop-zone zone-slot zone-slot-yellow" data-drop-zone-for="Triage">
-						<span class="role-title" data-hint="Zona gialla · valutazione e stabilizzazione">Triage</span>
+						<span class="role-title">Zona gialla</span>
 					</div>
 					<div class="role-drop-zone zone-slot zone-slot-green" data-drop-zone-for="Punto di Raccolta">
-						<span class="role-title" data-hint="Zona verde · area sicura (PMA)">Punto di Raccolta</span>
+						<span class="role-title">Zona verde</span>
 					</div>
 				</div>
 				<!-- Definizioni da trascinare -->
@@ -1453,6 +1449,25 @@
                     </ul>
                 </div>
                 <p class="text-xs text-gray-400 pt-3 border-t border-color">Applicazione realizzata a scopo didattico. &copy; 2025 Fabio Raffaelli &mdash; Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale Sblocco navigazione (riservato ai formatori) -->
+    <div id="unlock-modal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[110] invisible opacity-0">
+        <div class="modal-content bg-surface rounded-lg shadow-xl w-full max-w-sm transform scale-95">
+            <div class="p-6 border-b border-color flex justify-between items-center">
+                <h3 class="text-xl font-bold text-primary">Sblocca navigazione</h3>
+                <button class="close-modal text-2xl font-light" aria-label="Chiudi">&times;</button>
+            </div>
+            <div class="p-6 space-y-3">
+                <p class="text-sm text-secondary">Riservato ai formatori: inserisci la password per navigare liberamente tra i giochi senza doverli completare.</p>
+                <input id="unlock-password" type="password" autocomplete="off" placeholder="Password"
+                    class="w-full border border-color rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+                <p id="unlock-feedback" class="text-sm h-5"></p>
+                <div class="flex justify-end gap-2">
+                    <button id="unlock-submit" type="button" class="bg-red-600 text-white py-2 px-5 rounded-lg font-semibold hover:bg-red-700 transition">Sblocca</button>
+                </div>
             </div>
         </div>
     </div>
