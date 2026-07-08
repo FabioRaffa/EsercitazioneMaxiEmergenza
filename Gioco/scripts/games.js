@@ -177,11 +177,19 @@ window.initGames = function initGames() {
 			} else if (triageFlowResetBtn) {
 				triageFlowResetBtn.classList.add('hidden');
 			}
-			// Riempie progressivamente il grafico a torta: la circonferenza cresce con i passi
-			if (window.__triageChart && triageFlowSteps.length) {
-				const frac = Math.min(stepNum, triageFlowSteps.length) / triageFlowSteps.length;
-				window.__triageChart.options.circumference = 360 * frac;
+			// Aggiorna il grafico: dal solo VERDE (100%) alla distribuzione finale 60/30/10.
+			if (window.__triageChart && triageFlowSteps.length > 1) {
+				const total = triageFlowSteps.length;
+				const t = (Math.min(stepNum, total) - 1) / (total - 1); // 0 (passo 1) -> 1 (ultimo passo)
+				const start = [100, 0, 0], end = [60, 30, 10];
+				window.__triageChart.data.datasets[0].data = end.map((v, i) => Math.round((start[i] + (v - start[i]) * t) * 10) / 10);
 				window.__triageChart.update();
+				const cap = document.getElementById('triage-chart-caption');
+				if (cap) {
+					cap.innerHTML = (t >= 1)
+						? 'Distribuzione finale — <span class="text-green-600 font-semibold">Verde 60%</span> · <span class="text-yellow-500 font-semibold">Giallo 30%</span> · <span class="text-red-600 font-semibold">Rosso 10%</span>'
+						: 'Le fette si aggiornano man mano che avanzi nei passi del triage.';
+				}
 			}
 		};
 		// Aggiungi event listener a ogni passo per rivelare il successivo
@@ -1208,7 +1216,7 @@ if (triageCtx) {
             labels: ['Verde (Lieve)', 'Giallo (Urgenza)', 'Rosso (Critico)'],
             datasets: [{
                 label: 'Pazienti',
-                data: [60, 30, 10], // Percentuali tipiche: 60% Verdi, 30% Gialli, 10% Rossi (circa)
+                data: [100, 0, 0], // Inizio: solo VERDE (primo passo del triage). Si morfa fino a 60/30/10.
                 backgroundColor: [
                     '#48bb78', // Green-500
                     '#ecc94b', // Yellow-500
@@ -1220,10 +1228,7 @@ if (triageCtx) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            // Parte parzialmente riempito (primo passo del triage) e cresce fino a 360°
-            circumference: 72,
-            rotation: 0,
-            animation: { animateRotate: true, duration: 500 },
+            animation: { duration: 500 },
             plugins: {
                 legend: {
                     position: 'top',
