@@ -195,6 +195,8 @@ function wireInfoModal() {
     if (content) content.classList.add('scale-95');
   };
   btn.addEventListener('click', open);
+  const overlayBtn = document.getElementById('overlay-info-btn');
+  if (overlayBtn) overlayBtn.addEventListener('click', open);
   modal.querySelectorAll('.close-modal').forEach(b => b.addEventListener('click', close));
   modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
