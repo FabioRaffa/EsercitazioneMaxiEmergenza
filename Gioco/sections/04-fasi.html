@@ -1,0 +1,104 @@
+<section id="fasi" class="scroll-mt-20 py-12">
+    <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold text-primary">Le Fasi della Risposta</h3>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">La gestione di una catastrofe segue un ciclo definito. Ogni fase ha obiettivi e azioni specifiche, cruciali per passare dal caos a un intervento coordinato. Clicca su ogni fase per scoprire i dettagli.</p>
+    </div>
+    <div>
+        <div class="mb-4 border-b border-color">
+            <nav class="flex -mb-px" id="fasi-tabs">
+                <button data-target="fase-preparatoria" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-red-500 text-red-600">1. Preparazione</button>
+                <button data-target="fase-allarme" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">2. Allarme</button>
+                <button data-target="fase-risposta-immediata" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">3. Risposta Immediata</button>
+                <button data-target="fase-risposta-differita" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">4. Risposta Differita</button>
+            </nav>
+        </div>
+        <div id="fasi-content">
+            <div id="fase-preparatoria" class="fase-content-panel p-4 bg-surface rounded-lg shadow">
+                <h4 class="text-xl font-bold mb-2">Fase Preparatoria: Giocare d'Anticipo</h4>
+                <p class="text-secondary mb-4">L'emergenza non si attende, si prepara. In questa fase si definiscono i Piani di Soccorso, si mappano i rischi del territorio e si formano gli operatori. Le esercitazioni congiunte tra 118, Vigili del Fuoco e Protezione Civile sono fondamentali per testare protocolli e creare sinergia.</p>
+                <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
+                    <p class="font-semibold text-lg">Pianificazione ➔ Formazione ➔ Esercitazione</p>
+                    <p class="text-sm text-secondary">Un ciclo virtuoso per essere pronti all'imprevisto.</p>
+                </div>
+            </div>
+            <div id="fase-allarme" class="fase-content-panel p-4 bg-surface rounded-lg shadow hidden">
+                <h4 class="text-xl font-bold mb-2">Fase di Allarme: La Prima Chiamata</h4>
+                <p class="text-secondary mb-4">Tutto inizia con le prime, spesso caotiche, chiamate al 118. L'operatore deve rapidamente dimensionare l'evento usando protocolli come il M.E.T.H.A.N.E. per raccogliere informazioni vitali e attivare il livello di allarme corretto (Livello 3 per le maxi-emergenze), mobilitando tutte le componenti del soccorso.</p>
+                <div class="mt-4 bg-gray-100 p-4 rounded-lg border border-color">
+                    <h5 class="font-bold text-md mb-2">M.E.T.H.A.N.E. (Metodo di Valutazione Iniziale)</h5>
+                    <ul class="list-disc list-inside text-secondary text-sm space-y-1">
+                        <li><strong class="text-primary">M</strong>axi-emergenza: Conferma che l'evento è una maxi-emergenza (Livello 3).</li>
+                        <li><strong class="text-primary">E</strong>satta Location: Localizzazione precisa dell'incidente per indirizzare i soccorsi.</li>
+                        <li><strong class="text-primary">T</strong>ipo di Incidente: Natura dell'evento (es. deragliamento, crollo, esplosione) per prevedere rischi e lesioni.</li>
+                        <li><strong class="text-primary">H</strong>azard (Pericoli): Valutazione dei rischi presenti o evolutivi (es. fumo, incendio, sversamenti, instabilità strutturale).</li>
+                        <li><strong class="text-primary">A</strong>ccesso: Condizioni delle vie di accesso e uscita per i mezzi di soccorso (strade bloccate, terreno impervio).</li>
+                        <li><strong class="text-primary">N</strong>umero di Coinvolti: Stima del numero di persone coinvolte e della gravità delle lesioni.</li>
+                        <li><strong class="text-primary">E</strong>mergenza già in Loco o Necessari: Presenza di soccorsi già sul posto o necessità di risorse aggiuntive.</li>
+                    </ul>
+                </div>
+                    <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
+                        <p class="font-semibold text-lg">Chiamata ➔ Analisi M.E.T.H.A.N.E. ➔ Attivazione Risorse</p>
+                        <p class="text-sm text-secondary">Trasformare l'informazione in azione coordinata.</p>
+                    </div>
+            </div>
+            <div id="fase-risposta-immediata" class="fase-content-panel p-4 bg-surface rounded-lg shadow hidden">
+                <h4 class="text-xl font-bold mb-2">Fase di Risposta Immediata: Sul Campo</h4>
+                <p class="text-secondary mb-4">I primi mezzi arrivano. L'obiettivo è mettere in sicurezza la scena, stabilire un Posto di Comando Avanzato (PCA) e iniziare il triage primario con il metodo START per classificare rapidamente i feriti. Si settorializza l'area (<span class="text-red-500 font-bold">punto di crash</span>, <span class="text-yellow-500 font-bold">triage</span>, <span class="text-green-500 font-bold">punto di raccolta</span>) per razionalizzare gli interventi.</p>
+                        <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
+                            <p class="font-semibold text-lg">Sicurezza Scena ➔ Triage START ➔ Settorializzazione</p>
+                            <p class="text-sm text-secondary">Portare ordine nel caos iniziale.</p>
+                        </div>
+            </div>
+            <div id="fase-risposta-differita" class="fase-content-panel p-4 bg-surface rounded-lg shadow hidden">
+                <h4 class="text-xl font-bold mb-2">Fase di Risposta Differita: Stabilizzazione ed Evacuazione</h4>
+                <p class="text-secondary mb-4">Si allestisce il Posto Medico Avanzato (PMA) nel <span class="text-green-500 font-bold">punto di raccolta</span>. Qui i pazienti vengono sottoposti a triage secondario, stabilizzati e trattati. La logistica diventa cruciale: la "Piccola Noria" trasporta i feriti dalla scena al PMA, mentre la "Grande Noria" li evacua dal PMA agli ospedali più idonei.</p>
+                        <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
+                            <p class="font-semibold text-lg">Allestimento PMA ➔ Trattamento ➔ Evacuazione (Noria)</p>
+                            <p class="text-sm text-secondary">La catena sanitaria organizzata per salvare più vite possibile.</p>
+                        </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 mt-12">
+    <div class="text-center mb-8">
+        <h4 class="text-2xl font-bold text-primary">Gioco: Abbina le Definizioni alle Zone Operative</h4>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina le descrizioni sui cerchi colorati corrispondenti alla zona operativa corretta. Il diagramma mostra le tre zone principali di un intervento.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div class="relative w-full aspect-square flex flex-col items-center justify-center border-2 border-dashed border-color rounded-lg p-2 bg-gray-100 mx-auto max-w-md">
+            <div id="zone-diagram-game" class="relative w-full h-full flex flex-col items-center justify-center p-2">
+                <div class="absolute w-full h-full rounded-full bg-green-200/50 flex items-center justify-center border border-green-500" data-zone-type="Punto di Raccolta" data-color="green">
+                    <div id="zone-warm-game" class="absolute w-2/3 h-2/3 rounded-full bg-yellow-200/50 flex items-center justify-center border border-yellow-500" data-zone-type="Triage" data-color="yellow">
+                        <div id="zone-hot-game" class="absolute w-1/2 h-1/2 rounded-full bg-red-300/50 flex items-center justify-center border border-red-500" data-zone-type="Punto di Crash" data-color="red">
+                            <span class="text-xl">🚆</span> </div>
+                    </div>
+                </div>
+
+                <div class="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/5 h-1/5 flex items-center justify-center role-drop-zone p-1 text-center" data-drop-zone-for="Punto di Crash" style="background-color: transparent; border: 2px dashed rgba(197, 48, 48, 0.5);">
+                    <span class="role-title text-red-600 font-bold text-sm">PUNTO DI CRASH</span>
+                </div>
+                <div class="absolute top-[18%] left-1/4 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/5 flex items-center justify-center role-drop-zone p-1 text-center" data-drop-zone-for="Triage" style="background-color: transparent; border: 2px dashed rgba(234, 179, 8, 0.5);">
+                    <span class="role-title text-yellow-600 font-bold text-sm">TRIAGE</span>
+                </div>
+                <div class="absolute bottom-[5%] right-[5%] w-2/5 h-1/5 flex items-center justify-center role-drop-zone p-1 text-center" data-drop-zone-for="Punto di Raccolta" style="background-color: transparent; border: 2px dashed rgba(34, 197, 94, 0.5);">
+                    <span class="role-title text-green-600 font-bold text-sm">PUNTO DI RACCOLTA</span>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h5 class="font-bold text-xl mb-4">Definizioni (Trascina)</h5>
+            <div id="zone-definitions-draggable" class="space-y-3 bg-gray-100 p-4 rounded-lg border border-color min-h-[200px]">
+            </div>
+        </div>
+    </div>
+    <div id="zone-game-feedback" class="mt-6 p-4 rounded-lg bg-gray-50 text-secondary border border-color min-h-[60px]">
+        <p class="text-sm">Trascina le definizioni sulle zone corrispondenti.</p>
+    </div>
+    <div class="mt-6 flex justify-center space-x-4">
+        <button id="check-zone-game" class="bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">Verifica Abbinamenti</button>
+        <button id="reset-zone-game" class="bg-gray-300 text-gray-800 py-3 px-6 rounded-lg font-semibold hover:bg-gray-400 transition">Reset Gioco</button>
+    </div>
+</div>

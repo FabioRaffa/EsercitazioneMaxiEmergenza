@@ -1,0 +1,36 @@
+<section id="progetta-piano" class="scroll-mt-20 py-12">
+    <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold text-primary">Progetta il Tuo Piano sul Campo</h3>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Metti alla prova le tue conoscenze! Seleziona un'area dalla palette e poi clicca su una cella della griglia per posizionarla. L'obiettivo è ottimizzare il flusso e la sicurezza.</p>
+    </div>
+    <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 grid lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-1">
+            <h4 class="font-bold text-xl mb-4">Aree da Posizionare</h4>
+            <p class="text-secondary mb-4">Clicca su un'area per selezionarla, poi clicca sulla griglia per posizionarla.</p>
+            <div id="plan-zone-palette" class="grid grid-cols-2 gap-4">
+                <button class="plan-zone-item p-4 rounded-lg shadow-md bg-yellow-200 hover:bg-yellow-300 transition" data-zone-type="Triage" data-color="bg-yellow-400">Triage</button>
+                <button class="plan-zone-item p-4 rounded-lg shadow-md bg-green-200 hover:bg-green-300 transition" data-zone-type="PMA" data-color="bg-green-400">PMA</button>
+                <button class="plan-zone-item p-4 rounded-lg shadow-md bg-blue-200 hover:bg-blue-300 transition" data-zone-type="Accesso Mezzi" data-color="bg-blue-400">Accesso Mezzi</button>
+                <button class="plan-zone-item p-4 rounded-lg shadow-md bg-purple-200 hover:bg-purple-300 transition" data-zone-type="Uscita Mezzi" data-color="bg-purple-400">Uscita Mezzi</button>
+                <button class="plan-zone-item p-4 rounded-lg shadow-md bg-orange-200 hover:bg-orange-300 transition" data-zone-type="PCA" data-color="bg-orange-400">PCA</button>
+                <button class="plan-zone-item p-4 rounded-lg shadow-md bg-teal-200 hover:bg-teal-300 transition" data-zone-type="Area Verdi" data-color="bg-teal-400">Area Verdi</button>
+            </div>
+            <button id="evaluate-plan-btn" class="mt-6 w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition">Valuta il Mio Piano</button>
+            <button id="reset-plan-btn" class="mt-3 w-full bg-gray-300 text-gray-800 py-3 rounded-lg font-semibold hover:bg-gray-400 transition">Reset</button>
+        </div>
+        <div class="lg:col-span-2">
+            <h4 class="font-bold text-xl mb-4 text-center">La Tua Mappa Operativa</h4>
+            <div id="plan-incident-grid" class="grid grid-cols-5 gap-1 border-2 border-dashed border-color rounded-lg p-2 bg-gray-100" style="min-height: 400px;"></div>
+            <div id="plan-feedback-area" class="mt-4 p-4 rounded-lg bg-gray-50 text-secondary border border-color min-h-[60px]">
+                <h5 class="font-semibold text-primary mb-2">Consigli per il posizionamento:</h5>
+                <ul class="list-disc list-inside text-sm space-y-1">
+                    <li>Il **Triage** dovrebbe essere vicino al punto di Crash per una valutazione rapida.</li>
+                    <li>Il **PMA** (Posto Medico Avanzato) va posizionato nel Punto di Raccolta, vicino al Triage ma in un'area sicura.</li>
+                    <li>Le **Vie di Accesso e Uscita Mezzi** devono essere distinte per evitare ingorghi e facilitare il flusso (la "Noria").</li>
+                    <li>Il **PCA** (Posto di Comando Avanzato) dovrebbe essere in un punto strategico, sicuro e facilmente raggiungibile da tutte le aree operative.</li>
+                    <li>L'**Area Verdi** (per i feriti lievi) può essere leggermente più defilata ma sempre accessibile dal PMA.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
