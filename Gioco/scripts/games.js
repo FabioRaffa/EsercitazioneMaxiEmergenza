@@ -277,6 +277,7 @@ function initializeMsbGame() {
         });
 
         taskElement.addEventListener('click', (e) => {
+            e.stopPropagation(); // evita il doppio toggle col delegato sul contenitore (rompeva il click-to-place, essenziale su touch)
             // Rimuovi selezione da tutti gli elementi MSB tasks
             document.querySelectorAll('#msb-game-section .role-task-item').forEach(item => {
                 item.classList.remove('selected-for-match');
