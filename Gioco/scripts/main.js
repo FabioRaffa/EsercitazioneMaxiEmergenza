@@ -17,7 +17,8 @@ const SECTIONS = [
   { id: 'hero',                  label: 'Introduzione',          file: 'sections/01-hero.html' },
   { id: 'attivazione-chiamata',  label: 'Attivazione Chiamata',  file: 'sections/02-attivazione-chiamata.html' },
   { id: 'scenario',              label: 'Valutazione Scenario',  file: 'sections/03-scenario.html' },
-  { id: 'fasi',                  label: 'Fasi di Risposta',      file: 'sections/04-fasi.html' },
+  { id: 'fasi',                  label: 'Fasi di Risposta',      file: 'sections/04a-fasi.html' },
+  { id: 'fasi-zone',             label: 'Fasi: Gioco Zone',      file: 'sections/04b-fasi-zone.html' },
   { id: 'attori-ruoli',          label: 'Attori: Ruoli',         file: 'sections/05a-attori-ruoli.html' },
   { id: 'attori-colori',         label: 'Attori: Gioco Colori',  file: 'sections/05b-attori-colori.html' },
   { id: 'attori-enti',           label: 'Attori: Altri Enti',    file: 'sections/05c-attori-enti.html' },
@@ -38,7 +39,7 @@ const SECTIONS = [
 // Sezioni che richiedono il completamento corretto per proseguire (le altre sono
 // informative e si sbloccano subito).
 const REQUIRED = new Set([
-  'scenario', 'fasi', 'attori-colori', 'msb-game-section', 'compiti-referente',
+  'scenario', 'fasi-zone', 'attori-colori', 'msb-game-section', 'compiti-referente',
   'comunicazione-soreu', 'progetta-piano', 'crash', 'priority-intervention',
   'resource-management', 'radio-communication', 'ethical-dilemma', 'quiz',
 ]);

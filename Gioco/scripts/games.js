@@ -1693,7 +1693,7 @@ if (triageCtx) {
 
 				if (zoneGameFeedback) {
 					if (allCorrect && correctMatchesCount === zoneDefinitionsData.length) {
-						if (window.__markDone) window.__markDone('fasi'); zoneGameFeedback.innerHTML = '<p class="font-bold text-green-600">Complimenti! Tutte le definizioni sono state abbinate correttamente!</p>';
+						if (window.__markDone) window.__markDone('fasi-zone'); zoneGameFeedback.innerHTML = '<p class="font-bold text-green-600">Complimenti! Tutte le definizioni sono state abbinate correttamente!</p>';
 					} else {
 						zoneGameFeedback.innerHTML = `<p class="font-bold text-red-600">Rivedi gli abbinamenti. ${feedbackMessages.join('<br>')}</p>`;
 					}
