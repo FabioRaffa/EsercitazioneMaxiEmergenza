@@ -621,6 +621,15 @@
     .wizard-step .min-h-\[180px\] { min-height: 7rem; }
     .wizard-step .space-y-4 > * + * { margin-top: 0.6rem; }
     .wizard-step .mb-6 { margin-bottom: 0.75rem; }
+    /* Elementi-lista dei giochi (compiti/azioni/opzioni con testo lungo): più compatti */
+    .wizard-step .role-task-item,
+    .wizard-step .priority-action-item,
+    .wizard-step .quiz-option { font-size: 0.8rem; line-height: 1.3; padding: 0.5rem 0.7rem; }
+    .wizard-step h4, .wizard-step h5 { margin-bottom: 0.5rem; }
+    .wizard-step .min-h-\[100px\] { min-height: 4rem; }
+    .wizard-step .min-h-\[60px\] { min-height: 3rem; }
+    .wizard-step .h-64 { height: 12rem; }
+    .wizard-step .mb-4 { margin-bottom: 0.6rem; }
     @media (max-width: 640px) {
         .wizard-nav { gap: 0.5rem; padding: 0.6rem 0.6rem; }
         .wizard-btn { padding: 0.5rem 0.9rem; font-size: 0.82rem; }
@@ -954,32 +963,28 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                 <button data-modal-target="modal-dss" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center mb-4">
+                    <div class="flex items-center">
                         <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">DSS</div>
                         <h4 class="text-lg font-bold">Direttore Soccorsi Sanitari</h4>
                     </div>
-                    <p class="text-secondary text-sm">Il comandante generale della risposta sanitaria sul campo. Coordina tutte le operazioni.</p>
                 </button>
                 <button data-modal-target="modal-dpma" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center mb-4">
+                    <div class="flex items-center">
 						<div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">DPMA</div>
                         <h4 class="text-lg font-bold">Direttore Posto Medico Avanzato</h4>
                     </div>
-                    <p class="text-secondary text-sm">Il responsabile delle operazioni all'interno del PMA. Supervisiona triage e trattamenti.</p>
                 </button>
                 <button data-modal-target="modal-tro" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center mb-4">
+                    <div class="flex items-center">
 						<div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">TRO</div>
                         <h4 class="text-lg font-bold">Direttore di Triage</h4>
                     </div>
-                    <p class="text-secondary text-sm">Responsabile del triage sul campo (primario e secondario) e del recupero dei feriti.</p>
                 </button>
                 <button data-modal-target="modal-alo" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="flex items-center mb-4">
+                    <div class="flex items-center">
 						<div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">ALO</div>
                         <h4 class="text-lg font-bold">Direttore dei Trasporti</h4>
                     </div>
-                    <p class="text-secondary text-sm">Gestisce la logistica dei mezzi, organizzando la "Noria" di ambulanze ed elicotteri.</p>
                 </button>
             </div>
 
