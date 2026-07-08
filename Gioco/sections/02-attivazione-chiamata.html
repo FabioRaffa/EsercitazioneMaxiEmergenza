@@ -1,0 +1,104 @@
+<section id="attivazione-chiamata" class="scroll-mt-20 py-12 text-center bg-surface rounded-xl shadow-lg p-6 md:p-8">
+    <h3 class="text-3xl font-bold text-primary mb-6">Attivazione Chiamata: La SOREU Ti Chiama!</h3>
+    <p class="mt-2 text-md text-secondary max-w-2xl mx-auto mb-8">Clicca sul telefono per simulare l'attivazione della Centrale Operativa 118 (SOREU) e preparati al briefing iniziale. **Attenzione: è l'ora di punta!**</p>
+    
+    <div class="mb-8 p-4 bg-gray-100 rounded-lg inline-block shadow">
+        <p class="text-xl font-bold text-primary">Orario attuale: <span class="accent-color">07:30</span></p>
+        <p class="text-sm text-secondary">Traffico in aumento, risorse potenzialmente più impegnate.</p>
+    </div>
+
+    <button id="activate-call-button" class="bg-red-600 text-white w-32 h-32 rounded-full flex items-center justify-center mx-auto shadow-lg hover:bg-red-700 transition transform hover:scale-105">
+        <svg class="phone-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 3a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H3a1 1 0 01-1-1V3zm16 0H3v14h15V3zM4 4h12v12H4V4zm8 10h4v2h-4v-2zM4 10h4v2H4v-2zM4 6h4v2H4V6zm8 4h4v2h-4v-2z"></path>
+        </svg>
+    </button>
+    <p id="call-status" class="mt-4 text-secondary"></p>
+    <audio id="activation-audio" src="images/attivazione.mp3" preload="auto"></audio>
+</section>
+
+<div class="mt-8 text-center">
+    <button id="show-scenario-viz-button" class="bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">
+        SEI ARRIVATO SUL POSTO? CLICCA QUI! 
+    </button>
+</div>
+
+<div id="visualizza-scenario" class="mt-12 text-center scroll-mt-20 hidden">
+    <h4 class="text-2xl font-bold text-primary mb-6">Visualizza la Scena e le Zone Operative</h4>
+    <p class="text-secondary mb-8 max-w-2xl mx-auto">Immergiti nello scenario dell'incidente ferroviario e nelle prime fasi di risposta attraverso queste visualizzazioni.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div class="image-card bg-surface p-4 rounded-xl shadow-lg">
+            <h5 class="font-semibold text-lg mb-2">Scenario: Dettaglio del Deragliamento</h5>
+            <p class="text-sm text-secondary mb-4">Un'inquadratura ravvicinata dei vagoni deragliati, con detriti e danni visibili.</p>
+            <div class="mt-4 text-center">
+                <img id="scenario-image-1" src="images/scenario-1.jpg" alt="Dettaglio di vagoni ferroviari deragliati con danni e detriti." class="w-full h-auto rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Errore+caricamento+immagine';" />
+            </div>
+        </div>
+        <div class="image-card bg-surface p-4 rounded-xl shadow-lg">
+            <h5 class="font-semibold text-lg mb-2">Fumo e Gravità dell'Evento</h5>
+            <p class="text-sm text-secondary mb-4">Un'immagine che mostra la presenza di fumo o danni estesi, indicando la gravità della situazione.</p>
+            <div class="mt-4 text-center">
+                <img id="scenario-image-2" src="images/scenario-2.jpg" alt="Immagine di un incidente con fumo denso o gravi danni che ne evidenziano la gravità." class="w-full h-auto rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Errore+caricamento+immagine';" />
+            </div>
+        </div>
+        <div class="image-card bg-surface p-4 rounded-xl shadow-lg">
+            <h5 class="font-semibold text-lg mb-2">Panoramica dell'Area dell'Incidente</h5>
+            <p class="text-sm text-secondary mb-4">Una vista più ampia dell'area dell'incidente, per comprendere l'estensione e il contesto ambientale.</p>
+            <div class="mt-4 text-center">
+                <img id="scenario-image-3" src="images/scenario-3.jpg" alt="Panoramica aerea o ampia dell'incidente, mostrando l'ambiente circostante." class="w-full h-auto rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Errore+caricamento+immagine';" />
+            </div>
+        </div>
+        <div class="image-card bg-surface p-4 rounded-xl shadow-lg">
+            <h5 class="font-semibold text-lg mb-2">Focalizzazione sui Danni Strutturali</h5>
+            <p class="text-sm text-secondary mb-4">Un'inquadratura che mette in risalto eventuali danni strutturali a edifici o infrastrutture vicine, o la condizione del mezzo.</p>
+            <div class="mt-4 text-center">
+                <img id="scenario-image-4" src="images/scenario-4.jpg" alt="Immagine che evidenzia danni strutturali o la particolare condizione del treno/mezzo." class="w-full h-auto rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Errore+caricamento+immagine';" />
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
+        <h4 class="font-bold text-xl mb-4 text-center">Filmato: Prime Fasi dell'Intervento</h4>
+        <p class="text-secondary mb-4 text-center">Un breve filmato che simula le prime fasi concitate dell'intervento, dall'arrivo dei mezzi alle prime operazioni di soccorso.</p>
+        <div class="relative w-full max-w-3xl mx-auto aspect-video bg-gray-200 rounded-lg overflow-hidden flex items-center justify-center">
+            <video controls class="w-full h-full object-cover">
+                <source src="images/clip.mp4" type="video/mp4">
+                Il tuo browser non supporta il tag video.
+            </video>
+            <p class="absolute text-sm text-gray-600 bottom-2">Nota: Questo è un video di esempio per scopi dimostrativi.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+// Codice specifico per attivazione-chiamata
+const activateCallButton = document.getElementById('activate-call-button');
+const activationAudio = document.getElementById('activation-audio');
+const callStatus = document.getElementById('call-status');
+
+if (activateCallButton && activationAudio && callStatus) {
+    activateCallButton.addEventListener('click', () => {
+        if (activationAudio.paused) {
+            activationAudio.play()
+                .then(() => {
+                    callStatus.textContent = 'Chiamata in corso...';
+                    activateCallButton.classList.add('animate-pulse');
+                })
+                .catch(error => {
+                    callStatus.textContent = 'Errore durante la riproduzione audio.';
+                    console.error('Audio play failed:', error);
+                });
+        } else {
+            activationAudio.pause();
+            activationAudio.currentTime = 0;
+            callStatus.textContent = 'Chiamata terminata.';
+            activateCallButton.classList.remove('animate-pulse');
+        }
+    });
+
+    activationAudio.addEventListener('ended', () => {
+        callStatus.textContent = 'Chiamata completata.';
+        activateCallButton.classList.remove('animate-pulse');
+    });
+}
+</script>
