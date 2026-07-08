@@ -632,6 +632,11 @@
     .wizard-step .min-h-\[60px\] { min-height: 3rem; }
     .wizard-step .h-64 { height: 12rem; }
     .wizard-step .mb-4 { margin-bottom: 0.6rem; }
+    /* Gioco Triage START: passi cliccabili + evidenziazione del passo attuale */
+    .triage-step { cursor: pointer; transition: background-color .15s, box-shadow .15s; }
+    .triage-step:hover { background-color: #e2e8f0; }
+    .triage-step.triage-step-next { background-color: #eff6ff; box-shadow: 0 0 0 2px #3b82f6; font-weight: 600; }
+    .triage-step.triage-step-next::after { content: ' 👆 clicca'; font-size: 0.72rem; color: #2563eb; font-weight: 700; white-space: nowrap; }
     /* Gioco Triage START: passi cliccabili e passo attivo evidenziato */
     .wizard-step .triage-step { background: #fff; border: 1px solid #e2e8f0; cursor: pointer;
         transition: background-color .15s, box-shadow .15s, border-color .15s; }

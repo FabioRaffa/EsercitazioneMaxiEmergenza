@@ -177,6 +177,12 @@ window.initGames = function initGames() {
 			} else if (triageFlowResetBtn) {
 				triageFlowResetBtn.classList.add('hidden');
 			}
+			// Riempie progressivamente il grafico a torta: la circonferenza cresce con i passi
+			if (window.__triageChart && triageFlowSteps.length) {
+				const frac = Math.min(stepNum, triageFlowSteps.length) / triageFlowSteps.length;
+				window.__triageChart.options.circumference = 360 * frac;
+				window.__triageChart.update();
+			}
 		};
 		// Aggiungi event listener a ogni passo per rivelare il successivo
 		triageFlowSteps.forEach(step => {
@@ -1195,7 +1201,8 @@ if (mezziCtx) {
 /* --- CHART FOR TRIAGE SWEEPING DISTRIBUTION --- */
 const triageCtx = document.getElementById('triageChart');
 if (triageCtx) {
-    new Chart(triageCtx, {
+    // Esposto su window: il flusso del triage (in un altro scope) lo riempie man mano.
+    window.__triageChart = new Chart(triageCtx, {
         type: 'doughnut',
         data: {
             labels: ['Verde (Lieve)', 'Giallo (Urgenza)', 'Rosso (Critico)'],
@@ -1213,6 +1220,10 @@ if (triageCtx) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            // Parte parzialmente riempito (primo passo del triage) e cresce fino a 360°
+            circumference: 72,
+            rotation: 0,
+            animation: { animateRotate: true, duration: 500 },
             plugins: {
                 legend: {
                     position: 'top',
