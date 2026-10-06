@@ -2315,19 +2315,19 @@ if (triageCtx) {
         /* --- Quiz Logic --- */
         const startQuizQuestions = [
             {
-                question: "1) Paziente cosciente, cammina con difficoltà per il fumo, ha respiro affannoso con FR 35 atti/min, polso periferico presente FC 110. Non esegue ordini semplici. Che codice gli assegni?",
+                question: "1) Paziente cosciente, non riesce a camminare per il fumo, ha respiro affannoso con FR 35 atti/min, polso periferico presente FC 110. Non esegue ordini semplici. Che codice gli assegni?",
                 options: ["Rosso", "Giallo", "Verde"],
                 correctAnswer: "Rosso",
                 imagePrompt: "images/quiz-start.jpg"
             },
             {
-                question: "2) Paziente supino incosciente. Non respira dopo aver aperto le vie aeree. Polso periferico assente. Che codice gli assegni?",
+                question: "2) Paziente supino incosciente. Non respira nemmeno dopo pervietà delle vie aeree e cannula. Polso periferico assente. Che codice gli assegni?",
                 options: ["Rosso", "Giallo", "Verde"],
                 correctAnswer: "Rosso",
                 imagePrompt: "images/quiz-start.jpg"
             },
             {
-                question: "3) Paziente seduto. Respiro regolare FR 16 atti/min, polso periferico presente FC 60. Esegue ordini semplici. Che codice gli assegni?",
+                question: "3) Paziente seduto a terra. Gli chiedi di alzarsi: si alza e cammina fino all'area di raccolta. Respiro regolare FR 16 atti/min, polso periferico presente FC 60. Che codice gli assegni?",
                 options: ["Rosso", "Giallo", "Verde"],
                 correctAnswer: "Verde",
                 imagePrompt: "images/quiz-start.jpg"
@@ -2339,7 +2339,7 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-start.jpg"
             },
             {
-                question: "5) Paziente in piedi. Respiro FR 35 atti/min, polso periferico FC 100. Esegue ordini semplici. Che codice gli assegni?",
+                question: "5) Paziente a terra, non riesce a camminare. Respiro FR 35 atti/min, polso periferico FC 100. Esegue ordini semplici. Che codice gli assegni?",
                 options: ["Rosso", "Giallo", "Verde"],
                 correctAnswer: "Rosso",
                 imagePrompt: "images/quiz-start.jpg"
@@ -2363,7 +2363,7 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-start.jpg"
             },
             {
-                question: "9) Un paziente è cosciente, ma la sua frequenza respiratoria è di 35 atti/minuto. Che codice gli assegni?",
+                question: "9) Un paziente è cosciente ma non cammina, e la sua frequenza respiratoria è di 35 atti/minuto. Che codice gli assegni?",
                 options: ["Rosso", "Giallo", "Verde"],
                 correctAnswer: "Rosso",
                 imagePrompt: "images/quiz-start.jpg"
@@ -2375,7 +2375,7 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-start.jpg"
             },
             {
-                question: "11) Un paziente è cosciente, respira a 16 atti/minuto, ha il polso radiale presente. Si lamenta di forte dolore addominale ma segue i tuoi ordini. Che codice gli assegni?",
+                question: "11) Un paziente è cosciente ma non riesce ad alzarsi per il forte dolore addominale. Respira a 16 atti/minuto, ha il polso radiale presente e segue i tuoi ordini. Che codice gli assegni?",
                 options: ["Rosso", "Giallo", "Verde"],
                 correctAnswer: "Giallo",
                 imagePrompt: "images/quiz-start.jpg"
@@ -2387,31 +2387,31 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-start.jpg"
             },
             {
-                question: "13) Trovi un paziente con una grave emorragia esterna che non riesci a controllare con la compressione diretta. La sua frequenza respiratoria è di 20 atti/minuto e il polso radiale è debole. Che codice gli assegni?",
+                question: "13) Trovi a terra un paziente con una grave emorragia esterna che non riesci a controllare con la compressione diretta. La sua frequenza respiratoria è di 20 atti/minuto e il polso radiale non si sente. Che codice gli assegni?",
                 options: ["Rosso", "Giallo", "Verde"],
                 correctAnswer: "Rosso",
                 imagePrompt: "images/quiz-start.jpg"
             },
             {
-                question: "14) Un paziente è un bambino di 5 anni, piange e cerca la mamma. Respira bene, è roseo e non ha ferite evidenti. Che codice gli assegni?",
+                question: "14) Un paziente è un bambino di 5 anni: piange, cerca la mamma e cammina verso di lei. Respira bene, è roseo e non ha ferite evidenti. Che codice gli assegni?",
                 options: ["Rosso", "Giallo", "Verde"],
                 correctAnswer: "Verde",
                 imagePrompt: "images/quiz-start.jpg"
             },
             {
-                question: "15) Un paziente ha una frattura esposta alla gamba, ma è cosciente, respira a 14 atti/minuto, polso radiale presente e segue i comandi. Che codice gli assegni?",
+                question: "15) Un paziente ha una frattura esposta alla gamba e non può camminare, ma è cosciente, respira a 14 atti/minuto, polso radiale presente e segue i comandi. Che codice gli assegni?",
                 options: ["Rosso", "Giallo", "Verde"],
                 correctAnswer: "Giallo",
                 imagePrompt: "images/quiz-start.jpg"
             },
             {
-                question: "16) Un paziente anziano è incosciente, non respira e, dopo aver aperto le vie aeree, non riprende a respirare. Che codice gli assegni?",
+                question: "16) Un paziente anziano è incosciente, non respira e, dopo pervietà delle vie aeree e cannula, non riprende a respirare. Che codice gli assegni?",
                 options: ["Rosso", "Giallo", "Verde"],
                 correctAnswer: "Rosso",
                 imagePrompt: "images/quiz-start.jpg"
             },
             {
-                question: "17) Un paziente è cosciente, ma non riesce a camminare a causa di un forte dolore alla caviglia. Respira regolarmente (18 atti/minuto) e il polso radiale è presente. Che codice gli assegni?",
+                question: "17) Un paziente è cosciente, ma non riesce a camminare a causa di un forte dolore alla caviglia. Respira regolarmente (18 atti/minuto), il polso radiale è presente ed esegue gli ordini. Che codice gli assegni?",
                 options: ["Rosso", "Giallo", "Verde"],
                 correctAnswer: "Giallo",
                 imagePrompt: "images/quiz-start.jpg"
@@ -2429,7 +2429,7 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-start.jpg"
             },
             {
-                question: "20) Un paziente è cosciente, con una ferita al torace che fischia (pneumotorace aperto), respira con difficoltà a 28 atti/minuto e ha un polso debole. Che codice gli assegni?",
+                question: "20) Un paziente a terra è cosciente, con una ferita al torace che fischia (pneumotorace aperto), respira con difficoltà a 34 atti/minuto e ha un polso debole. Che codice gli assegni?",
                 options: ["Rosso", "Giallo", "Verde"],
                 correctAnswer: "Rosso",
                 imagePrompt: "images/quiz-start.jpg"
