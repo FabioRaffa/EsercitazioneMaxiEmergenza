@@ -1,7 +1,7 @@
 <section id="mezzi-triage" class="scroll-mt-20 py-12">
     <div class="text-center mb-8">
         <h3 class="text-3xl font-bold text-primary">Il Triage: Decidere in Pochi Secondi</h3>
-        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Il metodo START classifica rapidamente le vittime. Clicca su ogni passo per seguire l'algoritmo. <strong>N.B.:</strong> per i soccorritori MSB il codice NERO è sostituito dal ROSSO.</p>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Il metodo START classifica rapidamente le vittime. Clicca su ogni passo per seguire l'algoritmo. <strong>N.B.:</strong> per i soccorritori MSB il codice NERO è sostituito dal ROSSO, anche con segni evidenti di morte, che si segnalano alla SOREU.</p>
     </div>
     <div class="bg-surface rounded-xl shadow-lg p-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
@@ -10,7 +10,7 @@
                 <p class="text-xs text-secondary mb-2">Clicca sul passo evidenziato per rivelare il successivo.</p>
                 <div id="triage-flow-steps" class="space-y-2 text-sm">
                     <div class="triage-step p-2 rounded" data-step="1"><strong>1. Cammina?</strong> → Se SÌ: <span class="font-bold text-green-600">VERDE</span>. Se NO, vai al passo 2.</div>
-                    <div class="triage-step p-2 rounded hidden" data-step="2"><strong>2. Respira?</strong> (dopo apertura vie aeree) → Se NO: <span class="font-bold text-red-600">ROSSO</span>. Se SÌ, vai al passo 3.</div>
+                    <div class="triage-step p-2 rounded hidden" data-step="2"><strong>2. Respira?</strong> → Se NO: pervietà delle vie aeree e cannula, poi <span class="font-bold text-red-600">ROSSO</span>, che riprenda a respirare o no. Se SÌ, vai al passo 3.</div>
                     <div class="triage-step p-2 rounded hidden" data-step="3"><strong>3. Freq. Respiratoria &gt; 30/min?</strong> → Se SÌ: <span class="font-bold text-red-600">ROSSO</span>. Se NO, vai al passo 4.</div>
                     <div class="triage-step p-2 rounded hidden" data-step="4"><strong>4. Perfusione?</strong> polso radiale assente → Se SÌ: <span class="font-bold text-red-600">ROSSO</span>. Se NO, vai al passo 5.</div>
                     <div class="triage-step p-2 rounded hidden" data-step="5"><strong>5. Esegue ordini semplici?</strong> → Se NO: <span class="font-bold text-red-600">ROSSO</span>. Se SÌ: <span class="font-bold text-yellow-500">GIALLO</span>.</div>

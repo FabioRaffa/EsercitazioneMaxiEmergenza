@@ -3126,13 +3126,13 @@ if (triageCtx) {
                 ]
             },
             {
-                scenario: "Hai attivato la procedura START e hai concluso il triage dei primi 30 pazienti. Bilancio: 15 Verdi, 10 Gialli, 4 Rossi, 1 Nero. Come lo comunichi alla SOREU?",
+                scenario: "Hai concluso lo sweeping triage START dei primi 30 coinvolti: 15 verdi, 10 gialli, 5 rossi. Uno dei rossi ha segni evidenti di morte. Come lo comunichi alla SOREU?",
                 options: [
-                    { text: "SOREU da MSB 1, bilancio vittime: 15 minimi, 10 ritardati, 4 immediati, 1 deceduto. Passo.", correct: true, feedback: "Corretto! Utilizza la terminologia START standardizzata e concisa per il bilancio vittime." },
-                    { text: "Qui MSB 1, abbiamo circa 30 feriti. Molti lievi, alcuni medi, pochi gravi e un morto. Passo.", correct: false, feedback: "Linguaggio colloquiale, non usa la terminologia START e non è sufficientemente professionale." },
-                    { text: "SOREU, qui MSB 1, ho finito di contare i feriti. Ho 15 'green', 10 'yellow', 4 'red', 1 'black'. Finisco.", correct: false, feedback: "L'uso di termini inglesi non è standard nel protocollo radio italiano. 'Finisco' non è l'interminabile di comunicazione." },
+                    { text: "SOREU da MSB 1, sweeping triage concluso: 30 coinvolti, 15 codici verdi, 10 gialli, 5 rossi; fra i rossi uno con segni evidenti di morte. Passo.", correct: true, feedback: "Corretto! Il numero dei coinvolti diviso per codice colore, come chiede la procedura AREU. Il soccorritore non assegna il nero: chi ha segni evidenti di morte resta rosso, e lo si segnala alla SOREU." },
+                    { text: "Qui MSB 1, abbiamo circa 30 feriti. Molti lievi, alcuni medi, pochi gravi e un morto. Passo.", correct: false, feedback: "Linguaggio colloquiale: non dà i numeri per codice colore e non è sufficientemente professionale." },
+                    { text: "SOREU, qui MSB 1, ho finito di contare i feriti. Ho 15 'green', 10 'yellow', 5 'red'. Finisco.", correct: false, feedback: "L'uso di termini inglesi non è standard nel protocollo radio italiano, e 'Finisco' non è la chiusura corretta della comunicazione." },
                     { text: "Ho 15 sani, 10 che camminano male, 4 che stanno morendo, e uno morto. Venite subito. Passo.", correct: false, feedback: "Assolutamente inaccettabile. Linguaggio inappropriato, emotivo e non professionale. Non è una comunicazione radio." },
-                    { text: "MSB 1 a SOREU, ho 15 pazienti che posso mandare via, 10 che possono aspettare un po', 4 gravissimi e uno che non ce l'ha fatta. Passo.", correct: false, feedback: "Descrizione troppo prolissa e imprecisa. Si perde in descrizioni quando servono codici chiari e rapidi." }
+                    { text: "SOREU da MSB 1, sweeping triage concluso: 15 verdi, 10 gialli, 4 rossi, 1 nero. Passo.", correct: false, feedback: "Il soccorritore non assegna il codice nero: per AREU resta rosso, anche con segni evidenti di morte, e lo segnala alla SOREU. Manca anche il numero totale dei coinvolti." }
                 ]
             },
             {
