@@ -1131,7 +1131,7 @@
 <section id="mezzi-triage" class="scroll-mt-20 py-12">
     <div class="text-center mb-8">
         <h3 class="text-3xl font-bold text-primary">Il Triage: Decidere in Pochi Secondi</h3>
-        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Il metodo START classifica rapidamente le vittime. Clicca su ogni passo per seguire l'algoritmo. <strong>N.B.:</strong> per i soccorritori MSB il codice NERO è sostituito dal ROSSO, anche con segni evidenti di morte, che si segnalano alla SOREU.</p>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Il metodo START classifica rapidamente le vittime. Clicca su ogni passo per seguire l'algoritmo. <strong>N.B.:</strong> il soccorritore non attribuisce mai il NERO, che spetta ai sanitari, e non inizia la rianimazione: con lesioni incompatibili con la vita attribuisce il ROSSO e avvisa il Direttore del Triage, se è già sul posto, altrimenti la SOREU al termine del triage (manuale AREU 2026, p. 22-23).</p>
     </div>
     <div class="bg-surface rounded-xl shadow-lg p-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
@@ -1142,7 +1142,7 @@
                     <div class="triage-step p-2 rounded" data-step="1"><strong>1. Cammina?</strong> → Se SÌ: <span class="font-bold text-green-600">VERDE</span>. Se NO, vai al passo 2.</div>
                     <div class="triage-step p-2 rounded hidden" data-step="2"><strong>2. Respira?</strong> → Se NO: pervietà delle vie aeree e cannula, poi <span class="font-bold text-red-600">ROSSO</span>, che riprenda a respirare o no. Se SÌ, vai al passo 3.</div>
                     <div class="triage-step p-2 rounded hidden" data-step="3"><strong>3. Freq. Respiratoria &gt; 30/min?</strong> → Se SÌ: <span class="font-bold text-red-600">ROSSO</span>. Se NO, vai al passo 4.</div>
-                    <div class="triage-step p-2 rounded hidden" data-step="4"><strong>4. Perfusione?</strong> polso radiale assente → Se SÌ: <span class="font-bold text-red-600">ROSSO</span>. Se NO, vai al passo 5.</div>
+                    <div class="triage-step p-2 rounded hidden" data-step="4"><strong>4. Polso radiale presente?</strong> → Se NO: <span class="font-bold text-red-600">ROSSO</span>. Se SÌ: controllo dell'emorragia facendo tamponare, poi vai al passo 5.</div>
                     <div class="triage-step p-2 rounded hidden" data-step="5"><strong>5. Esegue ordini semplici?</strong> → Se NO: <span class="font-bold text-red-600">ROSSO</span>. Se SÌ: <span class="font-bold text-yellow-500">GIALLO</span>.</div>
                     <button id="triage-flow-reset" class="mt-2 text-sm text-blue-600 hover:underline hidden">Ricomincia</button>
                 </div>
@@ -1306,8 +1306,8 @@
     <div class="wizard-step" id="step-priority-intervention">
         <section id="priority-intervention" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold text-primary">Priorità d'Intervento in Zona Crash: Incidente Ferroviario</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Sei il primo Referente sul campo: ordina le azioni dalla più alla meno prioritaria, partendo dalla sicurezza.</p>
+                <h3 class="text-3xl font-bold text-primary">Priorità d'Intervento: il Primo MSB sul Deragliamento</h3>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Sei il Referente per la SOREU del primo MSB: metti le azioni nell'ordine in cui le chiede il manuale AREU 2026.</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 grid lg:grid-cols-2 gap-8 items-center">
                 <div>
@@ -1362,11 +1362,11 @@
         <section id="radio-communication" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-primary">Comunicazione Radio: Il Messaggio Giusto</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Scegli per ogni situazione la risposta radio più corretta e aderente ai protocolli.</p>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Per ogni situazione scegli che cosa comunicare e a chi, come chiede il manuale AREU 2026.</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
                 <div id="radio-scenario-container" class="mb-6 p-4 border border-color rounded-lg bg-gray-50">
-                    <h4 class="font-bold text-lg mb-2">Scenario:</h4>
+                    <h4 class="font-bold text-lg mb-2">Situazione:</h4>
                     <p id="radio-scenario-text" class="text-secondary">Caricamento scenario...</p>
                 </div>
                 <div id="radio-options-container" class="space-y-3 mb-6">
@@ -1451,7 +1451,7 @@
         <section class="text-center py-16">
             <div class="mb-4" style="font-size:4.5rem;line-height:1">🎉</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-primary mb-4">Congratulazioni!</h2>
-            <p class="max-w-2xl mx-auto text-lg text-secondary mb-8">Hai completato correttamente tutti i giochi dell'esercitazione sulla maxi-emergenza. Ottimo lavoro nella gestione coordinata dei soccorsi!</p>
+            <p class="max-w-2xl mx-auto text-lg text-secondary mb-8">Hai completato tutti i giochi dell'esercitazione sulla maxiemergenza, costruita sul manuale AREU 2026 per i soccorritori. Ricorda: ricognizione a distanza, METHANE, rispetto dei ruoli.</p>
             <button id="restart-experience-btn" type="button" class="bg-red-600 text-white py-3 px-8 rounded-full font-semibold hover:bg-red-700 transition shadow-md">Ricomincia da capo</button>
         </section>
     </div>
@@ -1465,7 +1465,15 @@
                 <button class="close-modal text-2xl font-light" aria-label="Chiudi">&times;</button>
             </div>
             <div class="p-6 space-y-3 text-secondary text-sm">
-                <p><strong class="text-primary">Esercitazione Maxi-Emergenza</strong> — simulazione interattiva per la formazione sulla gestione di una maxi-emergenza (scenario: incidente ferroviario con numerose vittime). Un percorso di 16 giochi in sequenza: valutazione dello scenario, ruoli e mezzi, triage, comunicazioni radio, dilemmi etici e quiz finale.</p>
+                <p><strong class="text-primary">Esercitazione Maxi-Emergenza</strong> — simulazione interattiva per la formazione sulla gestione di una maxi-emergenza (scenario: incidente ferroviario con numerose vittime). Un percorso di giochi in sequenza: valutazione dello scenario, ruoli e pettorine, aree e mezzi, triage START, comunicazioni, scelte difficili e quiz finale.</p>
+                <div>
+                    <p class="font-semibold text-primary mb-1">Fonti</p>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>AREU Lombardia, <em>Manuale Maxiemergenza – Soccorritori</em>, Rev1 LAS, gennaio 2026</li>
+                        <li>AREU Lombardia, lezione <em>Maxiemergenza</em> del LAS, con l'action card del primo MSB, gennaio 2026</li>
+                        <li>Il materiale 2026 annulla e sostituisce quello precedente (nota AREU prot. 1747 del 21/01/2026)</li>
+                    </ul>
+                </div>
                 <p><strong class="text-primary">Come si usa:</strong> completa correttamente ogni gioco per sbloccare il successivo. Naviga con i pulsanti Precedente/Successivo, dai link in alto o con le frecce ← → della tastiera. Tieni l'audio attivo per i filmati.</p>
                 <div>
                     <p class="font-semibold text-primary mb-1">Credits</p>

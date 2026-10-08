@@ -52,7 +52,7 @@ const congratsHtml = `    <div class="wizard-step" id="step-congratulazioni">
         <section class="text-center py-16">
             <div class="mb-4" style="font-size:4.5rem;line-height:1">🎉</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-primary mb-4">Congratulazioni!</h2>
-            <p class="max-w-2xl mx-auto text-lg text-secondary mb-8">Hai completato correttamente tutti i giochi dell'esercitazione sulla maxi-emergenza. Ottimo lavoro nella gestione coordinata dei soccorsi!</p>
+            <p class="max-w-2xl mx-auto text-lg text-secondary mb-8">Hai completato tutti i giochi dell'esercitazione sulla maxiemergenza, costruita sul manuale AREU 2026 per i soccorritori. Ricorda: ricognizione a distanza, METHANE, rispetto dei ruoli.</p>
             <button id="restart-experience-btn" type="button" class="bg-red-600 text-white py-3 px-8 rounded-full font-semibold hover:bg-red-700 transition shadow-md">Ricomincia da capo</button>
         </section>
     </div>`;

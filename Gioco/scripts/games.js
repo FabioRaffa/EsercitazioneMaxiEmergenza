@@ -2039,7 +2039,7 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-start.jpg"
             },
             {
-                question: "3) Paziente seduto a terra. Gli chiedi di alzarsi: si alza e cammina fino all'area di raccolta. Respiro regolare FR 16 atti/min, polso periferico presente FC 60. Che codice gli assegni?",
+                question: "3) Paziente seduto a terra. Gli chiedi di alzarsi: si alza e cammina fino all'area dei codici verdi. Respiro regolare FR 16 atti/min, polso periferico presente FC 60. Che codice gli assegni?",
                 options: ["Rosso", "Giallo", "Verde"],
                 correctAnswer: "Verde",
                 imagePrompt: "images/quiz-start.jpg"
@@ -2180,15 +2180,15 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "6) Quale fase della risposta include la mappatura dei rischi e la preparazione dei Piani di Soccorso?",
-                options: ["Fase di Allarme", "Fase di Risposta Immediata", "Fase Preparatoria", "Fase di Risposta Differita"],
-                correctAnswer: "Fase Preparatoria",
+                question: "6) Quali fasi prevedono sia la risposta rapida sia la risposta differita?",
+                options: ["Triage, trasporto e ospedale", "Ricognizione, METHANE e START", "Preallarme, allarme ed emergenza", "Chiamata, partenza e arrivo"],
+                correctAnswer: "Preallarme, allarme ed emergenza",
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "7) Quale è la composizione tipica dell'equipaggio di un'Ambulanza Medicalizzata (Codice Mike)?",
-                options: ["Autista, Soccorritore", "Autista, Infermiere", "Autista, Soccorritore, Infermiere", "Autista, Soccorritore, Infermiere, Medico"],
-                correctAnswer: "Autista, Soccorritore, Infermiere, Medico",
+                question: "7) Quali mezzi di soccorso sono subito operativi in una maxiemergenza, secondo il manuale AREU?",
+                options: ["Solo le ambulanze con il medico a bordo", "MSB, MSA1, MSA2 ed elisoccorso", "Solo i mezzi della Protezione Civile", "Solo l'elisoccorso"],
+                correctAnswer: "MSB, MSA1, MSA2 ed elisoccorso",
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
@@ -2204,27 +2204,27 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "10) Qual è il principale obiettivo del triage in una maxi-emergenza?",
-                options: ["Curare tutti i pazienti sul posto", "Trasportare i pazienti più gravi per primi", "Ottimizzare la gestione delle risorse scarse per la sopravvivenza del maggior numero", "Identificare tutti i pazienti deceduti"],
-                correctAnswer: "Ottimizzare la gestione delle risorse scarse per la sopravvivenza del maggior numero",
+                question: "10) Qual è il principio di base della medicina delle catastrofi?",
+                options: ["Curare tutti i pazienti sul posto", "Trasportare per primi i pazienti più vicini", "Salvare il maggior numero possibile di vittime, gestendo lo squilibrio tra risorse e necessità", "Identificare per primi i deceduti"],
+                correctAnswer: "Salvare il maggior numero possibile di vittime, gestendo lo squilibrio tra risorse e necessità",
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "11) Quale delle seguenti non è una delle zone operative principali in una maxi-emergenza?",
-                options: ["Punto di Crash", "Zona Neutra", "Triage", "Punto di Raccolta"],
-                correctAnswer: "Zona Neutra",
+                question: "11) Quale di queste NON è un'area della maxiemergenza nel manuale AREU 2026?",
+                options: ["Area di raccolta dei codici giallo/rossi", "Area dei codici verdi", "Zona gialla del triage", "Check point"],
+                correctAnswer: "Zona gialla del triage",
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "12) Chi è il responsabile del coordinamento della logistica dei trasporti (la Noria)?",
-                options: ["Direttore del PMA", "Direttore di Triage", "Direttore dei Trasporti", "Direttore dei Soccorsi Sanitari"],
-                correctAnswer: "Direttore dei Trasporti",
+                question: "12) Chi gestisce la movimentazione dei mezzi e chiede alla SOREU la destinazione ospedaliera dei pazienti?",
+                options: ["Il Direttore del PMA", "Il Direttore del Triage", "Il Direttore dei Trasporti", "Il Direttore dei Soccorsi Sanitari"],
+                correctAnswer: "Il Direttore dei Trasporti",
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "13) In quale fase si allestisce il Posto Medico Avanzato (PMA)?",
-                options: ["Fase Preparatoria", "Fase di Allarme", "Fase di Risposta Immediata", "Fase di Risposta Differita"],
-                correctAnswer: "Fase di Risposta Differita",
+                question: "13) Chi accede, di norma, al Posto Medico Avanzato?",
+                options: ["Tutti i coinvolti, anche i verdi", "Solo i codici giallo e rosso", "Solo i codici rossi", "Solo chi è già stato cartellinato"],
+                correctAnswer: "Solo i codici giallo e rosso",
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
@@ -2234,9 +2234,9 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "15) Qual è il ruolo principale dei 'walking wounded' e in quale area vengono generalmente raggruppati inizialmente?",
-                options: ["Pazienti gravissimi; Area Rossi", "Pazienti deceduti; Area Neri", "Pazienti feriti lievi che possono camminare; Area Verdi", "Pazienti che necessitano di estricazione; Punto di Crash"],
-                correctAnswer: "Pazienti feriti lievi che possono camminare; Area Verdi",
+                question: "15) Dove vanno i feriti che camminano, con il codice verde?",
+                options: ["Nel settore dei rossi del PMA", "Restano sul crash in attesa dei mezzi", "In un'area sicura a debita distanza dal luogo dell'evento, presidiata dal Soccorritore del primo MSB", "Si allontanano da soli"],
+                correctAnswer: "In un'area sicura a debita distanza dal luogo dell'evento, presidiata dal Soccorritore del primo MSB",
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
@@ -2252,9 +2252,9 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "18) Qual è l'importanza delle esercitazioni congiunte tra le diverse componenti del soccorso (118, VVF, Protezione Civile) nella fase preparatoria?",
-                options: ["Per testare la rapidità dei trasporti in ospedale", "Per definire i ruoli dei media sul campo", "Per testare protocolli e creare sinergia tra gli operatori", "Per stabilire il costo dell'intervento"],
-                correctAnswer: "Per testare protocolli e creare sinergia tra gli operatori",
+                question: "18) A che cosa servono le esercitazioni, secondo il manuale?",
+                options: ["A stabilire il costo dell'intervento", "A definire il ruolo dei media sul campo", "A sostituire la formazione teorica", "A convalidare i contenuti del piano e a valutare le capacità operative e gestionali del personale"],
+                correctAnswer: "A convalidare i contenuti del piano e a valutare le capacità operative e gestionali del personale",
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
@@ -2264,9 +2264,9 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "20) L'area del Posto Medico Avanzato (PMA) è tipicamente allestita all'interno di quale zona operativa?",
-                options: ["Punto di Crash", "Triage", "Punto di Raccolta", "Area Deceduti"],
-                correctAnswer: "Punto di Raccolta",
+                question: "20) Dove si colloca il Posto Medico Avanzato (PMA)?",
+                options: ["Dentro l'area di sicurezza, accanto al crash", "Nell'area di sosta dei mezzi", "Ai margini esterni dell'area di sicurezza, con una buona viabilità di accesso e di evacuazione", "Sempre dentro l'ospedale più vicino"],
+                correctAnswer: "Ai margini esterni dell'area di sicurezza, con una buona viabilità di accesso e di evacuazione",
                 imagePrompt: "images/quiz-general.jpg"
             }
         ];
@@ -2331,7 +2331,7 @@ if (triageCtx) {
                 if (quizFeedback) {
                     quizFeedback.classList.remove('hidden', 'bg-red-100', 'text-red-700');
                     quizFeedback.classList.add('bg-green-100', 'text-green-700');
-                    quizFeedback.textContent = `Corretto! Il codice è ${correctAnswer}.`;
+                    quizFeedback.textContent = activeQuizType === 'start' ? `Corretto! Il codice è ${correctAnswer}.` : 'Corretto!';
                 }
                 correctAnswersCount++;
             } else {
@@ -2343,7 +2343,7 @@ if (triageCtx) {
                 if (quizFeedback) {
                     quizFeedback.classList.remove('hidden', 'bg-green-100', 'text-green-700');
                     quizFeedback.classList.add('bg-red-100', 'text-red-700');
-                    quizFeedback.textContent = `Sbagliato. La risposta corretta era ${correctAnswer}.`;
+                    quizFeedback.textContent = activeQuizType === 'start' ? `Sbagliato. Il codice è ${correctAnswer}.` : `Sbagliato. La risposta corretta è: ${correctAnswer}.`;
                 }
             }
             if (quizNextButton) quizNextButton.classList.remove('hidden');
@@ -2452,15 +2452,14 @@ if (triageCtx) {
 
 /* --- JAVASCRIPT FOR "PRIORITÀ D'INTERVENTO" GAME --- */
     (function() {
+        // la sequenza del primo equipaggio: manuale AREU 2026, p. 26 e 28, e action card del primo MSB
         const priorityActions = [
-            { text: "Valutare la sicurezza della scena, in particolare la linea elettrica aerea del treno e la stabilità dei vagoni.", priority: 1, type: "safety" },
-            { text: "Richiedere immediatamente il personale RFI (Rete Ferroviaria Italiana) e i Vigili del Fuoco per la messa in sicurezza e l'estricazione.", priority: 2, type: "communication" },
-            { text: "Stabilire un perimetro di sicurezza e allontanare i curiosi.", priority: 3, type: "scene_management" },
-            { text: "Effettuare un rapido sweeping triage visivo per identificare le vittime più gravi (ROSSI) e quelle deambulanti (VERDI).", priority: 4, type: "triage" },
-            { text: "Comunicare alla SOREU una stima dei coinvolti e i rischi prevalenti, inclusa l'interruzione della linea ferroviaria.", priority: 5, type: "communication" },
-            { text: "Tentare l'approccio e la valutazione delle vittime intrappolate, se le condizioni di sicurezza lo permettono.", priority: 6, type: "patient_care" },
-            { text: "Preparare il materiale necessario per il primo soccorso avanzato nell'area di pre-triage.", priority: 7, type: "preparation" },
-            { text: "Individuare un'area sicura per l'allestimento del PMA e delle aree di raccolta vittime.", priority: 8, type: "logistics" }
+            { text: "Fermarti a distanza di sicurezza e fare la prima ricognizione: la linea elettrica aerea, la stabilità dei vagoni, il fumo.", priority: 1 },
+            { text: "Comunicare alla SOREU il METHANE, confrontandoti sui pericoli con il capo squadra dei Vigili del Fuoco (casco rosso).", priority: 2 },
+            { text: "Attendere l'indicazione della SOREU e l'autorizzazione ad accedere dei Vigili del Fuoco.", priority: 3 },
+            { text: "Fare lo sweeping triage START, applicando a ogni vittima il braccialetto del suo colore.", priority: 4 },
+            { text: "Comunicare alla SOREU gli esiti dello sweeping triage, per codice colore, e la patologia prevalente.", priority: 5 },
+            { text: "All'arrivo del MSA, comunicare quanto eseguito (passaggio di consegne) e mettersi a disposizione.", priority: 6 }
         ];
 
         let currentPriorityScenario = {
@@ -2576,9 +2575,9 @@ if (triageCtx) {
                 }
 
                 if (allCorrect) {
-                    if (window.__markDone) window.__markDone('priority-intervention'); priorityFeedbackArea.innerHTML = '<p class="font-bold text-green-600 text-lg">Eccellente! Hai ordinato le azioni perfettamente!</p>';
+                    if (window.__markDone) window.__markDone('priority-intervention'); priorityFeedbackArea.innerHTML = '<p class="font-bold text-green-600 text-lg">Eccellente! È la sequenza del manuale AREU 2026: prima la ricognizione a distanza e il METHANE, poi, con l\'autorizzazione dei Vigili del Fuoco, lo sweeping triage.</p>';
                 } else {
-                    priorityFeedbackArea.innerHTML = `<p class="font-bold text-red-600 text-lg">Ci sono ${priorityActions.length - correctCount} errori. Riprova! <br>${feedbackMessages.join('<br>')}</p>`;
+                    priorityFeedbackArea.innerHTML = `<p class="font-bold text-red-600 text-lg">Ci sono ${priorityActions.length - correctCount} errori. Riprova! Prima di qualsiasi altra operazione si fa la ricognizione a distanza di sicurezza (manuale AREU 2026, p. 26).<br>${feedbackMessages.join('<br>')}</p>`;
                 }
             });
         }
@@ -2822,55 +2821,51 @@ if (triageCtx) {
 
     /* --- JAVASCRIPT FOR "COMUNICAZIONE RADIO" GAME --- */
     (function() {
+        // che cosa comunicare e a chi (manuale AREU 2026, p. 17, 19, 22-23, 26, 28-30; lezione, il Direttore del Triage)
         const radioScenarios = [
             {
-                scenario: "Sei il primo mezzo sul luogo del deragliamento. Vedi vagoni rovesciati e un fumo denso. C'è un odore acuto, non identificato. Qual è la tua prima comunicazione alla SOREU?",
+                scenario: "Sei il primo mezzo sul luogo del deragliamento. Ti fermi a distanza: vagoni rovesciati, fumo denso e un odore acuto che non riconosci. Che cosa comunichi alla SOREU?",
                 options: [
-                    { text: "Qui MSB 1, incidente treno! C'è fumo e puzza. Mandate aiuti! Passo.", correct: false, feedback: "Troppo generico e poco professionale. Mancano dettagli essenziali e la terminologia corretta." },
-                    { text: "MSB 1 a SOREU, confermo deragliamento treno, numerosi vagoni rovesciati, fumo denso e odore sconosciuto. Necessari VVF, ARPA, e squadre sanitarie multiple. Passo.", correct: true, feedback: "Corretto! Fornisce un quadro chiaro, identifica i rischi principali (fumo, odore sconosciuto) e richiede risorse specifiche e appropriate." },
-                    { text: "SOREU, qui MSB 1, è un disastro! Molti feriti, credo. Finito.", correct: false, feedback: "Eccessivamente emotivo e non fornisce informazioni operative utili. La terminologia 'finito' non è lo standard." },
-                    { text: "Situazione critica, vagoni a terra. Ho bisogno di rinforzi subito. Passo.", correct: false, feedback: "Migliore ma ancora troppo vago. Non specifica il tipo di incidente, i rischi o le risorse necessarie in dettaglio." },
-                    { text: "Ho visto un treno cappottato, vado a vedere quanti feriti ci sono. Vi richiamo. Passo.", correct: false, feedback: "Errato! Non hai valutato la sicurezza della scena, il rischio chimico/biologico/radiologico e l'integrità strutturale." }
+                    { text: "MSB 1 a SOREU: incidente al treno, c'è fumo e puzza, mandate aiuti.", correct: false, feedback: "Mancano quasi tutte le informazioni del METHANE: dove si trova l'evento, da dove accedono i mezzi, quanti sono i coinvolti, quali enti sono presenti." },
+                    { text: "MSB 1 a SOREU: maxiemergenza confermata; deragliamento sulla linea all'altezza di via Roma; pericoli: fumo denso e un odore non identificato; accesso per i mezzi da via Roma; stimiamo una cinquantina di coinvolti; Vigili del Fuoco non ancora presenti. Restiamo a distanza, sopravento.", correct: true, feedback: "È il METHANE: Maxiemergenza, Esatta localizzazione, Tipo di evento, Hazards, Accessi, Numero stimato dei coinvolti, Enti presenti. Con un possibile pericolo chimico non ci si avvicina, si resta sopravento e si avvisano la SOREU e i soccorritori in arrivo (manuale AREU 2026, p. 26 e 30)." },
+                    { text: "MSB 1 a SOREU: entriamo a vedere quanti feriti ci sono e vi richiamiamo.", correct: false, feedback: "Prima di qualsiasi altra operazione si fa la ricognizione a distanza di sicurezza; con un possibile pericolo chimico si attendono i Vigili del Fuoco e si entra solo con la loro autorizzazione (manuale AREU 2026, p. 26 e 30)." },
+                    { text: "MSB 1 a SOREU: ci sono molti feriti, iniziamo subito la rianimazione del primo che troviamo.", correct: false, feedback: "Nella maxiemergenza non si inizia la rianimazione e non si entra senza l'autorizzazione dei Vigili del Fuoco: prima si comunica il METHANE (manuale AREU 2026, p. 22-23 e 26)." }
                 ]
             },
             {
-                scenario: "Hai identificato la presenza di passeggeri intrappolati all'interno di un vagone parzialmente sommerso dall'acqua (a seguito del deragliamento vicino a un canale). Come lo segnali?",
+                scenario: "Hai concluso lo sweeping triage START: 30 coinvolti, 15 verdi, 10 gialli, 5 rossi. Quasi tutti hanno traumi da urto; uno dei rossi ha lesioni incompatibili con la vita, e il Direttore del Triage non è ancora arrivato. Che cosa comunichi alla SOREU?",
                 options: [
-                    { text: "MSB 1 a SOREU, passeggeri intrappolati in vagone sommerso. Richiedo sommozzatori e VVF con mezzi per estricazione in acqua. Passo.", correct: true, feedback: "Corretto! Segnalazione precisa del problema e richiesta di risorse altamente specializzate per l'ambiente specifico." },
-                    { text: "C'è gente nell'acqua nel treno. Venite veloci! Passo.", correct: false, feedback: "Non professionale e non fornisce dettagli utili per la pianificazione dell'intervento." },
-                    { text: "Ho visto delle persone dentro al vagone nell'acqua. Urge aiuto. Finito.", correct: false, feedback: "Manca di formalità e specificità per un'emergenza complessa come questa." },
-                    { text: "Richiedo un'ambulanza extra, ci sono dei passeggeri con l'acqua alla gola. Passo.", correct: false, feedback: "La richiesta è insufficiente. Non basta un'ambulanza, servono mezzi specializzati per il salvataggio in acqua." },
-                    { text: "SOREU, qui MSB 1, il treno è affondato parzialmente. Passeggeri all'interno. Ho bisogno di supporto generico. Passo.", correct: false, feedback: "La terminologia è imprecisa ('affondato') e la richiesta è troppo generica per un intervento così specifico." }
+                    { text: "Abbiamo circa 30 feriti: molti lievi, alcuni medi, pochi gravi e un morto.", correct: false, feedback: "Servono i numeri per codice colore, non giudizi a occhio; e il soccorritore non dichiara un morto: lo segnala come rosso." },
+                    { text: "Sweeping triage concluso: 30 coinvolti, 15 verdi, 10 gialli, 4 rossi, 1 nero.", correct: false, feedback: "Il nero lo attribuiscono solo i sanitari: chi ha lesioni incompatibili con la vita resta rosso, e lo si segnala. Manca anche la patologia prevalente (manuale AREU 2026, p. 22-23)." },
+                    { text: "Sweeping triage concluso: 30 coinvolti, 15 verdi, 10 gialli, 5 rossi; patologia prevalente traumatica; fra i rossi uno con lesioni incompatibili con la vita.", correct: true, feedback: "Il numero dei coinvolti per codice colore e la patologia prevalente, come chiede l'action card del primo MSB. Il rosso con lesioni incompatibili con la vita, se il Direttore del Triage non c'è ancora, si segnala alla SOREU al termine del triage (manuale AREU 2026, p. 22-23)." },
+                    { text: "Sweeping triage concluso: 30 coinvolti, 15 verdi, 10 gialli, 5 rossi.", correct: false, feedback: "I numeri ci sono, ma l'action card chiede di comunicare anche la patologia prevalente; e il rosso con lesioni incompatibili con la vita va segnalato alla SOREU." }
                 ]
             },
             {
-                scenario: "Hai concluso lo sweeping triage START dei primi 30 coinvolti: 15 verdi, 10 gialli, 5 rossi. Uno dei rossi ha segni evidenti di morte. Come lo comunichi alla SOREU?",
+                scenario: "Sei l'autista di un MSB arrivato dopo il primo: il mezzo è nell'area di sosta, defilata. Dal crash i colleghi chiedono una mano per portare i feriti. Che cosa fai?",
                 options: [
-                    { text: "SOREU da MSB 1, sweeping triage concluso: 30 coinvolti, 15 codici verdi, 10 gialli, 5 rossi; fra i rossi uno con segni evidenti di morte. Passo.", correct: true, feedback: "Corretto! Il numero dei coinvolti diviso per codice colore, come chiede la procedura AREU. Il soccorritore non assegna il nero: chi ha segni evidenti di morte resta rosso, e lo si segnala alla SOREU." },
-                    { text: "Qui MSB 1, abbiamo circa 30 feriti. Molti lievi, alcuni medi, pochi gravi e un morto. Passo.", correct: false, feedback: "Linguaggio colloquiale: non dà i numeri per codice colore e non è sufficientemente professionale." },
-                    { text: "SOREU, qui MSB 1, ho finito di contare i feriti. Ho 15 'green', 10 'yellow', 5 'red'. Finisco.", correct: false, feedback: "L'uso di termini inglesi non è standard nel protocollo radio italiano, e 'Finisco' non è la chiusura corretta della comunicazione." },
-                    { text: "Ho 15 sani, 10 che camminano male, 4 che stanno morendo, e uno morto. Venite subito. Passo.", correct: false, feedback: "Assolutamente inaccettabile. Linguaggio inappropriato, emotivo e non professionale. Non è una comunicazione radio." },
-                    { text: "SOREU da MSB 1, sweeping triage concluso: 15 verdi, 10 gialli, 4 rossi, 1 nero. Passo.", correct: false, feedback: "Il soccorritore non assegna il codice nero: per AREU resta rosso, anche con segni evidenti di morte, e lo segnala alla SOREU. Manca anche il numero totale dei coinvolti." }
+                    { text: "Lascio il mezzo e corro sul crash: lì servono braccia.", correct: false, feedback: "Se l'autista lascia il mezzo, il Direttore dei Trasporti non riesce più a farlo muovere: gli autisti restano a bordo in ascolto radio (manuale AREU 2026, p. 29)." },
+                    { text: "Porto il mezzo vicino al crash, così si fa prima.", correct: false, feedback: "I mezzi si muovono su indicazione del Direttore dei Trasporti, che li fa passare dai check point (manuale AREU 2026, p. 17)." },
+                    { text: "Spengo la radio per non intasare il canale e aspetto.", correct: false, feedback: "La radio è l'unico canale con cui il Direttore dei Trasporti può chiamarti: va tenuta accesa e ascoltata (manuale AREU 2026, p. 29)." },
+                    { text: "Resto a bordo, in ascolto radio: è l'unico canale con cui il Direttore dei Trasporti può chiamarmi.", correct: true, feedback: "L'area di sosta è spesso lontana dal crash e dal PMA, e la radio è l'unico contatto con il Direttore dei Trasporti: gli autisti restano a bordo, in ascolto (manuale AREU 2026, p. 29)." }
                 ]
             },
             {
-                scenario: "Sei il referente del PMA e un mezzo di soccorso ti chiede la posizione del punto di raccolta salme. Come rispondi?",
+                scenario: "Sei l'autista soccorritore del primo MSA e hai preso il ruolo di Direttore dei Trasporti. Il Direttore del PMA ti chiede di trasportare in ospedale un paziente. Che cosa comunichi alla SOREU?",
                 options: [
-                    { text: "Qui Referente PMA, il punto salme è oltre il terzo vagone, in un'area discreta. Passo.", correct: false, feedback: "La descrizione 'terzo vagone' è ambigua e può variare. Serve un riferimento fisso e non ambiguo." },
-                    { text: "Referente PMA a SOREU, Punto Raccolta Salme si trova a est dell'area logistica, ben segnalato. Passo.", correct: true, feedback: "Corretto! Fornisce un riferimento geografico chiaro (est dell'area logistica) e indica che è segnalato, aiutando l'orientamento." },
-                    { text: "Venite qui che vi indico. Passo.", correct: false, feedback: "Inefficace. Non fornisce le informazioni richieste e fa perdere tempo prezioso al mezzo." },
-                    { text: "Il punto salme è dove non c'è nessuno. Passo.", correct: false, feedback: "Non è una comunicazione utile e non professionale." },
-                    { text: "Punto Raccolta Salme dietro al PMA. Passo.", correct: false, feedback: "Troppo generico. 'Dietro' può significare diverse posizioni a seconda del punto di osservazione." }
+                    { text: "Il codice colore del paziente, la patologia rilevante e l'identificativo del mezzo, per avere la destinazione ospedaliera.", correct: true, feedback: "È quello che il Direttore dei Trasporti comunica alla SOREU, che indirizza il paziente nell'ospedale più idoneo (manuale AREU 2026, p. 17 e 19)." },
+                    { text: "Niente: scelgo l'ospedale più vicino e faccio partire il mezzo.", correct: false, feedback: "La destinazione la indica la SOREU, che cerca l'ospedale più idoneo ed evita di intasare i pronto soccorso (manuale AREU 2026, p. 17 e 19)." },
+                    { text: "Chiedo alla SOREU di chiamare direttamente il Direttore del PMA.", correct: false, feedback: "La SOREU contatta direttamente il Direttore del PMA solo per reale necessità clinica: di norma la richiesta passa dal Direttore dei Trasporti (manuale AREU 2026, p. 19)." },
+                    { text: "Il nome del paziente e il recapito dei familiari.", correct: false, feedback: "Per la destinazione la SOREU ha bisogno del codice colore, della patologia rilevante e dell'identificativo del mezzo (manuale AREU 2026, p. 17)." }
                 ]
             },
             {
-                scenario: "Ti viene comunicato dalla SOREU che la Protezione Civile sta allestendo un campo base per gli sfollati a 2 km dal luogo dell'incidente. Come confermi la ricezione del messaggio?",
+                scenario: "Sei un soccorritore di un MSB arrivato dopo, al lavoro sul crash. Nel terzo vagone trovi un ferito incastrato fra le lamiere. A chi lo dici, e come?",
                 options: [
-                    { text: "OK, ricevuto. Passo.", correct: false, feedback: "Breve, ma troppo informale. 'Ricevuto, passo' è corretto, ma si può essere più espliciti." },
-                    { text: "Compreso. Campo base PC a 2km. Passo.", correct: true, feedback: "Corretto! Conferma la comprensione del messaggio, riepilogando l'informazione chiave per evitare malintesi." },
-                    { text: "Sì, ho capito. Vado avanti. Finito.", correct: false, feedback: "Linguaggio non standardizzato e poco professionale. 'Finito' non è un termine di chiusura radio." },
-                    { text: "Messaggio ricevuto, grazie. Passo.", correct: false, feedback: "Professionale ma non riepiloga l'informazione. Riepilogare aiuta a verificare la corretta ricezione." },
-                    { text: "Va bene, quando è pronto fatemi sapere. Passo.", correct: false, feedback: "Non è una conferma di ricezione ma una richiesta successiva, che non risponde al quesito." }
+                    { text: "Chiamo la SOREU dal cellulare e spiego tutta la situazione.", correct: false, feedback: "Con tante chiamate la telefonia mobile si sovraccarica, e con la SOREU parlano le figure di riferimento: tu riferisci a chi coordina sul crash (manuale AREU 2026, p. 29)." },
+                    { text: "Con poche parole alla mia figura di riferimento sul crash: il Referente del primo MSB o, quando c'è, il Direttore del Triage.", correct: true, feedback: "Le comunicazioni sul campo sono brevi, essenziali e limitate alle figure di riferimento; i MSB successivi si mettono a disposizione del primo equipaggio, e il Direttore del Triage supervisiona la decarcerazione dei Vigili del Fuoco (manuale AREU 2026, p. 28-29; lezione, il Direttore del Triage)." },
+                    { text: "Lo annuncio via radio a tutti, sul canale comune, con tutti i dettagli.", correct: false, feedback: "Le comunicazioni devono essere brevi ed essenziali e limitate alle figure di riferimento (manuale AREU 2026, p. 29)." },
+                    { text: "Provo a estrarlo da solo con i colleghi.", correct: false, feedback: "La decarcerazione la fanno i Vigili del Fuoco, sotto la supervisione del Direttore del Triage (lezione AREU 2026, il Direttore del Triage)." }
                 ]
             }
         ];
@@ -2892,10 +2887,10 @@ if (triageCtx) {
 
         function loadRadioScenario(index) {
             if (index >= radioScenarios.length) {
-                radioScenarioText.textContent = "Hai completato tutti gli scenari radio! Complimenti per l'ottima comunicazione!";
+                radioScenarioText.textContent = "Hai completato tutte le situazioni!";
                 radioOptionsContainer.innerHTML = '';
                 nextRadioScenarioBtn.classList.add('hidden');
-                if (window.__markDone) window.__markDone('radio-communication'); radioFeedbackArea.innerHTML = '<p class="font-bold text-green-600 text-lg">Ben fatto! Ottima padronanza della comunicazione radio.</p>';
+                if (window.__markDone) window.__markDone('radio-communication'); radioFeedbackArea.innerHTML = '<p class="font-bold text-green-600 text-lg">Ben fatto! Comunicazioni brevi ed essenziali, alle figure di riferimento.</p>';
                 return;
             }
 
