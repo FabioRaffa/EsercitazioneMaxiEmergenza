@@ -32,7 +32,7 @@ const SECTIONS = [
   { id: 'priority-intervention', label: 'Priorità Intervento',   file: 'sections/12-priority-intervention.html' },
   { id: 'resource-management',   label: 'Gestione Risorse',      file: 'sections/13-resource-management.html' },
   { id: 'radio-communication',   label: 'Comunicazione Radio',   file: 'sections/14-radio-communication.html' },
-  { id: 'ethical-dilemma',       label: 'Dilemma Etico',         file: 'sections/15-ethical-dilemma.html' },
+  { id: 'ethical-dilemma',       label: 'Scelte difficili',         file: 'sections/15-ethical-dilemma.html' },
   { id: 'quiz',                  label: 'Quiz',                  file: 'sections/16-quiz.html' },
 ];
 

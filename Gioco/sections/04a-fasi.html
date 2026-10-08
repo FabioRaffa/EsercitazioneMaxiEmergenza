@@ -8,54 +8,55 @@
                     <nav class="flex -mb-px" id="fasi-tabs">
                         <button data-target="fase-preparatoria" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-red-500 text-red-600">1. Preparazione</button>
                         <button data-target="fase-allarme" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">2. Allarme</button>
-                        <button data-target="fase-risposta-immediata" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">3. Risposta Immediata</button>
-                        <button data-target="fase-risposta-differita" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">4. Risposta Differita</button>
+                        <button data-target="fase-risposta-immediata" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">3. Sul campo</button>
+                        <button data-target="fase-risposta-differita" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">4. Catena dei soccorsi</button>
                     </nav>
                 </div>
                 <div id="fasi-content">
+                    <p class="text-sm text-secondary mb-4">Ogni evento ha una <strong>risposta rapida</strong>, con le risorse locali, e una <strong>risposta differita</strong>, nelle ore successive, con gli aiuti dall'esterno; entrambe passano per le fasi di preallarme, allarme ed emergenza (manuale AREU 2026, p. 9).</p>
                     <div id="fase-preparatoria" class="fase-content-panel p-4 bg-surface rounded-lg shadow">
-                        <h4 class="text-xl font-bold mb-2">Fase Preparatoria: Giocare d'Anticipo</h4>
-                        <p class="text-secondary mb-4">L'emergenza non si attende, si prepara. In questa fase si definiscono i Piani di Soccorso, si mappano i rischi del territorio e si formano gli operatori. Le esercitazioni congiunte tra 118, Vigili del Fuoco e Protezione Civile sono fondamentali per testare protocolli e creare sinergia.</p>
+                        <h4 class="text-xl font-bold mb-2">Fase Preparatoria: il Piano di Emergenza</h4>
+                        <p class="text-secondary mb-4">L'emergenza si prepara in tempo di pace: si conosce il territorio (ospedali, case di cura, farmacie, servizi mortuari), si elencano gli eventi attesi, si crea uno scenario per ciascuno e si quantificano e catalogano le risorse.</p>
                         <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
-                            <p class="font-semibold text-lg">Pianificazione ➔ Formazione ➔ Esercitazione</p>
-                            <p class="text-sm text-secondary">Un ciclo virtuoso per essere pronti all'imprevisto.</p>
+                            <p class="font-semibold text-lg">Territorio ➔ Eventi attesi ➔ Scenari ➔ Risorse</p>
+                            <p class="text-sm text-secondary">Per non improvvisare: pianificare comportamenti e procedure.</p>
                         </div>
                     </div>
                     <div id="fase-allarme" class="fase-content-panel p-4 bg-surface rounded-lg shadow hidden">
-                        <h4 class="text-xl font-bold mb-2">Fase di Allarme: La Prima Chiamata</h4>
-                        <p class="text-secondary mb-4">Tutto inizia con le prime, spesso caotiche, chiamate al 118. L'operatore deve rapidamente dimensionare l'evento usando protocolli come il M.E.T.H.A.N.E. per raccogliere informazioni vitali e attivare il livello di allarme corretto (Livello 3 per le maxi-emergenze), mobilitando tutte le componenti del soccorso.</p>
+                        <h4 class="text-xl font-bold mb-2">Allarme: la Prima Ricognizione</h4>
+                        <p class="text-secondary mb-4">Il primo equipaggio sul posto, prima di qualsiasi altra operazione, fa una prima ricognizione a distanza di sicurezza e comunica alla SOREU quanto rilevato con l'acronimo METHANE.</p>
                         <div class="mt-4 bg-gray-100 p-4 rounded-lg border border-color">
-                            <h5 class="font-bold text-md mb-2">M.E.T.H.A.N.E. (Metodo di Valutazione Iniziale)</h5>
+                            <h5 class="font-bold text-md mb-2">M.E.T.H.A.N.E.</h5>
                             <ul class="list-disc list-inside text-secondary text-sm space-y-1">
-                                <li><strong class="text-primary">M</strong>axi-emergenza: Conferma che l'evento è una maxi-emergenza (Livello 3).</li>
-                                <li><strong class="text-primary">E</strong>satta Location: Localizzazione precisa dell'incidente per indirizzare i soccorsi.</li>
-                                <li><strong class="text-primary">T</strong>ipo di Incidente: Natura dell'evento (es. deragliamento, crollo, esplosione) per prevedere rischi e lesioni.</li>
-                                <li><strong class="text-primary">H</strong>azard (Pericoli): Valutazione dei rischi presenti o evolutivi (es. fumo, incendio, sversamenti, instabilità strutturale).</li>
-                                <li><strong class="text-primary">A</strong>ccesso: Condizioni delle vie di accesso e uscita per i mezzi di soccorso (strade bloccate, terreno impervio).</li>
-                                <li><strong class="text-primary">N</strong>umero di Coinvolti: Stima del numero di persone coinvolte e della gravità delle lesioni.</li>
-                                <li><strong class="text-primary">E</strong>mergenza già in Loco o Necessari: Presenza di soccorsi già sul posto o necessità di risorse aggiuntive.</li>
+                                <li><strong class="text-primary">M</strong>axiemergenza: la confermi?</li>
+                                <li><strong class="text-primary">E</strong>satta localizzazione dell'evento.</li>
+                                <li><strong class="text-primary">T</strong>ipo di evento.</li>
+                                <li><strong class="text-primary">H</strong>azards: pericoli presenti.</li>
+                                <li><strong class="text-primary">A</strong>ccessi per i mezzi di soccorso: quali.</li>
+                                <li><strong class="text-primary">N</strong>umero stimato dei coinvolti.</li>
+                                <li><strong class="text-primary">E</strong>nti presenti: Vigili del Fuoco e Forze dell'Ordine.</li>
                             </ul>
                         </div>
-                            <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
-                                <p class="font-semibold text-lg">Chiamata ➔ Analisi M.E.T.H.A.N.E. ➔ Attivazione Risorse</p>
-                                <p class="text-sm text-secondary">Trasformare l'informazione in azione coordinata.</p>
-                            </div>
+                        <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
+                            <p class="font-semibold text-lg">Arrivo ➔ Ricognizione a distanza ➔ METHANE alla SOREU</p>
+                            <p class="text-sm text-secondary">Si accede solo con l'autorizzazione dei Vigili del Fuoco.</p>
+                        </div>
                     </div>
                     <div id="fase-risposta-immediata" class="fase-content-panel p-4 bg-surface rounded-lg shadow hidden">
-                        <h4 class="text-xl font-bold mb-2">Fase di Risposta Immediata: Sul Campo</h4>
-                        <p class="text-secondary mb-4">I primi mezzi arrivano. L'obiettivo è mettere in sicurezza la scena, stabilire un Posto di Comando Avanzato (PCA) e iniziare il triage primario con il metodo START per classificare rapidamente i feriti. Si settorializza l'area (<span class="text-red-500 font-bold">punto di crash</span>, <span class="text-yellow-500 font-bold">triage</span>, <span class="text-green-500 font-bold">punto di raccolta</span>) per razionalizzare gli interventi.</p>
-                            <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
-                                <p class="font-semibold text-lg">Sicurezza Scena ➔ Triage START ➔ Settorializzazione</p>
-                                <p class="text-sm text-secondary">Portare ordine nel caos iniziale.</p>
-                            </div>
+                        <h4 class="text-xl font-bold mb-2">Sul Campo: Triage e Comando</h4>
+                        <p class="text-secondary mb-4">Ricevuta l'autorizzazione ad accedere dai Vigili del Fuoco, il Referente per la SOREU fa lo sweeping triage START e applica i braccialetti; con il capo squadra dei VVF e il capo pattuglia delle Forze dell'Ordine istituisce il Posto di Comando Avanzato provvisorio. Il Direttore del Triage, quando arriva, settorializza il luogo dell'evento in cantieri di lavoro.</p>
+                        <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
+                            <p class="font-semibold text-lg">Sweeping triage START ➔ PCA provvisorio ➔ Cantieri</p>
+                            <p class="text-sm text-secondary">Rispettare i ruoli e collaborare.</p>
+                        </div>
                     </div>
                     <div id="fase-risposta-differita" class="fase-content-panel p-4 bg-surface rounded-lg shadow hidden">
-                        <h4 class="text-xl font-bold mb-2">Fase di Risposta Differita: Stabilizzazione ed Evacuazione</h4>
-                        <p class="text-secondary mb-4">Si allestisce il Posto Medico Avanzato (PMA) nel <span class="text-green-500 font-bold">punto di raccolta</span>. Qui i pazienti vengono sottoposti a triage secondario, stabilizzati e trattati. La logistica diventa cruciale: la "Piccola Noria" trasporta i feriti dalla scena al PMA, mentre la "Grande Noria" li evacua dal PMA agli ospedali più idonei.</p>
-                            <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
-                                <p class="font-semibold text-lg">Allestimento PMA ➔ Trattamento ➔ Evacuazione (Noria)</p>
-                                <p class="text-sm text-secondary">La catena sanitaria organizzata per salvare più vite possibile.</p>
-                            </div>
+                        <h4 class="text-xl font-bold mb-2">La Catena dei Soccorsi</h4>
+                        <p class="text-secondary mb-4">Le vittime vanno dal luogo dell'evento all'area di raccolta dei codici giallo/rossi e al Posto Medico Avanzato, che può essere una struttura, una tenda o un'area funzionale e accoglie di norma solo gialli e rossi; i verdi vanno in un'area a parte, presidiata. La piccola noria porta i feriti dal crash al PMA, la grande noria dal PMA agli ospedali che indica la SOREU.</p>
+                        <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
+                            <p class="font-semibold text-lg">Crash ➔ Area di raccolta / PMA ➔ Ospedale</p>
+                            <p class="text-sm text-secondary">Piccola noria e grande noria.</p>
+                        </div>
                     </div>
                 </div>
             </div>

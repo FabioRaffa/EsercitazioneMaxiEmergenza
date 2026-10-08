@@ -227,21 +227,23 @@ window.initGames = function initGames() {
 
 
 /* --- JAVASCRIPT FOR "PRIMO MSB IN ARRIVO" GAME (MODIFIED) --- */
-const msbGameTasksData = [ // Nuovo nome per il dataset
-    { text: "Indossare la dotazione prevista.", role: "Referente" },
-    { text: "Verificare l'esattezza delle informazioni fornite dalla SOREU sulla tipologia dell'evento.", role: "Referente" },
-    { text: "Effettuare una ricognizione del luogo dell'evento, dimensionandolo e verificando l'estensione e la presenza di rischi evolutivi, anche confrontandosi con il capo squadra dei Vigili del Fuoco (riconoscibile dal casco rosso).", role: "Referente" },
-    { text: "Valutare in sequenza: Se l'evento corrisponde a quanto riferito dal 118; Se il luogo è accessibile ai mezzi di soccorso; Se sono presenti fuoco, fumo, materiale pericolante, sostanze pericolose o inondazione.", role: "Referente" },
-    { text: "Effettuare uno sweeping-triage utilizzando il metodo S.T.A.R.T., quantificando il numero dei soggetti coinvolti e suddividendoli in codici VERDI, GIALLI, ROSSI e NERI, applicando i braccialetti colorati corrispondenti.", role: "Referente" },
-    { text: "Comunica alla SOREU gli esiti della ricognizione, l'estensione del luogo interessato, il numero dei soggetti coinvolti suddivisi per codice colore e la patologia prevalente (se non già comunicato all'equipaggio del MSA giunto sul posto).", role: "Referente" },
-    { text: "Rimanere vicino al mezzo.", role: "Autista" },
-    { text: "Posizionare il mezzo in zona sicura, rendendolo ben visibile e identificabile (es. lampeggianti accesi).", role: "Autista" },
-    { text: "Garantire l'integrità delle comunicazioni radio con la SOREU per comunicazioni in tempo reale.", role: "Autista" },
-    { text: "Essere pronto a spostare il mezzo in ogni momento.", role: "Autista" },
-    { text: "Segnalare ai mezzi in arrivo le vie di accesso, il luogo di stazionamento e le vie di fuga.", role: "Autista" },
-    { text: "Individuare i luoghi più adatti per l'atterraggio di elicotteri, prestando attenzione a cavi della corrente, teleferiche o ostacoli poco visibili.", role: "Autista" },
-    { text: "Identificare un'area sicura, a debita distanza dal luogo dell'evento, per collocare i pazienti con codice verde.", role: "Terzo Soccorritore" },
-    { text: "Tiene sotto controllo l'area identificata, evitando che i pazienti presenti rientrino nell'area dell'incidente.", role: "Terzo Soccorritore" }
+const msbRoleLabels = { Referente: 'Referente per la SOREU', Autista: 'Autista Soccorritore', Soccorritore: 'Soccorritore' };
+const msbGameTasksData = [ // l'action card del primo MSB (manuale AREU 2026, p.27)
+    { text: "Indossare la fascia gialla in dotazione (se si giunge come primo mezzo).", role: "Referente" },
+    { text: "Effettuare una ricognizione del luogo dell'evento e dimensionare l'evento.", role: "Referente" },
+    { text: "Adottare il metodo METHANE, anche confrontandosi con il capo squadra dei Vigili del Fuoco (casco rosso).", role: "Referente" },
+    { text: "Comunicare alla SOREU quanto rilevato, prima possibile.", role: "Referente" },
+    { text: "Effettuare lo sweeping triage START, suddividendo le vittime in codici VERDI, GIALLI e ROSSI e applicando i braccialetti colorati.", role: "Referente" },
+    { text: "Comunicare alla SOREU gli esiti dello sweeping triage e la patologia prevalente (o all'equipaggio del MSA giunto in posto).", role: "Referente" },
+    { text: "All'arrivo del MSA, comunicare quanto eseguito (passaggio di consegne) e mettersi a disposizione.", role: "Referente" },
+    { text: "Posizionare il mezzo in zona sicura, ben visibile e identificabile, con i lampeggianti accesi (solo se primo mezzo).", role: "Autista" },
+    { text: "Rimanere vicino al mezzo, pronto a spostarlo in ogni momento.", role: "Autista" },
+    { text: "Garantire l'integrità delle comunicazioni radio con la SOREU.", role: "Autista" },
+    { text: "Segnalare ai mezzi in arrivo le vie di accesso (check in), il luogo di stazionamento e le vie di fuga (check out).", role: "Autista" },
+    { text: "Individuare i luoghi adatti all'atterraggio di elicotteri, attenti a cavi della corrente, teleferiche od ostacoli poco visibili.", role: "Autista" },
+    { text: "All'arrivo del Direttore dei Trasporti (pettorina blu), mettersi a sua disposizione.", role: "Autista" },
+    { text: "Identificare un'area sicura, a debita distanza dal luogo dell'evento, per le vittime in codice verde, in accordo con il capo equipaggio.", role: "Soccorritore" },
+    { text: "Tenere sotto controllo quell'area, evitando che le vittime rientrino nell'area dell'incidente.", role: "Soccorritore" }
 ];
 
 let currentSelectedMsbTask = null; // Nuovo nome per la variabile di selezione
@@ -269,7 +271,7 @@ function initializeMsbGame() {
     currentSelectedMsbTask = null;
 
     msbDropZones.forEach(zone => {
-        zone.innerHTML = `<span class="msb-role-title">${zone.dataset.role}</span>`; // Nuovo selettore
+        zone.innerHTML = `<span class="msb-role-title">${msbRoleLabels[zone.dataset.role] || zone.dataset.role}</span>`; // Nuovo selettore
         zone.classList.remove('correct-match', 'incorrect-match', 'active-drop', 'filled');
         updateMsbDropZoneTitleVisibility(zone);
     });
@@ -437,7 +439,7 @@ if (msbCheckButton) {
         const assignedTasksPerRole = {
             'Referente': [],
             'Autista': [],
-            'Terzo Soccorritore': []
+            'Soccorritore': []
         };
 
         msbDropZones.forEach(zone => {
@@ -463,14 +465,14 @@ if (msbCheckButton) {
                     taskEl.classList.add('correct-match');
                     taskEl.style.pointerEvents = 'none';
                 });
-                feedbackMessages.push(`✔️ Compiti del <span class="font-bold">${roleName}</span>: TUTTI CORRETTI.`);
+                feedbackMessages.push(`✔️ Compiti del <span class="font-bold">${msbRoleLabels[roleName]}</span>: TUTTI CORRETTI.`);
             } else {
                 zoneElement.classList.add('incorrect-match');
                 zoneElement.querySelectorAll('.role-task-item').forEach(taskEl => {
                     taskEl.classList.add('incorrect-match');
                 });
                 allOverallCorrect = false;
-                feedbackMessages.push(`❌ Compiti del <span class="font-bold">${roleName}</span>: ALCUNI ERRORI.`);
+                feedbackMessages.push(`❌ Compiti del <span class="font-bold">${msbRoleLabels[roleName]}</span>: ALCUNI ERRORI.`);
 
                 const missingInRole = correctTasks.filter(text => !assignedTasks.includes(text));
                 if (missingInRole.length > 0) {
@@ -665,18 +667,15 @@ initializeMsbGame();
 
 
         /* --- JAVASCRIPT FOR "COMPITI DEL REFERENTE" GAME --- */
-        const referenteTasksOrdered = [
-            "Indossare la dotazione prevista.",
-            "Verificare l'esattezza delle informazioni fornite dalla SOREU sulla tipologia dell'evento.",
-            "Effettuare una ricognizione del luogo dell'evento, dimensionandolo e verificando l'estensione e la presenza di rischi evolutivi, anche confrontandosi con il capo squadra dei Vigili del Fuoco (riconoscibile dal casco rosso).",
-            "Valutare in sequenza: Se l'evento corrisponde a quanto riferito dal 118.",
-            "Valutare in sequenza: Se il luogo è accessibile ai mezzi di soccorso.",
-            "Valutare in sequenza: Se sono presenti fuoco, fumo, materiale pericolante, sostanze pericolose o inondazione.",
-            "In caso di pericolo: Stazionare in luogo sicuro.",
-            "In caso di pericolo: Accedere solo dopo autorizzazione del 115.",
-            "In caso di pericolo: Informare il 118 e attendere istruzioni.",
-            "Effettuare uno sweeping-triage utilizzando il metodo S.T.A.R.T., quantificando il numero dei soggetti coinvolti e suddividendoli in codici VERDI, GIALLI, ROSSI e NERI, applicando i braccialetti colorati corrispondenti.",
-            "Comunicare alla SOREU gli esiti della ricognizione, l'estensione del luogo interessato, il numero dei soggetti coinvolti suddivisi per codice colore e la patologia prevalente (se non già comunicato all'equipaggio del MSA giunto sul posto)."
+        const referenteTasksOrdered = [ // nell'ordine dell'action card (manuale AREU 2026, p.27)
+            "Indossare la fascia gialla in dotazione (se si giunge come primo mezzo).",
+            "Effettuare una ricognizione del luogo dell'evento.",
+            "Dimensionare l'evento.",
+            "Adottare il metodo METHANE, anche confrontandosi con il capo squadra dei Vigili del Fuoco (casco rosso).",
+            "Comunicare alla SOREU quanto rilevato, prima possibile.",
+            "Effettuare lo sweeping triage START, suddividendo le vittime in codici VERDI, GIALLI e ROSSI e applicando i braccialetti colorati.",
+            "Comunicare alla SOREU gli esiti dello sweeping triage e la patologia prevalente (o all'equipaggio del MSA giunto in posto).",
+            "All'arrivo del MSA, comunicare quanto eseguito (passaggio di consegne) e mettersi a disposizione."
         ];
 
         let currentDraggingSortableItem = null;
@@ -770,14 +769,14 @@ initializeMsbGame();
 
 
         /* --- JAVASCRIPT FOR "COMUNICAZIONE SOREU: METHANE GAME" --- */
-        const methaneGameData = [
-            { letter: 'M', definition: 'Conferma che l\'evento è una Maxi-emergenza (Livello 3).' },
-            { letter: 'E', definition: 'Localizzazione Esatta dell\'incidente per indirizzare i soccorsi.' },
-            { letter: 'T', definition: 'Identificazione della Tipologia dell\'evento (es. deragliamento, crollo, esplosione) per prevedere rischi e lesioni.' },
-            { letter: 'H', definition: 'Valutazione dei rischi presenti o evolutivi (es. fumo, incendio, sversamenti, instabilità strutturale).' },
-            { letter: 'A', definition: 'Condizioni delle vie di Accesso e Uscita per i mezzi di soccorso (strade bloccate, terreno impervio).' },
-            { letter: 'N', definition: 'Stima del Numero di persone coinvolte e della gravità delle lesioni.' },
-            { letter: 'E', definition: 'Presenza di Soccorsi di Emergenza già sul posto o necessità di risorse aggiuntive.' }
+        const methaneGameData = [ // manuale AREU 2026, p.26
+            { letter: 'M', definition: 'Maxiemergenza: la confermi?' },
+            { letter: 'E', definition: 'Esatta localizzazione dell\'evento.' },
+            { letter: 'T', definition: 'Tipo di evento (es. deragliamento, crollo, esplosione).' },
+            { letter: 'H', definition: 'Hazards: pericoli presenti (es. fumo, incendio, linea elettrica, materiale pericolante).' },
+            { letter: 'A', definition: 'Accessi per i mezzi di soccorso: quali.' },
+            { letter: 'N', definition: 'Numero stimato dei coinvolti.' },
+            { letter: 'E', definition: 'Enti presenti: Vigili del Fuoco e Forze dell\'Ordine.' }
         ];
 
         let currentDraggingMethaneLetter = null;
@@ -923,10 +922,11 @@ initializeMsbGame();
 
 /* --- JAVASCRIPT FOR "ABBINA IL RUOLO AL COLORE" GAME --- */
    const roleColorData = [
-        { role: 'Direttore dei Soccorsi Sanitari', acronym: 'DSS', color: 'bg-yellow-400' },
-        { role: 'Direttore del PMA', acronym: 'DPMA', color: 'bg-white border-2 border-black' },
-        { role: 'Direttore di Triage', acronym: 'TRO', color: 'bg-red-500' },
-        { role: 'Direttore dei Trasporti', acronym: 'ALO', color: 'bg-blue-500' }
+        { role: 'Direttore dei Soccorsi Sanitari', acronym: 'DSS', color: 'bg-yellow-400', nome: 'gialla' },
+        { role: 'Coordinatore Incidente Maggiore', acronym: 'CIM', color: 'pettorina-scacchi', nome: 'a scacchi giallo-rossa' },
+        { role: 'Direttore del PMA', acronym: 'PMA', color: 'bg-white border-2 border-black', nome: 'bianca' },
+        { role: 'Direttore del Triage', acronym: 'Triage', color: 'bg-red-600', nome: 'rossa' },
+        { role: 'Direttore dei Trasporti', acronym: 'Trasporti', color: 'bg-blue-500', nome: 'blu' }
     ];
 
     let currentDraggingRole = null;
@@ -943,7 +943,7 @@ initializeMsbGame();
 
         roleDraggableContainer.innerHTML = '';
         colorDropzoneContainer.innerHTML = '';
-        roleColorFeedback.innerHTML = '<p class="text-sm">Trascina i ruoli sui giubbotti colorati.</p>';
+        roleColorFeedback.innerHTML = '<p class="text-sm">Trascina i ruoli sulle pettorine colorate.</p>';
         placedRoleColorsMap.clear();
 
         // Ruoli trascinabili
@@ -992,11 +992,12 @@ initializeMsbGame();
             dropZone.classList.add(...item.color.split(' '));
             dropZone.dataset.correctAcronym = item.acronym;
             dropZone.dataset.colorName = item.color;
+            dropZone.dataset.colorLabel = item.nome;
             dropZone.dataset.dropZoneId = `color-dropzone-${index}`;
 
             // L'acronimo sarà visualizzato sopra il colore, senza mai coprire il colore di sfondo!
             const acronymPlaceholder = document.createElement('span');
-            acronymPlaceholder.classList.add('role-acronym-placeholder', 'text-center', 'font-bold', 'text-2xl');
+            acronymPlaceholder.classList.add('role-acronym-placeholder', 'text-center', 'font-bold', item.acronym.length > 4 ? 'text-lg' : 'text-2xl');
             acronymPlaceholder.style.background = 'transparent'; // esplicito per sicurezza
             acronymPlaceholder.style.position = 'absolute';
             acronymPlaceholder.style.width = '100%';
@@ -1121,8 +1122,7 @@ initializeMsbGame();
                     } else {
                         dropZone.classList.add('incorrect-match');
                         allCorrect = false;
-                        const colorDisplay = originalColorName ? originalColorName.replace('bg-', '').replace('border-2 border-black', 'bianca') : '';
-                        feedbackMessages.push(`❌ La zona ${colorDisplay} per ${correctAcronym} è vuota.`);
+                        feedbackMessages.push(`❌ La pettorina ${dropZone.dataset.colorLabel} (${correctAcronym}) è vuota.`);
                     }
                 });
 
@@ -1273,74 +1273,74 @@ if (triageCtx) {
                 feedback: "Per la messa in sicurezza e l'autorizzazione all'accesso in scenari instabili, i Vigili del Fuoco sono l'autorità competente."
             },
             {
-                question: "2) Devi delimitare l'area di sicurezza attorno all'incidente. Quale colore di giubbotto o simbolo cercheresti per identificare il responsabile della sicurezza perimetrale?",
+                question: "2) Sul crash mancano materiale e personale. A chi li chiede il Direttore del Triage?",
                 options: [
-                    { text: "Giubbotto giallo (DSS)", correct: false },
-                    { text: "Casacca blu (Forze dell'Ordine)", correct: true },
-                    { text: "Casacca verde (Volontario Croce Rossa)", correct: false },
-                    { text: "Casco rosso (Vigili del Fuoco)", correct: false }
+                    { text: "Direttamente alla SOREU", correct: false },
+                    { text: "Al DSS, al CIM o al Direttore dei Trasporti", correct: true },
+                    { text: "Alla Protezione Civile", correct: false },
+                    { text: "Alle Forze dell'Ordine", correct: false }
                 ],
-                feedback: "La sicurezza perimetrale e il mantenimento dell'ordine sono compiti delle Forze dell'Ordine."
+                feedback: "Il Direttore del Triage si rapporta con DSS, CIM e Direttore dei Trasporti per materiale e risorse umane, e non contatta mai direttamente la SOREU (manuale AREU 2026, p. 16)."
             },
             {
-                question: "3) Ti trovi nel Punto di Raccolta e hai bisogno di supporto logistico (es. tende, barriere, illuminazione) per il PMA. Con quale forza collaboreresti prioritariamente?",
+                question: "3) Al PMA mancano materiale e personale. A chi li chiede il Direttore del PMA?",
                 options: [
-                    { text: "Vigili del Fuoco", correct: false },
-                    { text: "Forze dell'Ordine", correct: false },
-                    { text: "Protezione Civile", correct: true },
-                    { text: "Servizio Sanitario (altri medici/infermieri)", correct: false }
+                    { text: "Alla Protezione Civile", correct: false },
+                    { text: "Ai Vigili del Fuoco", correct: false },
+                    { text: "Al Direttore dei Soccorsi Sanitari o al Coordinatore Incidente Maggiore", correct: true },
+                    { text: "Alle Forze dell'Ordine", correct: false }
                 ],
-                feedback: "La Protezione Civile è specializzata nel supporto logistico e nell'allestimento di strutture temporanee."
+                feedback: "Il Direttore del PMA si rapporta costantemente con il DSS e il CIM per la fornitura di materiale e risorse umane; il CIM risolve i problemi tecnici e logistici (manuale AREU 2026, p. 15 e 18)."
             },
             {
-                question: "4) Un familiare agitato cerca di superare il cordone di sicurezza per raggiungere un parente. Chi è la figura più adatta a gestire la situazione e fornire informazioni controllate?",
+                question: "4) Nelle fasi iniziali, chi costituisce il Posto di Comando Avanzato provvisorio?",
                 options: [
-                    { text: "Un Medico del PMA", correct: false },
-                    { text: "Un Agente delle Forze dell'Ordine", correct: true },
-                    { text: "Un Volontario MSB", correct: false },
-                    { text: "Il Direttore dei Trasporti (ALO)", correct: false }
+                    { text: "Il primo mezzo sanitario, la prima squadra dei Vigili del Fuoco e il primo mezzo delle Forze dell'Ordine", correct: true },
+                    { text: "Il Direttore dei Soccorsi Sanitari da solo", correct: false },
+                    { text: "La Protezione Civile e il Comune", correct: false },
+                    { text: "I primi tre mezzi sanitari arrivati", correct: false }
                 ],
-                feedback: "Le Forze dell'Ordine sono preposte al mantenimento dell'ordine pubblico e alla gestione dei civili nell'area di emergenza."
+                feedback: "Nelle fasi iniziali i referenti della prima ambulanza, della prima squadra dei VVF e del primo mezzo delle Forze dell'Ordine costituiscono il PCA provvisorio (manuale AREU 2026, p. 25)."
             },
             {
                 question: "5) Hai bisogno di informazioni precise sulla presenza di materiali pericolosi o sulla stabilità di strutture danneggiate. Quale figura devi consultare?",
                 options: [
-                    { text: "Il Direttore di Triage (TRO)", correct: false },
+                    { text: "Il Direttore del Triage", correct: false },
                     { text: "Il Capo Squadra dei Vigili del Fuoco", correct: true },
-                    { text: "Il Direttore del PMA (DPMA)", correct: false },
+                    { text: "Il Direttore del PMA", correct: false },
                     { text: "Un operatore del 118", correct: false }
                 ],
                 feedback: "I Vigili del Fuoco sono esperti nella valutazione dei pericoli strutturali, chimici e ambientali."
             },
              {
-                question: "6) Devi trasportare un paziente con una lesione grave che richiede il trasferimento in un ospedale specialistico. Chi coordina il trasporto e l'assegnazione dell'ospedale?",
+                question: "6) Un paziente stabilizzato al PMA deve andare in ospedale. Chi decide l'ospedale di destinazione?",
                 options: [
                     { text: "Il Capo Squadra dei Vigili del Fuoco", correct: false },
-                    { text: "Il Direttore di Triage (TRO)", correct: false },
+                    { text: "Il Direttore del Triage", correct: false },
                     { text: "La Centrale Operativa 118 (SOREU)", correct: true },
-                    { text: "Il Direttore del PMA (DPMA)", correct: false }
+                    { text: "Il Direttore del PMA", correct: false }
                 ],
-                feedback: "La Centrale Operativa 118 (SOREU) ha la visione d'insieme delle risorse ospedaliere disponibili e coordina i trasporti complessi."
+                feedback: "La destinazione la indica la SOREU, in base alle condizioni riferite dal Direttore del PMA; il Direttore dei Trasporti le comunica il codice colore del paziente e il mezzo (manuale AREU 2026, p. 17)."
             },
             {
-                question: "7) Devi isolare una zona a rischio per la presenza di un sversamento di sostanze chimiche. Con quale ente collaboreresti per la messa in sicurezza dell'area?",
+                question: "7) C'è uno sversamento di sostanze pericolose. Come si comporta il primo mezzo di soccorso?",
                 options: [
-                    { text: "Protezione Civile", correct: false },
-                    { text: "Forze dell'Ordine", correct: false },
-                    { text: "Vigili del Fuoco (Nucleo NBCR)", correct: true },
-                    { text: "Servizio Sanitario 118", correct: false }
+                    { text: "Entra con i dispositivi di protezione per valutare subito i feriti", correct: false },
+                    { text: "Si avvicina sopravento, si ferma a distanza (circa 500-800 metri), avvisa la SOREU e attende i Vigili del Fuoco", correct: true },
+                    { text: "Chiede alla Protezione Civile di isolare l'area", correct: false },
+                    { text: "Aspetta istruzioni dalle Forze dell'Ordine", correct: false }
                 ],
-                feedback: "I Vigili del Fuoco, in particolare il Nucleo NBCR, sono addestrati per la gestione di pericoli nucleari, biologici, chimici e radiologici."
+                feedback: "Con sostanze pericolose i primi mezzi si avvicinano sopravento, si fermano a distanza adeguata, attendono i VVF facendo riferimento al caposquadra e avvisano la SOREU (manuale AREU 2026, p. 30)."
             },
             {
                 question: "8) È necessario gestire il flusso dei mezzi di soccorso in arrivo e in uscita dall'area dell'incidente, per evitare ingorghi. Chi è il responsabile di questo coordinamento?",
                 options: [
                     { text: "Il Direttore dei Soccorsi Sanitari (DSS)", correct: false },
-                    { text: "Il Direttore dei Trasporti (ALO)", correct: true },
-                    { text: "Il Direttore di Triage (TRO)", correct: false },
+                    { text: "Il Direttore dei Trasporti", correct: true },
+                    { text: "Il Direttore del Triage", correct: false },
                     { text: "Un Ufficiale di Polizia Locale", correct: false }
                 ],
-                feedback: "Il Direttore dei Trasporti (ALO) è specificamente incaricato della gestione della logistica dei mezzi."
+                feedback: "Il Direttore dei Trasporti determina i check point, punti di passaggio obbligatorio dei mezzi, censisce mezzi e personale e registra i mezzi in entrata e in uscita (manuale AREU 2026, p. 17)."
             }
         ];
 
@@ -2438,9 +2438,9 @@ if (triageCtx) {
 
         const conceptsQuizQuestions = [
             {
-                question: "1) Qual è la caratteristica principale che distingue una 'maxi-emergenza' da un 'incidente maggiore'?",
-                options: ["Il tipo di veicoli coinvolti", "La durata e la sproporzione bisogni/risorse", "La presenza di fumo", "Il numero di soccorritori sul posto"],
-                correctAnswer: "La durata e la sproporzione bisogni/risorse",
+                question: "1) Che cosa distingue un incidente maggiore (o maxiemergenza) dalla catastrofe?",
+                options: ["Il tipo di veicoli coinvolti", "Nell'incidente maggiore le strutture di soccorso del territorio restano integre e i soccorsi durano meno di 12 ore", "La presenza di fumo", "Il numero di soccorritori sul posto"],
+                correctAnswer: "Nell'incidente maggiore le strutture di soccorso del territorio restano integre e i soccorsi durano meno di 12 ore",
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
@@ -2456,9 +2456,9 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "4) Chi è il Direttore dei Soccorsi Sanitari (DSS) e che colore di giubbotto indossa?",
-                options: ["Un infermiere, giubbotto rosso", "Il comandante sanitario sul campo, giubbotto giallo", "Un autista di ambulanza, giubbotto blu", "Il responsabile della Protezione Civile, giubbotto arancione"],
-                correctAnswer: "Il comandante sanitario sul campo, giubbotto giallo",
+                question: "4) Chi è il Direttore dei Soccorsi Sanitari (DSS) e che pettorina indossa?",
+                options: ["Un infermiere, pettorina rossa", "Il medico responsabile degli interventi sanitari sul posto, pettorina gialla", "Un autista di ambulanza, pettorina blu", "Il responsabile della Protezione Civile, pettorina arancione"],
+                correctAnswer: "Il medico responsabile degli interventi sanitari sul posto, pettorina gialla",
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
@@ -2480,9 +2480,9 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "8) Chi è il responsabile del triage sul campo (primario e secondario) e del recupero dei feriti?",
-                options: ["Direttore dei Trasporti (ALO)", "Direttore del PMA (DPMA)", "Direttore dei Soccorsi Sanitari (DSS)", "Direttore di Triage (TRO)"],
-                correctAnswer: "Direttore di Triage (TRO)",
+                question: "8) Chi coordina il triage sul crash e indica ai soccorritori quali pazienti evacuare?",
+                options: ["Il Direttore dei Trasporti", "Il Direttore del PMA", "Il Direttore dei Soccorsi Sanitari", "Il Direttore del Triage, infermiere con la pettorina rossa"],
+                correctAnswer: "Il Direttore del Triage, infermiere con la pettorina rossa",
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
@@ -2516,7 +2516,7 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "14) Quale acronimo viene usato per la valutazione iniziale e la comunicazione con la Centrale Operativa 118?",
+                question: "14) Con quale acronimo il primo equipaggio comunica alla SOREU la prima ricognizione?",
                 options: ["START", "GCS", "M.E.T.H.A.N.E.", "BLS"],
                 correctAnswer: "M.E.T.H.A.N.E.",
                 imagePrompt: "images/quiz-general.jpg"
@@ -2528,9 +2528,9 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "16) Quale delle seguenti figure ha il compito di stabilire l'ubicazione del Posto di Comando Avanzato (PCA)?",
-                options: ["Il Direttore di Triage (TRO)", "Il Direttore dei Soccorsi Sanitari (DSS)", "Il Direttore dei Trasporti (ALO)", "Il Direttore del PMA (DPMA)"],
-                correctAnswer: "Il Direttore dei Soccorsi Sanitari (DSS)",
+                question: "16) Chi è a capo del Posto di Comando Avanzato (PCA)?",
+                options: ["Il Direttore del Triage", "Il Direttore dei Soccorsi Sanitari", "Il Direttore Tecnico dei Soccorsi dei Vigili del Fuoco (ROS)", "Il Direttore del PMA"],
+                correctAnswer: "Il Direttore Tecnico dei Soccorsi dei Vigili del Fuoco (ROS)",
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
@@ -2546,9 +2546,9 @@ if (triageCtx) {
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
-                question: "19) Quale principio guida il triage in situazioni di maxi-emergenza?",
-                options: ["Curare il primo paziente che si incontra", "Trasportare tutti i pazienti immediatamente all'ospedale più vicino", "Ottimizzare la gestione delle risorse scarse per la sopravvivenza del maggior numero", "Garantire il comfort di ogni singolo paziente"],
-                correctAnswer: "Ottimizzare la gestione delle risorse scarse per la sopravvivenza del maggior numero",
+                question: "19) Di che colore è la pettorina del Coordinatore Incidente Maggiore (CIM)?",
+                options: ["Rossa", "A scacchi giallo-rossa", "Bianca", "Blu"],
+                correctAnswer: "A scacchi giallo-rossa",
                 imagePrompt: "images/quiz-general.jpg"
             },
             {
@@ -3243,74 +3243,54 @@ if (triageCtx) {
     (function() {
         const ethicalDilemmas = [
             {
-                scenario: "Sei il primo medico a raggiungere una scena con due vagoni rovesciati. Nel primo, vedi un bambino con trauma cranico grave e una ferita addominale. Nel secondo, un adulto con un'emorragia arteriosa massiva da un arto amputato. Hai solo un tourniquet e puoi raggiungere uno dei due subito. Chi tratti per primo? (Ricorda: in maxi emergenza la priorità è salvare il maggior numero di vite in base alla 'salvabilità immediata')",
+                scenario: "Durante lo sweeping triage trovi, uno accanto all'altro, un adulto con un'emorragia esterna abbondante a un braccio e un bambino incosciente che respira. Sei solo. Che cosa fai?",
                 options: [
-                    { text: "Il bambino – è più vulnerabile.", isCorrect: false },
-                    { text: "L'adulto – l'emorragia arteriosa è più rapidamente trattabile e minaccia la vita nell'immediato.", isCorrect: true }
+                    { text: "Resto con il bambino fino all'arrivo di un medico.", isCorrect: false },
+                    { text: "Assegno il codice a tutti e due, faccio solo le manovre previste (compressione diretta o bendaggio compressivo dell'emorragia, cannula) e proseguo il triage.", isCorrect: true },
+                    { text: "Mi fermo a trattare l'adulto finché l'emorragia non è del tutto controllata.", isCorrect: false }
                 ],
                 outcomeExplanation: {
-                    false: "Moralmente comprensibile, ma in un contesto di maxi emergenza la priorità è massimizzare i sopravvissuti. L'emorragia arteriosa dell'adulto è più rapidamente letale e controllabile con il tourniquet. Salvare l'adulto potrebbe liberare risorse più velocemente. In questa fase si valuta la 'salvabilità immediata'.",
-                    true: "In un contesto di maxi emergenza, l'obiettivo è la massimizzazione dei salvati. L'emorragia maggiore dell'adulto è una causa di morte rapida e prevenibile con il tuo unico tourniquet, mentre il trauma cranico e addominale del bambino potrebbe avere esiti meno modificabili nell'immediato o richiedere interventi diversi che al momento non puoi offrire."
+                    true: "Durante lo START le sole manovre sono la rimozione di un corpo estraneo con la cannula orofaringea e la compressione diretta o il bendaggio compressivo di un'emorragia: poi si prosegue, perché lo sweeping triage serve a contare e classificare tutti i coinvolti (manuale AREU 2026, p. 22-23).",
+                    false: "Nello sweeping triage non ci si ferma a trattare: si assegna il codice, si fanno solo le manovre essenziali e si prosegue (manuale AREU 2026, p. 22-23)."
                 },
                 timeLimit: 60 // seconds
             },
             {
-                scenario: "Hai un mezzo di soccorso con 3 posti disponibili. Sei in un'area remota dell'incidente ferroviario e hai 5 pazienti 'gialli' (urgenti ma stabili) e 2 pazienti 'verdi' (lievi) che possono deambulare autonomamente. Il PMA è a 10 minuti. Cosa decidi di trasportare?",
+                scenario: "Al luogo del crash ci sono pazienti gialli, rossi e verdi, e arrivano altre squadre. Chi decide chi si evacua e dove?",
                 options: [
-                    { text: "Caricare i 3 pazienti 'gialli' più critici per ridurre il rischio di aggravamento.", isCorrect: true },
-                    { text: "Caricare i 3 pazienti 'verdi' per liberare la zona più velocemente e attendere un altro mezzo per i gialli.", isCorrect: false },
-                    { text: "Lasciare il mezzo fermo in attesa di istruzioni più precise dalla SOREU.", isCorrect: false },
-                    { text: "Caricare 2 gialli e 1 verde per bilanciare il trasporto.", isCorrect: false },
-                    { text: "Far camminare i verdi verso un punto di raccolta più vicino e caricare i 3 gialli più critici.", isCorrect: true } 
+                    { text: "Ogni squadra porta via i pazienti che riesce a caricare.", isCorrect: false },
+                    { text: "Il Direttore del Triage, in base ai codici colore: gialli e rossi verso l'area di raccolta e il PMA, verdi nella loro area presidiata.", isCorrect: true },
+                    { text: "Si portano via prima i verdi, che si spostano più in fretta.", isCorrect: false }
                 ],
                 outcomeExplanation: {
-                    "true": "Anche all'interno di una stessa categoria di triage (Giallo), è bene prioritizzare chi ha maggiore rischio di aggravamento o chi può beneficiare maggiormente del trattamento immediato al PMA. I 'verdi' possono attendere o essere indirizzati autonomamente. Se i 'verdi' possono essere instradati autonomamente, liberare il mezzo per i 'gialli' è ottimale.",
-                    "false": "In una maxi emergenza si prioritizzano sempre i casi più gravi (rossi e gialli) rispetto ai verdi, anche se i verdi sono più facili da trasportare. Non si 'sprecano' posti per chi può aspettare o muoversi autonomamente. Un mezzo fermo è una risorsa non utilizzata; le risorse vanno mobilizzate rapidamente."
+                    "true": "L'evacuazione dal crash si fa su indicazione del Direttore del Triage, sulla base dei codici colore: gialli e rossi al PMA, verdi in un'area definita e presidiata. Prima del suo arrivo i mezzi successivi si mettono a disposizione del primo equipaggio (manuale AREU 2026, p. 28).",
+                    "false": "L'evacuazione non la decide la singola squadra: la indica il Direttore del Triage, in base ai codici colore (manuale AREU 2026, p. 28)."
                 },
                 timeLimit: 60 // seconds
             },
             {
-                scenario: "Ti viene comunicato che la linea ferroviaria non sarà disalimentata per almeno altri 20 minuti, ma c'è un paziente rosso intrappolato vicino ai binari. Hai un'attrezzatura minima per la protezione personale e il paziente sta peggiorando. Cosa fai?",
+                scenario: "Un paziente rosso è intrappolato vicino ai binari. La linea elettrica non è ancora stata disattivata e i Vigili del Fuoco non hanno autorizzato l'accesso. Il paziente sta peggiorando. Che cosa fai?",
                 options: [
-                    { text: "Aspetti la disalimentazione completa della linea, la sicurezza viene prima di tutto.", isCorrect: false },
-                    { text: "Tenti l'estricazione del paziente con la massima cautela, mantenendo una distanza di sicurezza dai cavi elettrici e monitorando i segnali di disalimentazione.", isCorrect: true },
-                    { text: "Richiedi urgentemente al personale RFI di accelerare la disalimentazione e ti prepari a intervenire al primo segnale di sicurezza.", isCorrect: false },
-                    { text: "Lasci il paziente lì e ti concentri sui pazienti in zone più sicure, per non rischiare la tua vita.", isCorrect: false },
-                    { text: "Comunichi alla SOREU la situazione e chiedi istruzioni precise prima di agire.", isCorrect: false }
+                    { text: "Tento l'estricazione con la massima cautela, tenendomi lontano dai cavi.", isCorrect: false },
+                    { text: "Resto a distanza di sicurezza, informo la SOREU e attendo che i Vigili del Fuoco autorizzino l'accesso.", isCorrect: true },
+                    { text: "Mi avvicino solo per valutarlo, senza toccarlo.", isCorrect: false }
                 ],
                 outcomeExplanation: {
-                    "true": "Se la situazione lo permette con attrezzatura minima e massima cautela, un 'rosso' ha la priorità assoluta. Il rischio va mitigato il più possibile, ma non si può attendere in caso di imminente pericolo di vita per il paziente.",
-                    "false": "Sebbene la sicurezza sia fondamentale, in caso di 'paziente rosso' con rischio di vita imminente e possibilità di accesso sicuro con precauzioni minime, l'attesa può essere fatale. Si valuta il rischio/beneficio con l'equipaggiamento disponibile. Un soccorritore è addestrato a gestire il rischio, non ad abbandonare. La SOREU è un centro di coordinamento, non un decisore sul campo per ogni singola azione in tempo reale."
+                    "true": "La ricognizione si fa a distanza di sicurezza e si comunica alla SOREU; si accede solo con l'autorizzazione dei Vigili del Fuoco (manuale AREU 2026, p. 26 e 28). La disincarcerazione si fa insieme ai Vigili del Fuoco (p. 16). La procedura protegge te e il paziente.",
+                    "false": "Finché i Vigili del Fuoco non autorizzano l'accesso non ci si avvicina: si resta a distanza di sicurezza e si informa la SOREU (manuale AREU 2026, p. 28). Un soccorritore ferito è una vittima in più."
                 },
                 timeLimit: 60 // seconds
             },
             {
-                scenario: "Hai appena estratto un paziente 'giallo' gravemente ustionato, ma noti che le fiamme stanno divampando rapidamente verso la tua posizione. Hai solo il tempo di portare il paziente in un'area sicura o di recuperare una valigetta di farmaci essenziali rimasta indietro. Cosa scegli?",
+                scenario: "Arrivi per primo all'imbocco di una galleria ferroviaria dopo un impatto. Dall'interno esce fumo, ci sono passeggeri disorientati e la radio va a intermittenza. Qual è la tua priorità?",
                 options: [
-                    { text: "Recuperare la valigetta di farmaci, sono risorse vitali per molti pazienti.", isCorrect: false },
-                    { text: "Mettere in sicurezza immediatamente il paziente ustionato, abbandonando la valigetta se necessario.", isCorrect: true },
-                    { text: "Cercare di recuperare sia il paziente che la valigetta, rischiando di rallentare troppo.", isCorrect: false },
-                    { text: "Chiedere alla SOREU se è più importante il paziente o la valigetta.", isCorrect: false },
-                    { text: "Coprire il paziente con una coperta antifiamma e recuperare la valigetta, poi allontanarsi.", isCorrect: false }
+                    { text: "Entro a cercare il pannello di emergenza per la ventilazione.", isCorrect: false },
+                    { text: "Resto all'esterno a distanza di sicurezza, comunico il METHANE alla SOREU e attendo che i Vigili del Fuoco autorizzino l'accesso.", isCorrect: true },
+                    { text: "Entro nel primo vagone per contare i feriti.", isCorrect: false }
                 ],
                 outcomeExplanation: {
-                    "true": "La priorità assoluta è la sicurezza del paziente e del soccorritore. Le risorse materiali sono secondarie rispetto alla vita. Le fiamme che avanzano rappresentano un pericolo imminente.",
-                    "false": "Nessuna risorsa materiale è più importante di una vita umana. In situazioni di pericolo imminente e tempo limitato, tentare di salvare tutto può portare a perdere tutto. La decisione deve essere rapida e chiara sulla priorità della vita. La priorità della vita umana è sempre superiore a quella delle risorse."
-                },
-                timeLimit: 60 // seconds
-            },
-            {
-                scenario: "Sei il primo ad arrivare in una galleria ferroviaria dopo un impatto. Ci sono molti passeggeri disorientati e alcuni vagoni fumanti. La visibilità è ridotta. La tua radio funziona a intermittenza. Qual è la tua priorità immediata?",
-                options: [
-                    { text: "Cercare subito il pannello di emergenza per i sistemi di ventilazione e illuminazione della galleria.", isCorrect: true },
-                    { text: "Iniziare il triage dei pazienti più vicini immediatamente.", isCorrect: false },
-                    { text: "Tentare di ripristinare la comunicazione radio uscendo dalla galleria per un segnale migliore.", isCorrect: false },
-                    { text: "Urlare per calmare i passeggeri e indirizzarli verso l'uscita più vicina.", isCorrect: false },
-                    { text: "Entrare nel vagone più vicino per vedere quanti feriti ci sono e iniziare a trattarli.", isCorrect: false }
-                ],
-                outcomeExplanation: {
-                    "true": "Migliorare la visibilità e la qualità dell'aria (eliminare il fumo) è cruciale per la sicurezza e la capacità di soccorso. È una priorità sulla scena prima di qualsiasi altro intervento diretto sui pazienti.",
-                    "false": "Prima di operare, devi assicurare che l'ambiente sia il più sicuro possibile per te e per le vittime. Non si entra in un ambiente pericoloso (fumo, poca visibilità, vagoni fumanti) senza averne mitigato i rischi o averne compreso la dinamica. La sicurezza della scena prima del soccorso diretto. Anche la comunicazione è importante, ma se ci sono pericoli immediati per la vita in galleria, la mitigazione del rischio ambientale è prioritaria."
+                    "true": "Prima di qualsiasi altra operazione si fa la prima ricognizione a distanza di sicurezza e la si comunica alla SOREU con il METHANE; nel fumo si entra solo con l'autorizzazione dei Vigili del Fuoco (manuale AREU 2026, p. 26 e 28).",
+                    "false": "Nel fumo non si entra senza l'autorizzazione dei Vigili del Fuoco: si resta a distanza di sicurezza e si comunica alla SOREU (manuale AREU 2026, p. 26 e 28)."
                 },
                 timeLimit: 60 // seconds
             }
@@ -3349,10 +3329,10 @@ if (triageCtx) {
 
         function loadDilemma(index) {
             if (index >= ethicalDilemmas.length) {
-                dilemmaScenarioText.textContent = "Hai completato tutti i dilemmi! Ottimo lavoro sulla capacità decisionale!";
+                dilemmaScenarioText.textContent = "Hai completato tutte le scelte difficili.";
                 dilemmaOptionsContainer.innerHTML = '';
                 dilemmaTimerDisplay.textContent = '';
-                if (window.__markDone) window.__markDone('ethical-dilemma'); dilemmaFeedbackArea.innerHTML = '<p class="font-bold text-green-600 text-lg">Hai affrontato con successo tutti i dilemmi decisionali!</p>';
+                if (window.__markDone) window.__markDone('ethical-dilemma'); dilemmaFeedbackArea.innerHTML = '<p class="font-bold text-green-600 text-lg">Fine: nelle scelte difficili la procedura protegge te e i pazienti.</p>';
                 nextDilemmaBtn.classList.add('hidden');
                 revealDilemmaOutcomeBtn.classList.add('hidden');
                 clearInterval(timerInterval);

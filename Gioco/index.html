@@ -529,6 +529,8 @@
             border-color: #ef4444 !important;
         }
 
+        /* La pettorina a scacchi giallo-rossa del Coordinatore Incidente Maggiore (manuale AREU p.15) */
+        .pettorina-scacchi { background: repeating-conic-gradient(#facc15 0 25%, #dc2626 0 50%) 0 0 / 28px 28px; }
         /* --- Stili specifici per "Dilemma Etico" --- */
         .dilemma-choice-option {
             padding: 0.75rem 1rem;
@@ -676,7 +678,7 @@
 						<a href="#priority-intervention" class="nav-link px-3 py-2 rounded-md text-sm font-medium inactive-nav">Priorità Intervento</a>
                         <a href="#resource-management" class="nav-link px-3 py-2 rounded-md text-sm font-medium inactive-nav">Gestione Risorse</a>
                         <a href="#radio-communication" class="nav-link px-3 py-2 rounded-md text-sm font-medium inactive-nav">Comunicazione Radio</a>
-                        <a href="#ethical-dilemma" class="nav-link px-3 py-2 rounded-md text-sm font-medium inactive-nav">Dilemma Etico</a>
+                        <a href="#ethical-dilemma" class="nav-link px-3 py-2 rounded-md text-sm font-medium inactive-nav">Scelte difficili</a>
                         <a href="#quiz" class="nav-link px-3 py-2 rounded-md text-sm font-medium inactive-nav">Quiz</a>
                     </div>
                 </div>
@@ -895,54 +897,55 @@
                     <nav class="flex -mb-px" id="fasi-tabs">
                         <button data-target="fase-preparatoria" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-red-500 text-red-600">1. Preparazione</button>
                         <button data-target="fase-allarme" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">2. Allarme</button>
-                        <button data-target="fase-risposta-immediata" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">3. Risposta Immediata</button>
-                        <button data-target="fase-risposta-differita" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">4. Risposta Differita</button>
+                        <button data-target="fase-risposta-immediata" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">3. Sul campo</button>
+                        <button data-target="fase-risposta-differita" class="fase-tab flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">4. Catena dei soccorsi</button>
                     </nav>
                 </div>
                 <div id="fasi-content">
+                    <p class="text-sm text-secondary mb-4">Ogni evento ha una <strong>risposta rapida</strong>, con le risorse locali, e una <strong>risposta differita</strong>, nelle ore successive, con gli aiuti dall'esterno; entrambe passano per le fasi di preallarme, allarme ed emergenza (manuale AREU 2026, p. 9).</p>
                     <div id="fase-preparatoria" class="fase-content-panel p-4 bg-surface rounded-lg shadow">
-                        <h4 class="text-xl font-bold mb-2">Fase Preparatoria: Giocare d'Anticipo</h4>
-                        <p class="text-secondary mb-4">L'emergenza non si attende, si prepara. In questa fase si definiscono i Piani di Soccorso, si mappano i rischi del territorio e si formano gli operatori. Le esercitazioni congiunte tra 118, Vigili del Fuoco e Protezione Civile sono fondamentali per testare protocolli e creare sinergia.</p>
+                        <h4 class="text-xl font-bold mb-2">Fase Preparatoria: il Piano di Emergenza</h4>
+                        <p class="text-secondary mb-4">L'emergenza si prepara in tempo di pace: si conosce il territorio (ospedali, case di cura, farmacie, servizi mortuari), si elencano gli eventi attesi, si crea uno scenario per ciascuno e si quantificano e catalogano le risorse.</p>
                         <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
-                            <p class="font-semibold text-lg">Pianificazione ➔ Formazione ➔ Esercitazione</p>
-                            <p class="text-sm text-secondary">Un ciclo virtuoso per essere pronti all'imprevisto.</p>
+                            <p class="font-semibold text-lg">Territorio ➔ Eventi attesi ➔ Scenari ➔ Risorse</p>
+                            <p class="text-sm text-secondary">Per non improvvisare: pianificare comportamenti e procedure.</p>
                         </div>
                     </div>
                     <div id="fase-allarme" class="fase-content-panel p-4 bg-surface rounded-lg shadow hidden">
-                        <h4 class="text-xl font-bold mb-2">Fase di Allarme: La Prima Chiamata</h4>
-                        <p class="text-secondary mb-4">Tutto inizia con le prime, spesso caotiche, chiamate al 118. L'operatore deve rapidamente dimensionare l'evento usando protocolli come il M.E.T.H.A.N.E. per raccogliere informazioni vitali e attivare il livello di allarme corretto (Livello 3 per le maxi-emergenze), mobilitando tutte le componenti del soccorso.</p>
+                        <h4 class="text-xl font-bold mb-2">Allarme: la Prima Ricognizione</h4>
+                        <p class="text-secondary mb-4">Il primo equipaggio sul posto, prima di qualsiasi altra operazione, fa una prima ricognizione a distanza di sicurezza e comunica alla SOREU quanto rilevato con l'acronimo METHANE.</p>
                         <div class="mt-4 bg-gray-100 p-4 rounded-lg border border-color">
-                            <h5 class="font-bold text-md mb-2">M.E.T.H.A.N.E. (Metodo di Valutazione Iniziale)</h5>
+                            <h5 class="font-bold text-md mb-2">M.E.T.H.A.N.E.</h5>
                             <ul class="list-disc list-inside text-secondary text-sm space-y-1">
-                                <li><strong class="text-primary">M</strong>axi-emergenza: Conferma che l'evento è una maxi-emergenza (Livello 3).</li>
-                                <li><strong class="text-primary">E</strong>satta Location: Localizzazione precisa dell'incidente per indirizzare i soccorsi.</li>
-                                <li><strong class="text-primary">T</strong>ipo di Incidente: Natura dell'evento (es. deragliamento, crollo, esplosione) per prevedere rischi e lesioni.</li>
-                                <li><strong class="text-primary">H</strong>azard (Pericoli): Valutazione dei rischi presenti o evolutivi (es. fumo, incendio, sversamenti, instabilità strutturale).</li>
-                                <li><strong class="text-primary">A</strong>ccesso: Condizioni delle vie di accesso e uscita per i mezzi di soccorso (strade bloccate, terreno impervio).</li>
-                                <li><strong class="text-primary">N</strong>umero di Coinvolti: Stima del numero di persone coinvolte e della gravità delle lesioni.</li>
-                                <li><strong class="text-primary">E</strong>mergenza già in Loco o Necessari: Presenza di soccorsi già sul posto o necessità di risorse aggiuntive.</li>
+                                <li><strong class="text-primary">M</strong>axiemergenza: la confermi?</li>
+                                <li><strong class="text-primary">E</strong>satta localizzazione dell'evento.</li>
+                                <li><strong class="text-primary">T</strong>ipo di evento.</li>
+                                <li><strong class="text-primary">H</strong>azards: pericoli presenti.</li>
+                                <li><strong class="text-primary">A</strong>ccessi per i mezzi di soccorso: quali.</li>
+                                <li><strong class="text-primary">N</strong>umero stimato dei coinvolti.</li>
+                                <li><strong class="text-primary">E</strong>nti presenti: Vigili del Fuoco e Forze dell'Ordine.</li>
                             </ul>
                         </div>
-                            <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
-                                <p class="font-semibold text-lg">Chiamata ➔ Analisi M.E.T.H.A.N.E. ➔ Attivazione Risorse</p>
-                                <p class="text-sm text-secondary">Trasformare l'informazione in azione coordinata.</p>
-                            </div>
+                        <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
+                            <p class="font-semibold text-lg">Arrivo ➔ Ricognizione a distanza ➔ METHANE alla SOREU</p>
+                            <p class="text-sm text-secondary">Si accede solo con l'autorizzazione dei Vigili del Fuoco.</p>
+                        </div>
                     </div>
                     <div id="fase-risposta-immediata" class="fase-content-panel p-4 bg-surface rounded-lg shadow hidden">
-                        <h4 class="text-xl font-bold mb-2">Fase di Risposta Immediata: Sul Campo</h4>
-                        <p class="text-secondary mb-4">I primi mezzi arrivano. L'obiettivo è mettere in sicurezza la scena, stabilire un Posto di Comando Avanzato (PCA) e iniziare il triage primario con il metodo START per classificare rapidamente i feriti. Si settorializza l'area (<span class="text-red-500 font-bold">punto di crash</span>, <span class="text-yellow-500 font-bold">triage</span>, <span class="text-green-500 font-bold">punto di raccolta</span>) per razionalizzare gli interventi.</p>
-                            <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
-                                <p class="font-semibold text-lg">Sicurezza Scena ➔ Triage START ➔ Settorializzazione</p>
-                                <p class="text-sm text-secondary">Portare ordine nel caos iniziale.</p>
-                            </div>
+                        <h4 class="text-xl font-bold mb-2">Sul Campo: Triage e Comando</h4>
+                        <p class="text-secondary mb-4">Ricevuta l'autorizzazione ad accedere dai Vigili del Fuoco, il Referente per la SOREU fa lo sweeping triage START e applica i braccialetti; con il capo squadra dei VVF e il capo pattuglia delle Forze dell'Ordine istituisce il Posto di Comando Avanzato provvisorio. Il Direttore del Triage, quando arriva, settorializza il luogo dell'evento in cantieri di lavoro.</p>
+                        <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
+                            <p class="font-semibold text-lg">Sweeping triage START ➔ PCA provvisorio ➔ Cantieri</p>
+                            <p class="text-sm text-secondary">Rispettare i ruoli e collaborare.</p>
+                        </div>
                     </div>
                     <div id="fase-risposta-differita" class="fase-content-panel p-4 bg-surface rounded-lg shadow hidden">
-                        <h4 class="text-xl font-bold mb-2">Fase di Risposta Differita: Stabilizzazione ed Evacuazione</h4>
-                        <p class="text-secondary mb-4">Si allestisce il Posto Medico Avanzato (PMA) nel <span class="text-green-500 font-bold">punto di raccolta</span>. Qui i pazienti vengono sottoposti a triage secondario, stabilizzati e trattati. La logistica diventa cruciale: la "Piccola Noria" trasporta i feriti dalla scena al PMA, mentre la "Grande Noria" li evacua dal PMA agli ospedali più idonei.</p>
-                            <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
-                                <p class="font-semibold text-lg">Allestimento PMA ➔ Trattamento ➔ Evacuazione (Noria)</p>
-                                <p class="text-sm text-secondary">La catena sanitaria organizzata per salvare più vite possibile.</p>
-                            </div>
+                        <h4 class="text-xl font-bold mb-2">La Catena dei Soccorsi</h4>
+                        <p class="text-secondary mb-4">Le vittime vanno dal luogo dell'evento all'area di raccolta dei codici giallo/rossi e al Posto Medico Avanzato, che può essere una struttura, una tenda o un'area funzionale e accoglie di norma solo gialli e rossi; i verdi vanno in un'area a parte, presidiata. La piccola noria porta i feriti dal crash al PMA, la grande noria dal PMA agli ospedali che indica la SOREU.</p>
+                        <div class="text-center p-4 border border-dashed border-color rounded-lg mt-4">
+                            <p class="font-semibold text-lg">Crash ➔ Area di raccolta / PMA ➔ Ospedale</p>
+                            <p class="text-sm text-secondary">Piccola noria e grande noria.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -991,30 +994,36 @@
 <section id="attori-ruoli" class="scroll-mt-20 py-12">
     <div class="text-center mb-12">
         <h3 class="text-3xl font-bold text-primary">Gli Attori Chiave sul Campo</h3>
-        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Ogni ruolo ha un colore e responsabilità precise. Clicca su un ruolo per i dettagli.</p>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Ogni figura di riferimento ha la sua pettorina e responsabilità precise. Clicca su una figura per i dettagli.</p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
         <button data-modal-target="modal-dss" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div class="flex items-center">
-                <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">DSS</div>
+                <div class="w-12 h-12 rounded-full bg-yellow-400 mr-4 shrink-0" title="Pettorina DSS"></div>
                 <h4 class="text-lg font-bold">Direttore Soccorsi Sanitari</h4>
+            </div>
+        </button>
+        <button data-modal-target="modal-cim" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full pettorina-scacchi mr-4 shrink-0" title="Pettorina CIM"></div>
+                <h4 class="text-lg font-bold">Coordinatore Incidente Maggiore</h4>
             </div>
         </button>
         <button data-modal-target="modal-dpma" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div class="flex items-center">
-                <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">DPMA</div>
+                <div class="w-12 h-12 rounded-full bg-white border-2 border-black mr-4 shrink-0" title="Pettorina PMA"></div>
                 <h4 class="text-lg font-bold">Direttore Posto Medico Avanzato</h4>
             </div>
         </button>
         <button data-modal-target="modal-tro" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div class="flex items-center">
-                <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">TRO</div>
-                <h4 class="text-lg font-bold">Direttore di Triage</h4>
+                <div class="w-12 h-12 rounded-full bg-red-600 mr-4 shrink-0" title="Pettorina Triage"></div>
+                <h4 class="text-lg font-bold">Direttore del Triage</h4>
             </div>
         </button>
         <button data-modal-target="modal-alo" class="role-card text-left bg-surface p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div class="flex items-center">
-                <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4 font-bold text-primary">ALO</div>
+                <div class="w-12 h-12 rounded-full bg-blue-500 mr-4 shrink-0" title="Pettorina Trasporti"></div>
                 <h4 class="text-lg font-bold">Direttore dei Trasporti</h4>
             </div>
         </button>
@@ -1026,7 +1035,7 @@
 <section id="attori-colori" class="scroll-mt-20 py-12">
     <div class="text-center mb-8">
         <h3 class="text-3xl font-bold text-primary">Attori Chiave — Abbina il Ruolo al Colore</h3>
-        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni ruolo sul giubbotto del colore corretto: il colore lo identifica sul campo.</p>
+        <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni ruolo sulla pettorina del colore corretto: il colore lo identifica sul campo.</p>
     </div>
     <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -1042,7 +1051,7 @@
             </div>
         </div>
         <div id="role-color-feedback" class="mt-6 p-4 rounded-lg bg-gray-50 text-secondary border border-color min-h-[60px]">
-            <p class="text-sm">Trascina i ruoli sui giubbotti colorati.</p>
+            <p class="text-sm">Trascina i ruoli sulle pettorine colorate.</p>
         </div>
         <div class="mt-6 flex justify-center space-x-4">
             <button id="check-role-color-game" class="bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">Verifica Abbinamenti</button>
@@ -1150,9 +1159,9 @@
     <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
         <h4 class="font-bold text-xl mb-4 text-center">Ruoli dell'Equipaggio MSB</h4>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="msb-role-drop-zone p-4 bg-white shadow-md" data-role="Referente"><span class="msb-role-title">Referente</span></div>
-            <div class="msb-role-drop-zone p-4 bg-white shadow-md" data-role="Autista"><span class="msb-role-title">Autista</span></div>
-            <div class="msb-role-drop-zone p-4 bg-white shadow-md" data-role="Terzo Soccorritore"><span class="msb-role-title">Terzo Soccorritore</span></div>
+            <div class="msb-role-drop-zone p-4 bg-white shadow-md" data-role="Referente"><span class="msb-role-title">Referente per la SOREU</span></div>
+            <div class="msb-role-drop-zone p-4 bg-white shadow-md" data-role="Autista"><span class="msb-role-title">Autista Soccorritore</span></div>
+            <div class="msb-role-drop-zone p-4 bg-white shadow-md" data-role="Soccorritore"><span class="msb-role-title">Soccorritore</span></div>
         </div>
         <div id="msb-feedback-display" class="mt-4 p-4 rounded-lg bg-gray-50 text-secondary border border-color min-h-[60px]">
             <p class="text-sm">Trascina i compiti sui ruoli corrispondenti.</p>
@@ -1171,19 +1180,19 @@
     <div class="wizard-step" id="step-compiti-referente">
 		<section id="compiti-referente" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold text-primary">I Compiti del Referente: Ordina le Azioni</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Metti in ordine di priorità i compiti del referente del primo MSB.</p>
+                <h3 class="text-3xl font-bold text-primary">I Compiti del Referente per la SOREU: Ordina le Azioni</h3>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Metti in ordine i compiti del Referente per la SOREU, il capo equipaggio del primo MSB, come nella sua action card del Kit Maxi.</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
-                        <h4 class="font-bold text-xl mb-4">Compiti del Referente (Trascina per Riordinare)</h4>
+                        <h4 class="font-bold text-xl mb-4">Compiti del Referente per la SOREU (Trascina per Riordinare)</h4>
                         <div id="referente-tasks-sortable" class="space-y-3 p-4 bg-gray-100 rounded-lg border border-color min-h-[200px]">
                             </div>
                     </div>
                     <div>
                         <h4 class="font-bold text-xl mb-4">Istruzioni</h4>
-                        <p class="text-secondary mb-4">Trascina gli elementi nella lista a sinistra per metterli nell'ordine corretto di esecuzione da parte del Referente. Al termine, clicca su "Verifica Ordine".</p>
+                        <p class="text-secondary mb-4">Trascina gli elementi nella lista a sinistra per metterli nell'ordine corretto di esecuzione da parte del Referente per la SOREU. Al termine, clicca su "Verifica Ordine".</p>
                         <div id="referente-feedback-area" class="p-4 rounded-lg bg-gray-50 text-secondary border border-color min-h-[100px]">
                             <p class="text-sm">Riorganizza i compiti.</p>
                         </div>
@@ -1389,11 +1398,11 @@
     <div class="wizard-step" id="step-ethical-dilemma">
         <section id="ethical-dilemma" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold text-primary">Dilemma Etico/Decisionale Rapido: Incidente Ferroviario</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Ogni secondo conta: prendi decisioni rapide con risorse limitate e implicazioni etiche.</p>
+                <h3 class="text-3xl font-bold text-primary">Scelte difficili: la procedura ti protegge</h3>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">In una maxiemergenza lo stress emotivo è forte: non improvvisare, rispettare i ruoli, collaborare (manuale AREU 2026, p. 12).</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
-                <button id="start-dilemma-game" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition mb-6">Inizia il Gioco dei Dilemmi</button>
+                <button id="start-dilemma-game" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition mb-6">Inizia</button>
 
                 <div id="dilemma-game-content" class="hidden">
                     <div id="dilemma-scenario-container" class="mb-6 p-4 border border-color rounded-lg bg-gray-50">
@@ -1506,51 +1515,60 @@
     <div id="modal-dss" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 invisible opacity-0">
         <div class="modal-content bg-surface rounded-lg shadow-xl w-full max-w-2xl transform scale-95">
             <div class="p-6 border-b border-color flex justify-between items-center">
-                <h3 class="text-xl font-bold">Direttore dei Soccorsi Sanitari (DSS)</h3>
+                <h3 class="text-xl font-bold">Direttore dei Soccorsi Sanitari (DSS) · pettorina gialla</h3>
                 <button class="close-modal text-2xl font-light">&times;</button>
             </div>
             <div class="p-6">
-                <p class="mb-2"><strong class="text-primary">Responsabilità:</strong> È il comandante generale della risposta sanitaria. Si interfaccia con Vigili del Fuoco e Forze dell'Ordine nel Posto di Comando Avanzato (PCA), stima la magnitudo dell'evento e coordina l'intera catena di soccorso, dalla scena al PMA e all'ospedale.</p>
-                <p><strong class="text-primary">Nello scenario:</strong> Arriva tra i primi, stabilisce il PCA, decide l'ubicazione del PMA e comunica alla Centrale Operativa 118 il bisogno di risorse aggiuntive, come elicotteri e altre ambulanze, per gestire i 400 passeggeri coinvolti.</p>
+                <p class="mb-2"><strong class="text-primary">Responsabilità:</strong> È il medico responsabile di ogni intervento sanitario nelle zone delle operazioni: il primo medico che arriva sul posto, che la SOREU può poi sostituire con un medico esperto in medicina delle catastrofi. Crea la catena dei soccorsi, dal recupero del paziente al trasferimento in ospedale, in continuo contatto con la SOREU, e si rapporta con Vigili del Fuoco e Forze dell'Ordine nel Posto di Comando Avanzato.</p>
+                <p><strong class="text-primary">Nello scenario:</strong> Arriva con il primo mezzo medicalizzato, prende il comando sanitario e si coordina nel PCA con il Direttore Tecnico dei Soccorsi dei Vigili del Fuoco, che ne è a capo.</p>
             </div>
         </div>
     </div>
-
+    <div id="modal-cim" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 invisible opacity-0">
+        <div class="modal-content bg-surface rounded-lg shadow-xl w-full max-w-2xl transform scale-95">
+            <div class="p-6 border-b border-color flex justify-between items-center">
+                <h3 class="text-xl font-bold">Coordinatore Incidente Maggiore (CIM) · pettorina a scacchi giallo-rossa</h3>
+                <button class="close-modal text-2xl font-light">&times;</button>
+            </div>
+            <div class="p-6">
+                <p class="mb-2"><strong class="text-primary">Responsabilità:</strong> Personale tecnico o sanitario della SOREU o della AAT, di solito il più esperto sul territorio in maxiemergenza. È responsabile della gestione tecnico-sanitaria dell'evento: coordina con il DSS il personale operativo e i rapporti con gli altri enti, in particolare con la Prefettura, e risolve i problemi tecnici e logistici.</p>
+                <p><strong class="text-primary">Nello scenario:</strong> Affianca il DSS, dà istruzioni a tutti i settori e procura materiale e risorse che il PMA e il crash chiedono.</p>
+            </div>
+        </div>
+    </div>
     <div id="modal-dpma" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 invisible opacity-0">
         <div class="modal-content bg-surface rounded-lg shadow-xl w-full max-w-2xl transform scale-95">
             <div class="p-6 border-b border-color flex justify-between items-center">
-                <h3 class="text-xl font-bold">Direttore del PMA (DPMA)</h3>
+                <h3 class="text-xl font-bold">Direttore del Posto Medico Avanzato · pettorina bianca</h3>
                 <button class="close-modal text-2xl font-light">&times;</button>
             </div>
             <div class="p-6">
-                <p class="mb-2"><strong class="text-primary">Responsabilità:</strong> È il medico che dirige tutte le operazioni all'interno del Posto Medico Avanzato. Supervisiona l'allestimento, il triage secondario, il trattamento e la stabilizzazione dei pazienti prima della loro evacuazione verso gli ospedali.</p>
-                <p><strong class="text-primary">Nello scenario:</strong> Coordina i team medici nelle tende del PMA, si assicura che i pazienti più gravi (codici rossi e gialli) ricevano cure intensive e comunica costantemente con il DSS per aggiornarlo sulla capacità del PMA e sui pazienti pronti al trasporto.</p>
+                <p class="mb-2"><strong class="text-primary">Responsabilità:</strong> È il medico responsabile della gestione del PMA. Si rapporta con il DSS e il CIM per materiale e risorse umane, concorda con il Direttore del Triage l'accettazione dei feriti al PMA e comunica al Direttore dei Trasporti la necessità di evacuarli verso l'ospedale. Normalmente non tratta i pazienti: lo fa un altro medico del PMA, se c'è.</p>
+                <p><strong class="text-primary">Nello scenario:</strong> Organizza il PMA, dove di norma entrano solo i codici gialli e rossi, che vengono rivalutati e stabilizzati prima dell'evacuazione.</p>
             </div>
         </div>
     </div>
-
-	<div id="modal-tro" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 invisible opacity-0">
-	<div class="modal-content bg-surface rounded-lg shadow-xl w-full max-w-2xl transform scale-95">
-		<div class="p-6 border-b border-color flex justify-between items-center">
-			<h3 class="text-xl font-bold">Direttore di Triage (TRO)</h3>
-			<button class="close-modal text-2xl font-light">&times;</button>
-		</div>
-		<div class="p-6">
-			<p class="mb-2"><strong class="text-primary">Responsabilità:</strong> Spesso un infermiere esperto, è responsabile del triage sul campo. Applica metodologie rapide come lo START per la prioritizzazione e coordina le squadre di recupero per spostarle dal <span class="text-red-500 font-bold">punto di crash</span> al <span class="text-yellow-500 font-bold">triage</span> e poi al PMA.</p>
-			<p><strong class="text-primary">Nello scenario:</strong> Si muove tra i vagoni deragliati, applicando i braccialetti colorati ai passeggeri feriti per stabilire la priorità di soccorso. Al PMA, esegue il triage secondario per una valutazione più approfondita.</p>
-		</div>
-	</div>
-</div>
-
-    <div id="modal-alo" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 invisible opacity-0">
+    <div id="modal-tro" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 invisible opacity-0">
         <div class="modal-content bg-surface rounded-lg shadow-xl w-full max-w-2xl transform scale-95">
             <div class="p-6 border-b border-color flex justify-between items-center">
-                <h3 class="text-xl font-bold">Direttore dei Trasporti (ALO)</h3>
+                <h3 class="text-xl font-bold">Direttore del Triage · pettorina rossa</h3>
                 <button class="close-modal text-2xl font-light">&times;</button>
             </div>
             <div class="p-6">
-                <p><strong class="text-primary">Responsabilità:</strong> È il regista della logistica dei trasporti. Gestisce l'area di stazionamento dei mezzi (ambulanze, elicotteri), coordina l'imbarco dei pazienti stabilizzati e assicura un flusso ordinato di arrivi e partenze (la "Grande Noria").</p>
-                <p><strong class="text-primary">Nello scenario:</strong> Organizza un'area vicino al PMA dove le ambulanze si mettono in coda, pronte a partire non appena ricevono l'ok. Comunica via radio con gli autisti e la CO 118 per dirigere ogni paziente verso l'ospedale più adatto.</p>
+                <p class="mb-2"><strong class="text-primary">Responsabilità:</strong> È un infermiere, in genere il primo che arriva sul posto. Esegue il triage START per le priorità di evacuazione dal crash, o coordina le squadre di triage; settorializza il luogo dell'evento in cantieri; supervisiona con i Vigili del Fuoco la disincarcerazione; concorda con il Direttore del PMA le priorità di accesso. Non contatta mai direttamente la SOREU.</p>
+                <p><strong class="text-primary">Nello scenario:</strong> Dà ai soccorritori che arrivano le indicazioni sull'attività da svolgere sul crash e su quali pazienti evacuare verso l'area di raccolta.</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-alo" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 invisible opacity-0">
+        <div class="modal-content bg-surface rounded-lg shadow-xl w-full max-w-2xl transform scale-95">
+            <div class="p-6 border-b border-color flex justify-between items-center">
+                <h3 class="text-xl font-bold">Direttore dei Trasporti · pettorina blu</h3>
+                <button class="close-modal text-2xl font-light">&times;</button>
+            </div>
+            <div class="p-6">
+                <p class="mb-2"><strong class="text-primary">Responsabilità:</strong> È un ruolo non sanitario, svolto da un Operatore Tecnico o da un Autista Soccorritore della SOREU o della AAT; all'arrivo del primo MSA lo assume il suo autista. Determina i check point, punti di passaggio obbligati dei mezzi in entrata e in uscita, censisce mezzi e personale, registra i mezzi e comunica alla SOREU il codice colore del paziente e il mezzo per avere la destinazione ospedaliera.</p>
+                <p><strong class="text-primary">Nello scenario:</strong> Indica ai mezzi in arrivo dove posizionarsi; gli autisti restano a bordo in ascolto radio, unico canale con lui.</p>
             </div>
         </div>
     </div>
