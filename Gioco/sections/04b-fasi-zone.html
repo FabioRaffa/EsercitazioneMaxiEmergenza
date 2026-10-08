@@ -1,31 +1,40 @@
 <section id="fasi-zone" class="scroll-mt-20 py-12">
     <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8">
 			<div class="text-center mb-8">
-				<h4 class="text-2xl font-bold text-primary">Gioco: Abbina le Definizioni alle Zone Operative</h4>
-				<p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni descrizione nella zona corretta. Le tre zone concentriche vanno dal <span class="text-red-600 font-bold">Punto di Crash</span> (massimo pericolo) al <span class="text-green-600 font-bold">Punto di Raccolta</span> (area sicura).</p>
+				<h4 class="text-2xl font-bold text-primary">Gioco: le aree della maxiemergenza</h4>
+				<p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Trascina ogni descrizione sull'area giusta. Sono le aree del manuale AREU della maxiemergenza 2026: dal luogo dell'evento, con la sua area di sicurezza, fino al PMA e ai check point.</p>
 			</div>
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-				<!-- Le tre zone operative: bersagli su cui trascinare -->
+				<!-- Le aree: bersagli su cui trascinare -->
 				<div id="zone-diagram-game" class="space-y-4">
-					<div class="role-drop-zone zone-slot zone-slot-red" data-drop-zone-for="Punto di Crash">
-						<span class="role-title">Zona rossa</span>
+					<div class="role-drop-zone zone-slot zone-slot-area" data-drop-zone-for="Luogo dell'evento (crash)">
+						<span class="role-title">Luogo dell'evento (crash)</span>
 					</div>
-					<div class="role-drop-zone zone-slot zone-slot-yellow" data-drop-zone-for="Triage">
-						<span class="role-title">Zona gialla</span>
+					<div class="role-drop-zone zone-slot zone-slot-area" data-drop-zone-for="Area di raccolta dei codici giallo/rossi">
+						<span class="role-title">Area di raccolta dei codici giallo/rossi</span>
 					</div>
-					<div class="role-drop-zone zone-slot zone-slot-green" data-drop-zone-for="Punto di Raccolta">
-						<span class="role-title">Zona verde</span>
+					<div class="role-drop-zone zone-slot zone-slot-area" data-drop-zone-for="Posto Medico Avanzato (PMA)">
+						<span class="role-title">Posto Medico Avanzato (PMA)</span>
+					</div>
+					<div class="role-drop-zone zone-slot zone-slot-area" data-drop-zone-for="Area dei codici verdi">
+						<span class="role-title">Area dei codici verdi</span>
+					</div>
+					<div class="role-drop-zone zone-slot zone-slot-area" data-drop-zone-for="Check point">
+						<span class="role-title">Check point</span>
+					</div>
+					<div class="role-drop-zone zone-slot zone-slot-area" data-drop-zone-for="Area delle salme">
+						<span class="role-title">Area delle salme</span>
 					</div>
 				</div>
 				<!-- Definizioni da trascinare -->
 				<div>
-					<h5 class="font-bold text-xl mb-4">Definizioni <span class="text-secondary font-normal text-sm">(trascina nelle zone)</span></h5>
+					<h5 class="font-bold text-xl mb-4">Definizioni <span class="text-secondary font-normal text-sm">(trascina sulle aree)</span></h5>
 					<div id="zone-definitions-draggable" class="space-y-3 min-h-[180px]"></div>
 				</div>
 			</div>
 
 			<div id="zone-game-feedback" class="mt-6 p-4 rounded-lg bg-gray-50 text-secondary border border-color min-h-[60px]">
-				<p class="text-sm">Trascina le definizioni sulle zone corrispondenti.</p>
+				<p class="text-sm">Trascina le definizioni sulle aree corrispondenti.</p>
 			</div>
 			<div class="mt-6 flex justify-center space-x-4">
 				<button id="check-zone-game" class="bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">Verifica Abbinamenti</button>

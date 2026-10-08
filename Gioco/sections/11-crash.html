@@ -1,20 +1,17 @@
 	   <section id="crash" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-primary">Crash: Simula il Flusso Mezzi</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Posiziona PMA, Triage, Area Verdi e i punti di accesso/uscita sulla mappa, ottimizzando il flusso dei mezzi.</p>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Il crash e il PMA sono già sulla mappa. Posiziona l'entrata e l'uscita del PMA, i due check point del cantiere e l'area di sosta dei mezzi.</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 grid lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-1">
                     <h4 class="font-bold text-xl mb-4">Marcatori da Posizionare</h4>
-                    <p class="text-secondary mb-4">Seleziona un marcatore dalla palette e poi clicca sulla mappa per posizionarlo. Clicca su un marcatore già posizionato sulla mappa per rimuoverlo.</p>
+                    <p class="text-secondary mb-4">Seleziona un marcatore dalla palette e poi clicca sulla mappa per posizionarlo. Per toglierlo, selezionalo di nuovo e clicca su quello già posizionato.</p>
                     <div id="marker-palette" class="grid grid-cols-2 gap-4">
-					    <button class="marker-palette-item p-4 rounded-lg shadow-md bg-indigo-200 hover:bg-indigo-300 transition" data-marker-type="PMA" data-display="PMA">PMA</button>
-                        <button class="marker-palette-item p-4 rounded-lg shadow-md bg-yellow-200 hover:bg-yellow-300 transition" data-marker-type="Triage" data-display="Triage">Triage</button>
-                        <button class="marker-palette-item p-4 rounded-lg shadow-md bg-green-200 hover:bg-green-300 transition" data-marker-type="Area Verdi" data-display="Area Verdi">Area Verdi</button>
-                        <button class="marker-palette-item p-4 rounded-lg shadow-md bg-blue-200 hover:bg-blue-300 transition" data-marker-type="Accesso Mezzi" data-display="Accesso IN">Accesso <br> <span class="text-sm">⤴️ IN</span></button>
-                        <button class="marker-palette-item p-4 rounded-lg shadow-md bg-purple-200 hover:bg-purple-300 transition" data-marker-type="Uscita Mezzi" data-display="Uscita OUT">Uscita <br> <span class="text-sm">⤵️ OUT</span></button>
-						<button class="marker-palette-item p-4 rounded-lg shadow-md bg-blue-200 hover:bg-blue-300 transition" data-marker-type="Accesso Mezzi" data-display="Accesso IN">Accesso <br> <span class="text-sm">⤴️ IN</span></button>
-                        <button class="marker-palette-item p-4 rounded-lg shadow-md bg-purple-200 hover:bg-purple-300 transition" data-marker-type="Uscita Mezzi" data-display="Uscita OUT">Uscita <br> <span class="text-sm">⤵️ OUT</span></button>
+                        <button class="marker-palette-item p-4 rounded-lg shadow-md bg-blue-200 hover:bg-blue-300 transition" data-marker-type="Entrata PMA" data-display="Entrata">Entrata del PMA</button>
+                        <button class="marker-palette-item p-4 rounded-lg shadow-md bg-purple-200 hover:bg-purple-300 transition" data-marker-type="Uscita PMA" data-display="Uscita">Uscita del PMA</button>
+                        <button class="marker-palette-item p-4 rounded-lg shadow-md bg-yellow-200 hover:bg-yellow-300 transition" data-marker-type="Check point" data-display="Check point">Check point <span class="text-sm">(2)</span></button>
+                        <button class="marker-palette-item p-4 rounded-lg shadow-md bg-gray-300 hover:bg-gray-400 transition" data-marker-type="Area di sosta" data-display="Sosta mezzi">Area di sosta dei mezzi</button>
                     </div>
                     <button id="evaluate-markers-btn" class="mt-6 w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition">Valuta Posizionamento</button>
                     <button id="reset-markers-btn" class="mt-3 w-full bg-gray-300 text-gray-800 py-3 rounded-lg font-semibold hover:bg-gray-400 transition">Reset Mappa</button>

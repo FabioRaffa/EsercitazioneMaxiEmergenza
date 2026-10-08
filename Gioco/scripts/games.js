@@ -132,15 +132,6 @@ window.initGames = function initGames() {
         // const warmZone = document.getElementById('warm-zone');
         const zoneInfoDisplay = document.getElementById('zone-info-display'); // This element is not used in the new game logic, can be removed or repurposed.
 
-        // The previous simple click interaction on nested divs is removed as it's replaced by the drag&drop game.
-        // The zoneDescriptions object is still valid as data for the new game.
-        const zoneDescriptions = {
-            'Punto di Crash': 'L\'area immediatamente interessata dall\'incidente, dove i pericoli sono maggiori (es. fumo, crolli, sostanze tossiche). L\'accesso è limitato solo al personale strettamente necessario e con dotazioni di protezione individuali.',
-            'Triage': 'Il Triage è l\'area di transizione tra il punto di crash e il punto di raccolta. Qui viene effettuato il triage primario (metodo START) e i pazienti vengono stabilizzati rapidamente prima di essere trasferiti al PMA.',
-            'Punto di Raccolta': 'Il Punto di Raccolta è l\'area sicura e più lontana dall\'evento. Qui si trovano il Posto Medico Avanzato (PMA), l\'area di raccolta mezzi, le postazioni per la stampa e le autorità. È il punto di arrivo e partenza controllato per tutte le risorse.'
-        };
-
-
         // PMA Layout Interaction
         const pmaAreas = document.querySelectorAll('.pma-area');
         const pmaInfoBox = document.getElementById('pma-info-box');
@@ -1147,70 +1138,7 @@ initializeMsbGame();
     // Avvio gioco
     initializeRoleColorGame();
 	
-	/* --- CHARTS FOR "MEZZI E STRUTTURE" SECTION --- */
-const mezziCtx = document.getElementById('mezziChart');
-if (mezziCtx) {
-    new Chart(mezziCtx, {
-        type: 'bar',
-        data: {
-            labels: ['MSB', 'MSI', 'MSA'], // Nomi dei tipi di ambulanza
-            datasets: [
-                {
-                    label: 'Autista',
-                    data: [1, 1, 1], // Sempre 1 autista
-                    backgroundColor: '#4299e1' // Blue
-                },
-                {
-                    label: 'Soccorritore',
-                    data: [2, 0, 0], // 2 per MSA/MSB, 1 per Mike (spesso)
-                    backgroundColor: '#667eea' // Indigo
-                },
-                {
-                    label: 'Infermiere',
-                    data: [0, 1, 1], // 0 per MSA, 1 per MSB, 1 per Mike
-                    backgroundColor: '#805ad5' // Purple
-                },
-                {
-                    label: 'Medico',
-                    data: [0, 0, 1], // 0 per MSA/MSB, 1 per Mike
-                    backgroundColor: '#d53f8c' // Pink
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    stacked: true,
-                    title: {
-                        display: true,
-                        text: 'Tipo di Ambulanza'
-                    }
-                },
-                y: {
-                    stacked: true,
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Numero di Personale'
-                    },
-                    ticks: {
-                        stepSize: 1 // Assicura che i tick siano numeri interi
-                    }
-                }
-            },
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Composizione Equipaggio Ambulanze'
-                }
-            }
-        }
-    });
-}
-
-/* --- CHART FOR TRIAGE SWEEPING DISTRIBUTION --- */
+	/* --- CHART FOR TRIAGE SWEEPING DISTRIBUTION --- */
 const triageCtx = document.getElementById('triageChart');
 if (triageCtx) {
     // Esposto su window: il flusso del triage (in un altro scope) lo riempie man mano.
@@ -1443,18 +1371,30 @@ if (triageCtx) {
 
 
 		/* --- JAVASCRIPT FOR "ABBINA LE DEFINIZIONI ALLE ZONE OPERATIVE" GAME --- */
-		const zoneDefinitionsData = [
+		const zoneDefinitionsData = [ // le aree del manuale AREU 2026 (p. 17, 19-20, 28, 30) e della lezione (istruzioni per il primo MSB)
 			{
-				zone: 'Punto di Crash',
-				definition: 'L\'area immediatamente interessata dall\'incidente, dove i pericoli sono maggiori (es. fumo, crolli, sostanze tossiche). L\'accesso è limitato solo al personale strettamente necessario e con dotazioni di protezione individuali.'
+				zone: 'Luogo dell\'evento (crash)',
+				definition: 'Il luogo del crash, circondato dall\'area di sicurezza da mantenere sgombra. Si entra solo dopo la ricognizione e con l\'autorizzazione dei Vigili del Fuoco, per lo sweeping triage.'
 			},
 			{
-				zone: 'Triage',
-				definition: 'L\'area di transizione tra il punto di crash e il punto di raccolta. Qui viene effettuato il triage primario (metodo START) e i pazienti vengono stabilizzati rapidamente prima di essere trasferiti al PMA.'
+				zone: 'Area di raccolta dei codici giallo/rossi',
+				definition: 'Un\'area sicura vicino al crash dove si convogliano le vittime in attesa del PMA: vi si porta il materiale dei mezzi e si iniziano le manovre salvavita. Se manca una struttura dedicata coincide con il PMA (PMA funzionale).'
 			},
 			{
-				zone: 'Punto di Raccolta',
-				definition: 'L\'area sicura e più lontana dall\'evento. Qui si trovano il Posto Medico Avanzato (PMA), l\'area di raccolta mezzi, le postazioni per la stampa e le autorità. È il punto di arrivo e partenza controllato per tutte le risorse.'
+				zone: 'Posto Medico Avanzato (PMA)',
+				definition: 'Ai margini esterni dell\'area di sicurezza, con una buona viabilità di accesso e di evacuazione e, se possibile, entrata e uscita separate. Di norma vi accedono solo i codici giallo e rosso, che vengono rivalutati e stabilizzati.'
+			},
+			{
+				zone: 'Area dei codici verdi',
+				definition: 'Un\'area sicura, a debita distanza dal luogo dell\'evento, per chi ha il codice verde. La identifica il Soccorritore del primo MSB, che la tiene sotto controllo perché nessuno rientri nell\'area dell\'incidente.'
+			},
+			{
+				zone: 'Check point',
+				definition: 'I punti di passaggio obbligatori per tutti i mezzi in entrata e in uscita dal cantiere (check in e check out). Li individua l\'Autista del primo MSB, poi li determina e li presidia il Direttore dei Trasporti.'
+			},
+			{
+				zone: 'Area delle salme',
+				definition: 'Un\'area a parte dove si raccolgono le salme, dopo il consenso dell\'Autorità Giudiziaria.'
 			}
 		];
 
@@ -1473,7 +1413,7 @@ if (triageCtx) {
 			if (!zoneDefinitionsDraggableContainer || !zoneGameFeedback) return;
 
 			zoneDefinitionsDraggableContainer.innerHTML = '';
-			zoneGameFeedback.innerHTML = '<p class="text-sm">Trascina le definizioni sulle zone corrispondenti.</p>';
+			zoneGameFeedback.innerHTML = '<p class="text-sm">Trascina le definizioni sulle aree corrispondenti.</p>';
 			placedZoneDefinitionsMap.clear(); // Resetta la mappa delle definizioni piazzate
 
 			// Resetta tutte le drop zone ai loro stati iniziali e alla loro formattazione
@@ -1489,9 +1429,8 @@ if (triageCtx) {
 				if (roleTitleSpan) {
 					roleTitleSpan.style.display = ''; // Assicura che il titolo sia visibile
 					roleTitleSpan.classList.remove('text-green-600', 'text-red-600', 'text-yellow-600', 'font-bold', 'text-sm'); // Rimuovi classi temporanee
-					// Ripristina le classi di colore originali basate su data-drop-zone-for
-					const originalZoneType = zone.dataset.dropZoneFor;
-					const originalColorClass = originalZoneType === 'Punto di Crash' ? 'text-red-600' : originalZoneType === 'Triage' ? 'text-yellow-600' : 'text-green-600';
+					// Le aree non hanno un colore: il titolo torna nel colore del testo
+					const originalColorClass = 'text-primary';
 					roleTitleSpan.classList.add(originalColorClass, 'font-bold', 'text-sm');
 				}
 			});
@@ -1589,7 +1528,7 @@ if (triageCtx) {
 					// Nascondi il titolo originale della drop zone se un elemento è stato piazzato
 					const roleTitleSpan = zone.querySelector('.role-title');
 					if (roleTitleSpan) {
-						roleTitleSpan.style.display = 'none';
+						roleTitleSpan.style.display = ''; // il nome dell'area resta visibile sopra la definizione
 					}
 
 					// Aggiungi la definizione piazzata alla mappa di tracking
@@ -1642,7 +1581,7 @@ if (triageCtx) {
 
 					const roleTitleSpan = zone.querySelector('.role-title');
 					if (roleTitleSpan) {
-						roleTitleSpan.style.display = 'none';
+						roleTitleSpan.style.display = ''; // il nome dell'area resta visibile sopra la definizione
 					}
 
 					placedZoneDefinitionsMap.set(zone.dataset.dropZoneId, {
@@ -1695,13 +1634,13 @@ if (triageCtx) {
 							placedDefinitionElement.classList.add('incorrect-match');
 							allCorrect = false;
 							const definitionText = placedDefinitionElement.textContent;
-							feedbackMessages.push(`❌ La definizione "${definitionText.substring(0, 50)}..." è sbagliata per la zona "${originalZoneType}". Doveva essere la definizione di "${correctZoneForDefinition}".`);
+							feedbackMessages.push(`❌ La definizione "${definitionText.substring(0, 50)}..." è sbagliata per l'area "${originalZoneType}". Doveva essere la definizione di "${correctZoneForDefinition}".`);
 						}
 					} else {
 						// La drop zone è vuota
 						dropZone.classList.add('incorrect-match');
 						allCorrect = false;
-						feedbackMessages.push(`❌ La zona "${originalZoneType}" è vuota.`);
+						feedbackMessages.push(`❌ L'area "${originalZoneType}" è vuota.`);
 					}
 				});
 
@@ -1731,9 +1670,9 @@ if (triageCtx) {
 		initializeZoneGame();
 
 
-     /* --- JAVASCRIPT FOR "CRASH" GAME --- */
+     /* --- JAVASCRIPT FOR "CRASH" GAME: il flusso dei mezzi (manuale AREU 2026, p. 17, 19, 29; lezione, la catena dei soccorsi) --- */
+    (function() {
     const crashGrid = document.getElementById('crash-grid');
-    const markerPalette = document.getElementById('marker-palette');
     const evaluateMarkersBtn = document.getElementById('evaluate-markers-btn');
     const resetMarkersBtn = document.getElementById('reset-markers-btn');
     const crashFeedback = document.getElementById('crash-feedback');
@@ -1741,53 +1680,45 @@ if (triageCtx) {
     const MAP_GRID_COLS = 7;
     const MAP_GRID_ROWS = 5;
     let currentSelectedMarker = null;
-    let placedMarkers = {}; // Stores { 'cellId': { type: 'Accesso Mezzi', display: 'Accesso IN' } }
+    let placedMarkers = {}; // { 'r-c': { type, display, originalClass } }
 
-    // Define all fixed zones on the map, including Incident, PMA, Area Verdi, Triage
-    const fixedZones = {
-        // Incident Zones (Red) - User cannot place here
-        '2-3': { type: 'INCIDENTE', display: 'INCIDENTE', color: ['bg-red-500', 'text-white'] },
-        '3-3': { type: 'INCIDENTE', display: 'INCIDENTE', color: ['bg-red-500', 'text-white'] },
-        '2-4': { type: 'INCIDENTE', display: 'INCIDENTE', color: ['bg-red-500', 'text-white'] },
-        '3-2': { type: 'INCIDENTE', display: 'INCIDENTE', color: ['bg-red-500', 'text-white'] },
-    };
-    // The PMA fixed position (used for evaluation of Access/Exit proximity)
-    const pmaFixedPos = { r: 1, c: 5 };
+    // Il crash e il PMA sono già sulla mappa
+    const crashCells = ['2-2', '2-3', '3-2', '3-3'];
+    const fixedZones = { '1-5': { display: 'PMA', color: ['bg-indigo-600', 'text-white'] } };
+    crashCells.forEach(id => { fixedZones[id] = { display: 'CRASH', color: ['bg-red-500', 'text-white'] }; });
+    const pmaPos = { r: 1, c: 5 };
+    const maxMarkers = { 'Entrata PMA': 1, 'Uscita PMA': 1, 'Check point': 2, 'Area di sosta': 1 };
 
-    const dist = (pos1, pos2) => Math.abs(pos1.r - pos2.r) + Math.abs(pos1.c - pos2.c);
+    const pos = id => { const [r, c] = id.split('-').map(Number); return { r, c }; };
+    const dist = (a, b) => Math.abs(a.r - b.r) + Math.abs(a.c - b.c);
+    const distCrash = p => Math.min(...crashCells.map(id => dist(p, pos(id))));
+    const sulBordo = p => p.r === 0 || p.r === MAP_GRID_ROWS - 1 || p.c === 0 || p.c === MAP_GRID_COLS - 1;
+    const posizioni = type => Object.keys(placedMarkers).filter(id => placedMarkers[id].type === type).map(pos);
+    const quanti = n => n === 1 ? 'il marcatore' : `${n} marcatori`;
 
     function generateCrashGrid() {
         if (!crashGrid) return;
         crashGrid.innerHTML = '';
         crashGrid.style.gridTemplateColumns = `repeat(${MAP_GRID_COLS}, 1fr)`;
         crashGrid.style.gridTemplateRows = `repeat(${MAP_GRID_ROWS}, 1fr)`;
-
         for (let r = 0; r < MAP_GRID_ROWS; r++) {
             for (let c = 0; c < MAP_GRID_COLS; c++) {
+                const cellId = `${r}-${c}`;
                 const cell = document.createElement('div');
                 cell.classList.add('grid-cell', 'grid-cell-overlay', 'rounded-none');
                 cell.dataset.row = r;
                 cell.dataset.col = c;
-                cell.dataset.cellId = `${r}-${c}`;
-
-                const cellId = `${r}-${c}`;
-
-               if (fixedZones[cellId]) { // Check if this is a fixed zone
-                    cell.classList.add('fixed-zone', ...fixedZones[cellId].color); // Apply fixed zone styling using spread operator
-                    cell.innerHTML = `<span>${fixedZones[cellId].display}</span>`;
-                    cell.style.cursor = 'not-allowed';
-                } else if (placedMarkers[cellId]) { // Check for user-placed markers
-                    cell.classList.add('placed');
-                    // Aggiungi la classe di colore originale del marcatore qui
-                    if (placedMarkers[cellId].originalClass) { // Verifica che esista la classe originale
-                        cell.classList.add(placedMarkers[cellId].originalClass);
+                cell.dataset.cellId = cellId;
+                if (fixedZones[cellId]) {
+                    cell.classList.add('fixed-zone', ...fixedZones[cellId].color);
+                    cell.innerHTML = `<span>${fixedZones[cellId].display}</span>`;
+                    cell.style.cursor = 'not-allowed';
+                } else {
+                    if (placedMarkers[cellId]) {
+                        cell.classList.add('placed');
+                        if (placedMarkers[cellId].originalClass) cell.classList.add(...placedMarkers[cellId].originalClass.split(' '));
+                        cell.innerHTML = `<span>${placedMarkers[cellId].display}</span>`;
                     }
-                    cell.innerHTML = `<span>${placedMarkers[cellId].display}</span>`;
-                } else {
-                    cell.innerHTML = '';
-                }
-
-                if (!fixedZones[cellId]) { // Only allow interaction on non-fixed zones
                     cell.addEventListener('click', handleMapGridCellClick);
                 }
                 crashGrid.appendChild(cell);
@@ -1795,313 +1726,155 @@ if (triageCtx) {
         }
     }
 
+    function scriviFeedback(msg, errore) {
+        if (crashFeedback) crashFeedback.innerHTML = `<p class="text-sm${errore ? ' text-red-600' : ''}">${msg}</p>`;
+    }
+
     function handleMarkerPaletteClick(e) {
+        const btn = e.currentTarget;
         document.querySelectorAll('.marker-palette-item').forEach(item => item.classList.remove('selected'));
-        e.target.classList.add('selected');
+        btn.classList.add('selected');
         currentSelectedMarker = {
-                type: e.target.dataset.markerType,
-                display: e.target.dataset.display,
-                originalClass: Array.from(e.target.classList).filter(cls => cls.startsWith('bg-') && !cls.includes('hover')).join(' ') // Cattura la classe bg-XXX
-            };
-        if (crashFeedback) {
-            crashFeedback.innerHTML = `<p class="text-sm">Selezionato: <span class="font-bold">${currentSelectedMarker.display}</span>. Clicca sulla mappa per posizionarlo.</p>`;
-        }
+            type: btn.dataset.markerType,
+            display: btn.dataset.display,
+            originalClass: Array.from(btn.classList).filter(cls => cls.startsWith('bg-') && !cls.includes('hover')).join(' ')
+        };
+        scriviFeedback(`Selezionato: <span class="font-bold">${currentSelectedMarker.display}</span>. Clicca sulla mappa per posizionarlo.`);
     }
 
     function handleMapGridCellClick(e) {
         const cell = e.target.closest('.grid-cell-overlay');
-        if (!cell || fixedZones[cell.dataset.cellId]) return; // Cannot place on fixed zones
-
+        if (!cell || fixedZones[cell.dataset.cellId]) return;
         const cellId = cell.dataset.cellId;
-
-        if (currentSelectedMarker) {
-            const markerType = currentSelectedMarker.type;
-            const markerDisplay = currentSelectedMarker.display;
-            const maxMarkersOfType = 2; // Accesso/Uscita always have limit 2
-
-            // Get all current markers of the selected type
-            let markersOfCurrentType = Object.entries(placedMarkers).filter(([key, value]) => value.type === markerType);
-            
-            // Check if the clicked cell already has a marker of the *currently selected type*
-            const isClickingOnOwnExistingMarker = placedMarkers[cellId] && placedMarkers[cellId].type === markerType;
-
-            // --- Case 1: User clicks on an existing marker (of any type) ---
-            if (placedMarkers[cellId]) {
-                if (isClickingOnOwnExistingMarker) {
-                    // User clicked on their own marker: remove it (toggle off)
-                    delete placedMarkers[cellId];
-                    if (crashFeedback) crashFeedback.innerHTML = `<p class="text-sm">Marcatore ${markerDisplay} rimosso da ${cellId}.</p>`;
-                    generateCrashGrid(); // Re-render grid to reflect removal
-                    return; // Action completed: marker removed
-                } else {
-                    // User clicked on a cell with a DIFFERENT type marker. Prevent placing on it.
-                    if (crashFeedback) crashFeedback.innerHTML = `<p class="text-sm text-red-600">Non puoi posizionare un marcatore sopra un tipo diverso (${placedMarkers[cellId].display}). Rimuovi prima quello esistente (clicca su di esso con il suo tipo selezionato).</p>`;
-                    return; // Block placement
-                }
+        if (!currentSelectedMarker) return scriviFeedback('Seleziona prima un marcatore dalla palette.', true);
+        const { type, display } = currentSelectedMarker;
+        if (placedMarkers[cellId]) {
+            if (placedMarkers[cellId].type === type) {
+                delete placedMarkers[cellId];
+                generateCrashGrid();
+                return scriviFeedback(`Marcatore ${display} rimosso.`);
             }
-
-            // --- Case 2: User clicks on an EMPTY cell (to place a new marker) ---
-            if (markersOfCurrentType.length >= maxMarkersOfType) {
-                // If already at max limit, and trying to place a NEW one in an empty cell
-                if (crashFeedback) crashFeedback.innerHTML = `<p class="text-sm text-red-600">Hai già posizionato ${maxMarkersOfType} punti di ${markerType}. Per rimuovere un marcatore, clicca su uno esistente dello stesso tipo.</p>`;
-                return; // Block placement of a new unique marker
-            }
-
-            // --- Step 3: Place the new marker (allowed if reached here) ---
-			placedMarkers[cellId] = { type: markerType, display: markerDisplay, originalClass: currentSelectedMarker.originalClass };
-            if (crashFeedback) crashFeedback.innerHTML = `<p class="text-sm">Marcatore <span class="font-bold">${markerDisplay}</span> posizionato. Posiziona altri marcatori o valuta la mappa.</p>`;
-            generateCrashGrid();
-
-        } else {
-            // No marker selected from palette
-            if (crashFeedback) crashFeedback.innerHTML = `<p class="text-sm text-red-600">Seleziona prima un marcatore dalla palette.</p>`;
+            return scriviFeedback(`Qui c'è già «${placedMarkers[cellId].display}». Per toglierlo, selezionalo nella palette e clicca su di esso.`, true);
         }
+        if (posizioni(type).length >= maxMarkers[type]) {
+            return scriviFeedback(`Hai già posizionato ${quanti(maxMarkers[type])} «${display}». Per spostar${maxMarkers[type] === 1 ? 'lo' : 'ne uno'}, clicca prima su quello già posizionato.`, true);
+        }
+        placedMarkers[cellId] = { type, display, originalClass: currentSelectedMarker.originalClass };
+        generateCrashGrid();
+        scriviFeedback(`Marcatore <span class="font-bold">${display}</span> posizionato. Posiziona gli altri o valuta la mappa.`);
     }
 
+    function evaluateSimulaFlussoMezzi() {
+        const mancanti = Object.keys(maxMarkers).filter(type => posizioni(type).length !== maxMarkers[type])
+            .map(type => `❌ Devi posizionare ${quanti(maxMarkers[type])} «${type}» (ora: ${posizioni(type).length}).`);
+        if (mancanti.length) {
+            if (crashFeedback) crashFeedback.innerHTML = mancanti.map(msg => `<p class="text-sm text-red-600">${msg}</p>`).join('');
+            return;
+        }
+        const feedback = [];
+        let score = 0;
+        const totalPointsPossible = 5;
+        const entrata = posizioni('Entrata PMA')[0];
+        const uscita = posizioni('Uscita PMA')[0];
+        const sosta = posizioni('Area di sosta')[0];
 
- function evaluateSimulaFlussoMezzi() {
-        let feedback = [];
-        let score = 0;
-        let totalPointsPossible = 0; // Punteggio massimo possibile per questa valutazione
+        // Regola 1: entrata e uscita del PMA separate, a ridosso del PMA (manuale p. 19)
+        if (dist(entrata, pmaPos) === 1 && dist(uscita, pmaPos) === 1) {
+            score += 1;
+            feedback.push('✔️ Entrata e uscita sono a ridosso del PMA e separate fra loro, come chiede il manuale (p. 19).');
+        } else {
+            feedback.push('❌ Entrata e uscita vanno a ridosso del PMA, separate fra loro (manuale AREU 2026, p. 19).');
+        }
+        // Regola 2: si entra dal lato del crash (piccola noria) e si esce verso gli ospedali (grande noria), p. 29
+        if (distCrash(entrata) < distCrash(uscita)) {
+            score += 1;
+            feedback.push("✔️ L'entrata guarda il crash, da cui i pazienti arrivano con la piccola noria; l'uscita porta alla grande noria verso gli ospedali.");
+        } else {
+            feedback.push("❌ L'entrata va dal lato del crash (piccola noria, dal luogo dell'evento al PMA), l'uscita dall'altro (grande noria, dal PMA agli ospedali; manuale p. 29).");
+        }
+        // Regole 3-4: i check point sul perimetro del cantiere (manuale p. 17; lezione, la catena dei soccorsi)
+        posizioni('Check point').forEach((p, i) => {
+            if (sulBordo(p)) {
+                score += 1;
+                feedback.push(`✔️ Il check point ${i + 1} è sul perimetro del cantiere: ogni mezzo che entra o esce ci passa.`);
+            } else {
+                feedback.push(`❌ Il check point ${i + 1} è dentro il cantiere: i check point sono i punti di passaggio obbligatori per i mezzi in entrata e in uscita, sul suo perimetro (manuale AREU 2026, p. 17).`);
+            }
+        });
+        // Regola 5: l'area di sosta dei mezzi, defilata dal crash e dal PMA (manuale p. 29)
+        if (distCrash(sosta) >= 3 && dist(sosta, pmaPos) >= 2) {
+            score += 1;
+            feedback.push("✔️ L'area di sosta è defilata, a distanza dal crash e dal PMA: gli autisti restano a bordo, in ascolto radio con il Direttore dei Trasporti.");
+        } else {
+            feedback.push("❌ L'area di sosta dei mezzi è di solito defilata, a una certa distanza sia dal crash sia dal PMA; gli autisti restano a bordo in ascolto radio (manuale AREU 2026, p. 29).");
+        }
 
-        const getMarkerPos = (type) => {
-            for (const key in placedMarkers) {
-                if (placedMarkers[key].type === type) {
-                    const [r, c] = key.split('-').map(Number);
-                    return { r, c };
-                }
-            }
-            return null;
-        };
-
-        const dist = (pos1, pos2) => Math.abs(pos1.r - pos2.r) + Math.abs(pos1.c - pos2.c);
-
-        const incidentPos = { r: 2, c: 3 }; // Posizione centrale dell'incidente, da riferimento fixedZones
-
-        // Definizione delle quantità attese per ogni tipo di marcatore
-        const expectedCounts = {
-            'Accesso Mezzi': 2,
-            'Uscita Mezzi': 2,
-            'PMA': 1,
-            'Triage': 1,
-            'Area Verdi': 1
-        };
-
-        // Verifica che tutti i marcatori necessari siano stati posizionati
-        let allRequiredMarkersPlaced = true;
-        for (const type in expectedCounts) {
-            const actualCount = Object.values(placedMarkers).filter(m => m.type === type).length;
-            if (actualCount !== expectedCounts[type]) {
-                feedback.push(`❌ Devi posizionare esattamente ${expectedCounts[type]} marcatore/i di "${type}". Attualmente hai ${actualCount}.`);
-                allRequiredMarkersPlaced = false;
-            }
-        }
-
-        if (!allRequiredMarkersPlaced) {
-            if (crashFeedback) crashFeedback.innerHTML = feedback.map(msg => `<p class="text-sm text-red-600">${msg}</p>`).join('');
-            return; // Non procedere con la valutazione se i conteggi non sono corretti
-        }
-
-        // Estrai le posizioni dei marcatori che sono stati posizionati
-        const triagePos = getMarkerPos('Triage');
-        const pmaPos = getMarkerPos('PMA');
-        const areaVerdiPos = getMarkerPos('Area Verdi');
-        const accessoMarkers = Object.entries(placedMarkers).filter(([key, value]) => value.type === 'Accesso Mezzi').map(([key, val]) => {
-            const [r, c] = key.split('-').map(Number);
-            return { r, c };
-        });
-        const uscitaMarkers = Object.entries(placedMarkers).filter(([key, value]) => value.type === 'Uscita Mezzi').map(([key, val]) => {
-            const [r, c] = key.split('-').map(Number);
-            return { r, c };
-        });
-
-        // Regola 1: Triage vicino all'incidente
-        totalPointsPossible += 1;
-        if (triagePos && dist(triagePos, incidentPos) <= 2) { // Distanza Manhattan <= 2
-            score += 1;
-            feedback.push(`✔️ Triage (Zona Calda) posizionato correttamente vicino all'incidente.`);
-        } else {
-            feedback.push(`❌ Il Triage (Zona Calda) dovrebbe essere più vicino all'incidente per la valutazione rapida.`);
-        }
-
-        // Regola 2: PMA vicino al Triage e in un'area sicura (lontana dall'incidente)
-        totalPointsPossible += 2; // Assegna più punti per importanza strategica
-        if (pmaPos && triagePos && dist(pmaPos, triagePos) <= 2 && dist(pmaPos, incidentPos) >= 3) {
-            score += 2;
-            feedback.push(`✔️ PMA (Posto Medico Avanzato) posizionato correttamente vicino al Triage e in zona sicura.`);
-        } else {
-            feedback.push(`❌ PMA (Posto Medico Avanzato) dovrebbe essere più vicino al Triage e in una zona sicura, lontana dall'incidente.`);
-        }
-
-        // Regola 3: Area Verdi vicino al PMA
-        totalPointsPossible += 1;
-        if (areaVerdiPos && pmaPos && dist(areaVerdiPos, pmaPos) <= 2) {
-            score += 1;
-            feedback.push(`✔️ Area Verdi (Zona Fredda) posizionata correttamente vicino al PMA.`);
-        } else {
-            feedback.push(`❌ L'Area Verdi (Zona Fredda) dovrebbe essere posizionata vicino al PMA.`);
-        }
-
-        // Regola 4: Accessi vicini al PMA
-        totalPointsPossible += 2;
-        let accessProximityScore = 0;
-        if (pmaPos) { // Valuta solo se PMA è posizionato
-            accessoMarkers.forEach(pos => {
-                if (dist(pos, pmaPos) <= 3) { // Entro 3 celle dal PMA
-                    accessProximityScore++;
-                }
-            });
-        }
-        score += Math.min(accessProximityScore, 2);
-        if (accessProximityScore === 2) {
-            feedback.push(`✔️ Entrambi i punti di Accesso sono ben posizionati rispetto al PMA.`);
-        } else if (accessProximityScore === 1) {
-            feedback.push(`⚠️ Un punto di Accesso è ben posizionato, l'altro potrebbe essere ottimizzato.`);
-        } else {
-            feedback.push(`❌ I punti di Accesso dovrebbero essere posizionati più vicino al PMA.`);
-        }
-
-        // Regola 5: Uscite vicine al PMA (ma distinte dagli accessi)
-        totalPointsPossible += 2;
-        let uscitaProximityScore = 0;
-        if (pmaPos) { // Valuta solo se PMA è posizionato
-            uscitaMarkers.forEach(pos => {
-                if (dist(pos, pmaPos) <= 3) { // Entro 3 celle dal PMA
-                    uscitaProximityScore++;
-                }
-            });
-        }
-        score += Math.min(uscitaProximityScore, 2);
-        if (uscitaProximityScore === 2) {
-            feedback.push(`✔️ Entrambi i punti di Uscita sono ben posizionati rispetto al PMA.`);
-        } else if (uscitaProximityScore === 1) {
-            feedback.push(`⚠️ Un punto di Uscita è ben posizionato, l'altro potrebbe essere ottimizzato.`);
-        } else {
-            feedback.push(`❌ I punti di Uscita dovrebbero essere posizionati più vicino al PMA.`);
-        }
-
-        // Regola 6: Flusso chiaro (Accessi e Uscite non adiacenti tra loro)
-        totalPointsPossible += 1;
-        let mixedAdjacent = false;
-        for (const aPos of accessoMarkers) {
-            for (const uPos of uscitaMarkers) {
-                if (dist(aPos, uPos) === 1) { // Se la distanza è 1, sono adiacenti
-                    mixedAdjacent = true;
-                    break;
-                }
-            }
-            if (mixedAdjacent) break;
-        }
-        if (!mixedAdjacent) {
-            score += 1;
-            feedback.push(`✔️ Punti di Accesso e Uscita sono ben separati, minimizzando l'incrocio di flussi.`);
-        } else {
-            feedback.push(`⚠️ Alcuni punti di Accesso e Uscita sono troppo vicini, il che potrebbe causare congestione nel flusso.`);
-        }
-
-        let overallFeedback = '';
-        if (score === totalPointsPossible) {
-            overallFeedback = `<p class="font-bold text-green-600 text-lg">Eccellente! Il tuo piano di flusso mezzi è ottimale! Punteggio: ${score}/${totalPointsPossible}</p>`;
-        } else if (score >= totalPointsPossible * 0.7) {
-            overallFeedback = `<p class="font-bold text-orange-600 text-lg">Buon lavoro! Il tuo piano è funzionale, ma ci sono aree di miglioramento. Punteggio: ${score}/${totalPointsPossible}</p>`;
-        } else {
-            overallFeedback = `<p class="font-bold text-red-600 text-lg">Rivedi il tuo piano. Ci sono alcune aree critiche da migliorare. Punteggio: ${score}/${totalPointsPossible}</p>`;
-        }
-
-        if (crashFeedback) {
-            if (score >= totalPointsPossible * 0.7 && window.__markDone) window.__markDone('crash'); crashFeedback.innerHTML = overallFeedback + feedback.map(msg => `<p class="text-sm">${msg}</p>`).join('');
-        }
-    }
+        const esito = score === totalPointsPossible ? ['text-green-600', 'Eccellente! Il flusso dei mezzi segue il manuale.']
+            : score >= totalPointsPossible * 0.7 ? ['text-orange-600', 'Buon lavoro, ma qualcosa si può migliorare.']
+            : ['text-red-600', 'Rivedi la mappa: alcune scelte non seguono il manuale.'];
+        if (score >= totalPointsPossible * 0.7 && window.__markDone) window.__markDone('crash');
+        if (crashFeedback) crashFeedback.innerHTML = `<p class="font-bold ${esito[0]} text-lg">${esito[1]} Punteggio: ${score}/${totalPointsPossible}</p>` + feedback.map(msg => `<p class="text-sm">${msg}</p>`).join('');
+    }
 
     function resetCrashGame() {
-        placedMarkers = {}; // Reset user-placed markers
+        placedMarkers = {};
         currentSelectedMarker = null;
-        generateCrashGrid(); // Re-generate grid to show fixed zones
+        generateCrashGrid();
         document.querySelectorAll('.marker-palette-item').forEach(item => item.classList.remove('selected'));
-        // Restore initial empty feedback
-        if (crashFeedback) {
-            crashFeedback.innerHTML = ``; // Cleared content for hints
-        }
+        if (crashFeedback) crashFeedback.innerHTML = '';
     }
 
-    // Event Listeners for Crash Game
-    document.querySelectorAll('.marker-palette-item').forEach(item => {
-        item.addEventListener('click', handleMarkerPaletteClick);
-    });
-
-    if (evaluateMarkersBtn) {
-        evaluateMarkersBtn.addEventListener('click', evaluateSimulaFlussoMezzi);
-    }
-    if (resetMarkersBtn) {
-        resetMarkersBtn.addEventListener('click', resetCrashGame);
-    }
-
+    document.querySelectorAll('.marker-palette-item').forEach(item => item.addEventListener('click', handleMarkerPaletteClick));
+    if (evaluateMarkersBtn) evaluateMarkersBtn.addEventListener('click', evaluateSimulaFlussoMezzi);
+    if (resetMarkersBtn) resetMarkersBtn.addEventListener('click', resetCrashGame);
     generateCrashGrid();
+    })();
 
-        /* --- JAVASCRIPT FOR "PROGETTA IL TUO PIANO SUL CAMPO" --- */
+        /* --- JAVASCRIPT FOR "PROGETTA IL TUO PIANO SUL CAMPO": le aree delle vittime (manuale AREU 2026, p. 19-20, 28; lezione, istruzioni per il primo MSB) --- */
+        (function() {
         const planIncidentGrid = document.getElementById('plan-incident-grid');
-        const planZonePalette = document.getElementById('plan-zone-palette');
         const evaluatePlanBtn = document.getElementById('evaluate-plan-btn');
         const resetPlanBtn = document.getElementById('reset-plan-btn');
         const planFeedbackArea = document.getElementById('plan-feedback-area');
+        const planHints = planFeedbackArea ? planFeedbackArea.innerHTML : '';
 
         const PLAN_GRID_SIZE = 5;
         let currentSelectedPlanZone = null;
         let placedPlanZones = {};
 
+        // Il luogo del crash con l'area di sicurezza intorno, da mantenere sgombra
         const planFixedZones = {
-            '2-2': { type: 'Sito Incidente', display: '🚆', color: 'bg-red-700 text-white' },
-            '2-1': { type: 'Punto di Crash', display: '🔥', color: 'bg-orange-700 text-white' },
-            '1-2': { type: 'Punto di Crash', display: '🔥', color: 'bg-orange-700 text-white' },
-            '3-2': { type: 'Punto di Crash', display: '🔥', color: 'bg-orange-700 text-white' },
-            '2-3': { type: 'Punto di Crash', display: '🔥', color: 'bg-orange-700 text-white' }
+            '2-2': { display: '🚆', color: 'bg-red-700 text-white' },
+            '2-1': { display: '🔥', color: 'bg-orange-700 text-white' },
+            '1-2': { display: '🔥', color: 'bg-orange-700 text-white' },
+            '3-2': { display: '🔥', color: 'bg-orange-700 text-white' },
+            '2-3': { display: '🔥', color: 'bg-orange-700 text-white' }
         };
-
-        const planZoneDisplays = {
-            'Triage': 'Triage',
-            'PMA': 'PMA',
-            'Accesso Mezzi': 'Accesso',
-            'Uscita Mezzi': 'Uscita',
-            'PCA': 'PCA',
-            'Area Verdi': 'Verdi',
-            'Sito Incidente': '🚆',
-            'Punto di Crash': '🔥'
-        };
+        const planZoneDisplays = { 'Area di raccolta': 'Raccolta', 'PMA': 'PMA', 'Area verdi': 'Verdi' };
+        const crashPos = { r: 2, c: 2 };
+        const dist = (a, b) => Math.abs(a.r - b.r) + Math.abs(a.c - b.c);
 
         const generatePlanGrid = () => {
-            if (!planIncidentGrid) return; 
-
+            if (!planIncidentGrid) return;
             planIncidentGrid.innerHTML = '';
             planIncidentGrid.style.gridTemplateColumns = `repeat(${PLAN_GRID_SIZE}, 1fr)`;
             planIncidentGrid.style.gridTemplateRows = `repeat(${PLAN_GRID_SIZE}, 1fr)`;
-            
-            planIncidentGrid.style.backgroundImage = 'none';
-            planIncidentGrid.style.opacity = '1'; 
-
             for (let r = 0; r < PLAN_GRID_SIZE; r++) {
                 for (let c = 0; c < PLAN_GRID_SIZE; c++) {
+                    const cellId = `${r}-${c}`;
                     const cell = document.createElement('div');
                     cell.classList.add('grid-cell', 'rounded-md', 'flex-grow');
                     cell.dataset.row = r;
                     cell.dataset.col = c;
-                    cell.style.zIndex = '10'; 
-
-                    const cellId = `${r}-${c}`;
-                    if (planFixedZones[cellId]) {
-                        cell.classList.add(...planFixedZones[cellId].color.split(' '));
-                        cell.innerHTML = `<span class="font-bold text-white">${planFixedZones[cellId].display}</span>`;
-                        cell.dataset.zoneType = planFixedZones[cellId].type;
-                        cell.style.backgroundColor = ''; 
-                    } else if (placedPlanZones[cellId]) {
-                        cell.classList.add(...placedPlanZones[cellId].color.split(' '));
-                        cell.innerHTML = `<span class="font-bold text-white">${planZoneDisplays[placedPlanZones[cellId].type]}</span>`;
-                        cell.dataset.zoneType = placedPlanZones[cellId].type;
-                        cell.style.backgroundColor = ''; 
+                    cell.style.zIndex = '10';
+                    const zona = planFixedZones[cellId] || placedPlanZones[cellId];
+                    if (zona) {
+                        cell.classList.add(...zona.color.split(' '));
+                        cell.innerHTML = `<span class="font-bold text-white">${zona.display || planZoneDisplays[zona.type]}</span>`;
                     } else {
-                        cell.style.backgroundColor = 'white'; 
-                        cell.classList.add('hover:bg-gray-300'); 
+                        cell.style.backgroundColor = 'white';
+                        cell.classList.add('hover:bg-gray-300');
                     }
-
                     cell.addEventListener('click', handlePlanGridCellClick);
                     planIncidentGrid.appendChild(cell);
                 }
@@ -2109,68 +1882,37 @@ if (triageCtx) {
         };
 
         const handlePlanZoneItemClick = (e) => {
+            const btn = e.currentTarget;
             document.querySelectorAll('.plan-zone-item').forEach(item => item.classList.remove('selected'));
-            e.target.classList.add('selected');
-            currentSelectedPlanZone = {
-                type: e.target.dataset.zoneType,
-                color: e.target.dataset.color
-            };
-            if (planFeedbackArea) { 
-                planFeedbackArea.innerHTML = `<p class="text-sm">Selezionato: <span class="font-bold">${currentSelectedPlanZone.type}</span>. Clicca su una cella della griglia per posizionarlo.</p>`;
-            }
+            btn.classList.add('selected');
+            currentSelectedPlanZone = { type: btn.dataset.zoneType, color: btn.dataset.color + ' text-white', label: btn.textContent };
+            if (planFeedbackArea) planFeedbackArea.innerHTML = `<p class="text-sm">Selezionato: <span class="font-bold">${currentSelectedPlanZone.label}</span>. Clicca su una cella della griglia per posizionarlo.</p>`;
         };
 
         const handlePlanGridCellClick = (e) => {
             const cell = e.target.closest('.grid-cell');
             if (!cell) return;
-
             const cellId = `${cell.dataset.row}-${cell.dataset.col}`;
             if (planFixedZones[cellId]) {
-                if (planFeedbackArea) { 
-                    planFeedbackArea.innerHTML = `<p class="text-sm text-red-600">Non puoi posizionare qui. Questa è l'area dell'incidente o <span class="text-orange-700 font-bold">punto di crash</span>.</p>`;
-                }
+                if (planFeedbackArea) planFeedbackArea.innerHTML = `<p class="text-sm text-red-600">Non puoi posizionare qui: è il luogo del crash, con l'area di sicurezza da mantenere sgombra.</p>`;
                 return;
             }
-
-            if (currentSelectedPlanZone) {
-                for (const key in placedPlanZones) {
-                    if (placedPlanZones[key].type === currentSelectedPlanZone.type) {
-                        delete placedPlanZones[key];
-                    }
-                }
-                placedPlanZones[cellId] = currentSelectedPlanZone;
-                generatePlanGrid();
-                currentSelectedPlanZone = null;
-                document.querySelectorAll('.plan-zone-item').forEach(item => item.classList.remove('selected'));
-                if (planFeedbackArea) { 
-                    planFeedbackArea.innerHTML = `<p class="text-sm">Area <span class="font-bold">${placedPlanZones[cellId].type}</span> posizionata. Seleziona un'altra area o valuta il tuo piano.</p>`;
-                }
-            } else {
-                if (planFeedbackArea) { 
-                    planFeedbackArea.innerHTML = `<p class="text-sm text-red-600">Seleziona prima un'area dalla palette.</p>`;
-                }
+            if (!currentSelectedPlanZone) {
+                if (planFeedbackArea) planFeedbackArea.innerHTML = `<p class="text-sm text-red-600">Seleziona prima un'area dalla palette.</p>`;
+                return;
             }
+            for (const key in placedPlanZones) {
+                if (placedPlanZones[key].type === currentSelectedPlanZone.type) delete placedPlanZones[key];
+            }
+            placedPlanZones[cellId] = currentSelectedPlanZone;
+            const label = currentSelectedPlanZone.label;
+            currentSelectedPlanZone = null;
+            generatePlanGrid();
+            document.querySelectorAll('.plan-zone-item').forEach(item => item.classList.remove('selected'));
+            if (planFeedbackArea) planFeedbackArea.innerHTML = `<p class="text-sm">Area <span class="font-bold">${label}</span> posizionata. Seleziona un'altra area o valuta il tuo piano.</p>`;
         };
 
         const evaluatePlanFn = () => {
-            let feedback = [];
-            let score = 0;
-            const requiredZones = ['Triage', 'PMA', 'Accesso Mezzi', 'Uscita Mezzi', 'PCA', 'Area Verdi'];
-            const placedZoneTypes = new Set(Object.values(placedPlanZones).map(z => z.type));
-
-            requiredZones.forEach(zoneType => {
-                if (!placedZoneTypes.has(zoneType)) {
-                    feedback.push(`Manca l'area: <span class="font-bold">${zoneType}</span>.`);
-                }
-            });
-
-            if (feedback.length > 0) {
-                if (planFeedbackArea) { 
-                    planFeedbackArea.innerHTML = `<p class="font-bold text-red-600">Completa il tuo piano!</p>` + feedback.map(msg => `<p class="text-sm text-red-600">${msg}</p>`).join('');
-                }
-                return;
-            }
-
             const getZonePos = (type) => {
                 for (const key in placedPlanZones) {
                     if (placedPlanZones[key].type === type) {
@@ -2180,66 +1922,54 @@ if (triageCtx) {
                 }
                 return null;
             };
+            const mancanti = Object.keys(planZoneDisplays).filter(type => !getZonePos(type));
+            if (mancanti.length) {
+                if (planFeedbackArea) planFeedbackArea.innerHTML = `<p class="font-bold text-red-600">Completa il tuo piano!</p>` + mancanti.map(type => `<p class="text-sm text-red-600">Manca l'area: <span class="font-bold">${type}</span>.</p>`).join('');
+                return;
+            }
+            const feedback = [];
+            let score = 0;
+            const actualMaxScore = 5;
+            const raccolta = getZonePos('Area di raccolta');
+            const pma = getZonePos('PMA');
+            const verdi = getZonePos('Area verdi');
 
-            const dist = (pos1, pos2) => Math.abs(pos1.r - pos2.r) + Math.abs(pos1.c - pos2.c);
-
-            const incidentPos = { r: 2, c: 2 }; 
-
-            const triagePos = getZonePos('Triage');
-            const pmaPos = getZonePos('PMA');
-            const accessoMezziPos = getZonePos('Accesso Mezzi');
-            const uscitaMezziPos = getZonePos('Uscita Mezzi');
-            const pcaPos = getZonePos('PCA');
-            const areaVerdiPos = getZonePos('Area Verdi');
-
-            if (triagePos && dist(triagePos, incidentPos) <= 2) {
+            if (dist(raccolta, crashPos) <= 2) {
                 score += 1;
-                feedback.push(`✔️ Triage ben posizionato vicino all'incidente.`);
+                feedback.push("✔️ L'area di raccolta dei codici giallo/rossi è un'area sicura vicino al crash (manuale AREU 2026, p. 20).");
             } else {
-                feedback.push(`❌ Triage dovrebbe essere più vicino all'area del <span class="text-orange-700 font-bold">Punto di Crash</span>.`);
+                feedback.push("❌ L'area di raccolta va vicino al crash: lì si convogliano le vittime, si porta il materiale dei mezzi e si iniziano le manovre salvavita (manuale AREU 2026, p. 20).");
             }
-
-            if (pmaPos && triagePos && dist(pmaPos, triagePos) <= 2) {
+            if (dist(pma, crashPos) >= 3) {
                 score += 1;
-                feedback.push(`✔️ PMA ben posizionato vicino al Triage.`);
+                feedback.push("✔️ Il PMA è ai margini esterni dell'area di sicurezza (p. 19).");
             } else {
-                feedback.push(`❌ PMA dovrebbe essere più vicino al Triage per un flusso efficiente.`);
+                feedback.push("❌ Il PMA è troppo vicino al crash: va ai margini esterni dell'area di sicurezza, con una buona viabilità di accesso e di evacuazione (p. 19).");
             }
-
-            if (accessoMezziPos && uscitaMezziPos && dist(accessoMezziPos, uscitaMezziPos) > 1) {
-                score += 2;
-                feedback.push(`✔️ Vie di accesso e uscita dei mezzi distinte.`);
-            } else {
-                feedback.push(`❌ Le vie di accesso e uscita dei mezzi dovrebbero essere distinte.`);
-            }
-
-            if (pcaPos && (dist(pcaPos, triagePos) <= 3 || dist(pcaPos, accessoMezziPos) <= 3)) {
+            if (dist(pma, raccolta) <= 2) {
                 score += 1;
-                feedback.push(`✔️ PCA ben posizionato in un'area sicura e accessibile.`);
+                feedback.push("✔️ PMA e area di raccolta sono vicini: le distanze fra le due aree devono essere minime, per comunicare a voce e spostare le vittime a piedi (p. 20).");
             } else {
-                feedback.push(`❌ PCA dovrebbe essere in un'area sicura e facilmente accessibile per il coordinamento.`);
+                feedback.push("❌ PMA e area di raccolta sono lontani: il manuale chiede distanze minime fra le due aree (p. 20).");
             }
-
-            if (areaVerdiPos && dist(areaVerdiPos, pmaPos) <= 3) {
+            if (dist(verdi, crashPos) >= 3) {
                 score += 1;
-                feedback.push(`✔️ Area Verdi posizionata in modo logico rispetto al PMA.`);
+                feedback.push("✔️ L'area dei codici verdi è a debita distanza dal luogo dell'evento: il Soccorritore la tiene sotto controllo perché nessuno rientri nell'area dell'incidente.");
             } else {
-                feedback.push(`❌ L'Area Verdi può essere più lontana dal Triage ma comunque accessibile al PMA.`);
+                feedback.push("❌ L'area dei codici verdi va a debita distanza dal luogo dell'evento (lezione AREU 2026, istruzioni per il primo MSB).");
+            }
+            if (dist(verdi, pma) >= 2) {
+                score += 1;
+                feedback.push("✔️ I verdi hanno la loro area, distinta dal PMA, dove di norma accedono solo i gialli e i rossi (p. 19, 28).");
+            } else {
+                feedback.push("❌ L'area dei verdi è attaccata al PMA: al PMA accedono di norma solo i gialli e i rossi, i verdi vanno in un'area definita e presidiata (p. 19, 28).");
             }
 
-            let overallFeedback = '';
-            const actualMaxScore = 6; 
-            if (score === actualMaxScore) {
-                overallFeedback = `<p class="font-bold text-green-600 text-lg">Eccellente! Il tuo piano è molto ben ottimizzato! Punteggio: ${score}/${actualMaxScore}</p>`;
-            } else if (score >= actualMaxScore / 2) {
-                overallFeedback = `<p class="font-bold text-orange-600 text-lg">Buon lavoro! Il tuo piano è funzionale, ma ci sono aree di miglioramento. Punteggio: ${score}/${actualMaxScore}</p>`;
-            } else {
-                overallFeedback = `<p class="font-bold text-red-600 text-lg">Rivedi il tuo piano. Ci sono alcune aree critiche da migliorare. Punteggio: ${score}/${actualMaxScore}</p>`;
-            }
-
-            if (planFeedbackArea) { 
-                if (score >= actualMaxScore / 2 && window.__markDone) window.__markDone('progetta-piano'); planFeedbackArea.innerHTML = overallFeedback + feedback.map(msg => `<p class="text-sm">${msg}</p>`).join('');
-            }
+            const esito = score === actualMaxScore ? ['text-green-600', 'Eccellente! Il tuo piano segue il manuale.']
+                : score >= actualMaxScore * 0.7 ? ['text-orange-600', 'Buon lavoro, ma qualcosa si può migliorare.']
+                : ['text-red-600', 'Rivedi il tuo piano: alcune aree non sono dove le vuole il manuale.'];
+            if (score >= actualMaxScore * 0.7 && window.__markDone) window.__markDone('progetta-piano');
+            if (planFeedbackArea) planFeedbackArea.innerHTML = `<p class="font-bold ${esito[0]} text-lg">${esito[1]} Punteggio: ${score}/${actualMaxScore}</p>` + feedback.map(msg => `<p class="text-sm">${msg}</p>`).join('');
         };
 
         const resetPlanFn = () => {
@@ -2247,32 +1977,14 @@ if (triageCtx) {
             currentSelectedPlanZone = null;
             generatePlanGrid();
             document.querySelectorAll('.plan-zone-item').forEach(item => item.classList.remove('selected'));
-            if (planFeedbackArea) { 
-                planFeedbackArea.innerHTML = `
-                    <h5 class="font-semibold text-primary mb-2">Consigli per il posizionamento:</h5>
-                    <ul class="list-disc list-inside text-sm space-y-1">
-                        <li>Il **Triage** dovrebbe essere vicino al <span class="text-orange-700 font-bold">Punto di Crash</span> per una valutazione rapida.</li>
-                        <li>Il **PMA** (Posto Medico Avanzato) va posizionato nel <span class="text-green-500 font-bold">Punto di Raccolta</span>, vicino al Triage ma in un'area sicura.</li>
-                        <li>Le **Vie di Accesso e Uscita Mezzi** devono essere distinte per evitare ingorghi e facilitare il flusso (la "Noria").</li>
-                        <li>Il **PCA** (Posto di Comando Avanzato) dovrebbe essere in un punto strategico, sicuro e facilmente raggiungibile da tutte le aree operative.</li>
-                        <li>L'**Area Verdi** (per i feriti lievi) può essere leggermente più defilata ma sempre accessibile al PMA.</li>
-                        <li>L'**Area Deceduti** (nella simulazione seguente) deve essere appartata e lontana dal flusso principale dei pazienti vivi.</li>
-                    </ul>
-                `;
-            }
+            if (planFeedbackArea) planFeedbackArea.innerHTML = planHints;
         };
 
-        document.querySelectorAll('.plan-zone-item').forEach(item => {
-            item.addEventListener('click', handlePlanZoneItemClick);
-        });
-        if (evaluatePlanBtn) { 
-            evaluatePlanBtn.addEventListener('click', evaluatePlanFn);
-        }
-        if (resetPlanBtn) { 
-            resetPlanBtn.addEventListener('click', resetPlanFn);
-        }
-
+        document.querySelectorAll('.plan-zone-item').forEach(item => item.addEventListener('click', handlePlanZoneItemClick));
+        if (evaluatePlanBtn) evaluatePlanBtn.addEventListener('click', evaluatePlanFn);
+        if (resetPlanBtn) resetPlanBtn.addEventListener('click', resetPlanFn);
         generatePlanGrid();
+        })();
 
 
         function setStaticImage(imgElementId, src) {
@@ -2882,27 +2594,33 @@ if (triageCtx) {
 
     /* --- JAVASCRIPT FOR "GESTIONE DELLE RISORSE" GAME --- */
     (function() {
-        // Updated resource data for balance and realism
+        // Chi lavora in quale area (manuale AREU 2026, p. 17, 19, 25, 28-29, glossario; lezione, responsabili presenti sul posto)
         const resourcesData = [
-            { id: 'res-1', type: 'Ambulanza Base', display: 'Ambulanza Base', count: 4 }, // Updated count
-            { id: 'res-2', type: 'Ambulanza Avanzata', display: 'Ambulanza Avanzata', count: 2 },
-            { id: 'res-3', type: 'Vigili del Fuoco', display: 'Vigili del Fuoco', count: 2 }, 
-            { id: 'res-4', type: 'Squadra Medica', display: 'Squadra Medica', count: 2 },
-            { id: 'res-5', type: 'Pullman Verdi', display: 'Pullman Verdi', count: 1 }, 
-            { id: 'res-6', type: 'Personale RFI', display: 'Personale RFI', count: 3 }, // Updated count
-            { id: 'res-7', type: 'Supporto Psicologico', display: 'Supporto Psicologico', count: 2 }, // Updated count
-            { id: 'res-8', type: 'Autorità Giudiziaria', display: 'Autorità Giudiziaria', count: 1 } // New resource
+            { id: 'res-1', type: 'Vigili del Fuoco', display: 'Vigili del Fuoco', count: 1 },
+            { id: 'res-2', type: 'Squadra di soccorso', display: 'Squadra di soccorso', count: 2 },
+            { id: 'res-3', type: 'Direttore del Triage', display: 'Direttore del Triage', count: 1 },
+            { id: 'res-4', type: 'Direttore del PMA', display: 'Direttore del PMA', count: 1 },
+            { id: 'res-5', type: 'Medici e infermieri', display: 'Medici e infermieri', count: 2 },
+            { id: 'res-6', type: 'Soccorritore del primo MSB', display: 'Soccorritore del primo MSB', count: 1 },
+            { id: 'res-7', type: 'Direttore dei Trasporti', display: 'Direttore dei Trasporti', count: 1 },
+            { id: 'res-8', type: "Forze dell'Ordine", display: "Forze dell'Ordine", count: 1 },
+            { id: 'res-9', type: 'Autisti delle ambulanze', display: 'Autisti delle ambulanze', count: 2 },
+            { id: 'res-10', type: 'Direttore dei Soccorsi Sanitari', display: 'Direttore dei Soccorsi Sanitari (DSS)', count: 1 },
+            { id: 'res-11', type: 'Direttore Tecnico dei Soccorsi', display: 'Direttore Tecnico dei Soccorsi (VVF)', count: 1 }
         ];
 
-        // Updated zones and their expected resources for realism and balance
         const zonesData = [
-            { id: 'zone-1', type: 'Crash / Incidente', display: 'Crash / Incidente', expectedResources: ['Vigili del Fuoco', 'Personale RFI'] },
-            { id: 'zone-2', type: 'Triage', display: 'Triage', expectedResources: ['Ambulanza Avanzata', 'Squadra Medica'] },
-            { id: 'zone-3', type: 'Raccolta', display: 'Raccolta', expectedResources: ['Ambulanza Base', 'Pullman Verdi', 'Supporto Psicologico'] },
-            { id: 'zone-4', type: 'PMA', display: 'PMA', expectedResources: ['Ambulanza Avanzata', 'Squadra Medica', 'Ambulanza Base', 'Supporto Psicologico'] }, 
-            { id: 'zone-5', type: 'Logistica', display: 'Logistica', expectedResources: ['Ambulanza Base', 'Vigili del Fuoco', 'Personale RFI'] },
-            { id: 'zone-6', type: 'Punto Raccolta Salme', display: 'Punto Raccolta Salme', expectedResources: ['Autorità Giudiziaria', 'Ambulanza Base'] }, // Updated expected resource
-            { id: 'zone-7', type: 'Zona Tecnica', display: 'Zona Tecnica RFI', expectedResources: ['Personale RFI'] }
+            // i VVF autorizzano l'accesso; le squadre fanno lo sweeping triage e portano le vittime al PMA; il Direttore del Triage coordina e settorializza
+            { id: 'zone-1', type: "Luogo dell'evento", display: "Luogo dell'evento (crash)", expectedResources: ['Vigili del Fuoco', 'Squadra di soccorso', 'Squadra di soccorso', 'Direttore del Triage'] },
+            // medici, infermieri e soccorritori supervisionati dal Direttore del PMA
+            { id: 'zone-2', type: 'PMA', display: 'Posto Medico Avanzato (PMA)', expectedResources: ['Direttore del PMA', 'Medici e infermieri', 'Medici e infermieri'] },
+            { id: 'zone-3', type: 'Area verdi', display: 'Area dei codici verdi', expectedResources: ['Soccorritore del primo MSB'] },
+            // il Direttore dei Trasporti identifica e presidia i check point, presidiati anche dalle Forze dell'Ordine
+            { id: 'zone-4', type: 'Check point', display: 'Check point', expectedResources: ['Direttore dei Trasporti', "Forze dell'Ordine"] },
+            // gli autisti restano a bordo, in ascolto radio
+            { id: 'zone-5', type: 'Area di sosta', display: 'Area di sosta dei mezzi', expectedResources: ['Autisti delle ambulanze', 'Autisti delle ambulanze'] },
+            // il DSS si coordina con il DTS dei VVF, che è a capo del PCA
+            { id: 'zone-6', type: 'PCA', display: 'Posto di Comando Avanzato (PCA)', expectedResources: ['Direttore dei Soccorsi Sanitari', 'Direttore Tecnico dei Soccorsi'] }
         ];
 
         const resourcePalette = document.getElementById('resource-palette');
@@ -3072,7 +2790,7 @@ if (triageCtx) {
                         zoneElement.classList.add('correct-match'); 
                     } else {
                         overallCorrect = false;
-                        feedback.push(`❌ ${zone.display}: Allocazione non ottimale. ${zoneFeedback.join('. ')}. Risorse necessarie per questa area: ${zone.expectedResources.join(', ')}.`);
+                        feedback.push(`❌ ${zone.display}: Allocazione non ottimale. ${zoneFeedback.join('. ')}. Chi lavora in quest'area: ${[...new Set(zone.expectedResources)].join(', ')}.`);
                         zoneElement.classList.add('incorrect-match'); 
                     }
                 });
@@ -3086,7 +2804,7 @@ if (triageCtx) {
                 }
 
                 if (overallCorrect) {
-                    if (window.__markDone) window.__markDone('resource-management'); resourceFeedbackArea.innerHTML = '<p class="font-bold text-green-600 text-lg">Complimenti! Tutte le risorse sono state allocate perfettamente!</p>';
+                    if (window.__markDone) window.__markDone('resource-management'); resourceFeedbackArea.innerHTML = '<p class="font-bold text-green-600 text-lg">Complimenti! Ognuno è nell\'area in cui lavora.</p>';
                 } else {
                     resourceFeedbackArea.innerHTML = `<p class="font-bold text-red-600 text-lg">Rivedi l'allocazione delle risorse.<br>${feedback.join('<br>')}</p>`;
                 }

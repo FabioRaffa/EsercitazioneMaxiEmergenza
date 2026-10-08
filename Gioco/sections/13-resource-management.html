@@ -1,32 +1,18 @@
         <section id="resource-management" class="scroll-mt-20 py-12">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-primary">Gestione delle Risorse: Incidente Ferroviario</h3>
-                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Assegna mezzi e squadre alle aree più adatte per ottimizzare il soccorso.</p>
+                <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Chi lavora dove? Trascina squadre e figure di riferimento nell'area in cui operano, secondo il manuale AREU 2026.</p>
             </div>
             <div class="bg-surface rounded-xl shadow-lg p-6 md:p-8 grid lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-1">
-                    <h4 class="font-bold text-xl mb-4">Risorse Disponibili</h4>
-                    <div id="resource-palette" class="grid grid-cols-2 gap-4">
-                        <button class="resource-palette-item">Ambulanza Base</button>
-                        <button class="resource-palette-item">Ambulanza Avanzata</button>
-                        <button class="resource-palette-item">Vigili del Fuoco</button>
-                        <button class="resource-palette-item">Squadra Medica</button>
-                        <button class="resource-palette-item">Pullman Verdi</button>
-                        <button class="resource-palette-item">Personale RFI</button>
-                    </div>
+                    <h4 class="font-bold text-xl mb-4">Squadre e Figure</h4>
+                    <div id="resource-palette" class="grid grid-cols-2 gap-4"></div>
                     <button id="check-resource-allocation" class="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Verifica Allocazione</button>
                     <button id="reset-resource-allocation" class="mt-3 w-full bg-gray-300 text-gray-800 py-3 rounded-lg font-semibold hover:bg-gray-400 transition">Reset</button>
                 </div>
                 <div class="lg:col-span-2">
                     <h4 class="font-bold text-xl mb-4 text-center">Mappa delle Aree (Drag & Drop)</h4>
                     <div id="resource-map-grid" class="grid grid-cols-4 grid-rows-3 gap-2 border-2 border-dashed border-color rounded-lg min-h-[300px] p-4">
-                        <div class="resource-drop-zone" data-zone-type="Crash / Incidente">Crash / Incidente</div>
-                        <div class="resource-drop-zone" data-zone-type="Triage">Triage</div>
-                        <div class="resource-drop-zone" data-zone-type="Raccolta">Raccolta</div>
-                        <div class="resource-drop-zone" data-zone-type="PMA">PMA</div>
-                        <div class="resource-drop-zone" data-zone-type="Logistica">Logistica</div>
-                        <div class="resource-drop-zone" data-zone-type="Punto Raccolta Salme">Punto Raccolta Salme</div>
-                        <div class="resource-drop-zone" data-zone-type="Zona Tecnica">Zona Tecnica RFI</div>
                     </div>
                     <div id="resource-feedback-area" class="mt-4 p-4 rounded-lg bg-gray-50 text-secondary border border-color min-h-[60px]">
                         <p class="text-sm">Trascina le risorse sulle aree corrispondenti.</p>

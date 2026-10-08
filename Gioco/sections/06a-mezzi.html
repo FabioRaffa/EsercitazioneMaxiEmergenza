@@ -3,28 +3,30 @@
                 <h3 class="text-3xl font-bold text-primary">Mezzi e Strutture Operative</h3>
                 <p class="mt-2 text-md text-secondary max-w-2xl mx-auto">Gli strumenti della risposta sul campo: dai mezzi di soccorso al Posto Medico Avanzato (PMA).</p>
             </div>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-1 bg-surface rounded-xl shadow-lg p-6">
                     <h4 class="font-bold text-xl mb-4">Mezzi di Soccorso</h4>
-                    <p class="text-secondary mb-4">La risposta si basa su una flotta diversificata. Il grafico mostra la composizione tipica dell'equipaggio dei principali tipi di ambulanza.</p>
-                    <div class="chart-container relative h-80 w-full max-w-md mx-auto">
-                        <canvas id="mezziChart"></canvas>
-                    </div>
+                    <p class="text-secondary mb-4">I mezzi subito operativi sono quelli convenzionati con AREU (manuale della maxiemergenza 2026, p. 12).</p>
+                    <ul class="space-y-3 text-sm">
+                        <li class="p-3 rounded-lg bg-blue-50 border border-blue-200"><span class="font-bold">MSB</span>, Mezzo di Soccorso di Base: ambulanza con 2 o 3 soccorritori.</li>
+                        <li class="p-3 rounded-lg bg-indigo-50 border border-indigo-200"><span class="font-bold">MSA1</span>, Mezzo di Soccorso Avanzato di 1° livello, su auto o ambulanza.</li>
+                        <li class="p-3 rounded-lg bg-purple-50 border border-purple-200"><span class="font-bold">MSA2</span>, Mezzo di Soccorso Avanzato di 2° livello, su auto o ambulanza.</li>
+                        <li class="p-3 rounded-lg bg-gray-50 border border-gray-200"><span class="font-bold">Elisoccorso</span>, attivabile h24 se meteo e logistica lo permettono.</li>
+                    </ul>
+                    <p class="text-secondary mt-4 text-sm">Dopo la dichiarazione di maxiemergenza può arrivare, in non meno di un'ora, il Mezzo di Coordinamento dell'AAT. All'arrivo del primo MSA il medico assume il ruolo di DSS, l'infermiere quello di Direttore del Triage e l'autista soccorritore quello di Direttore dei Trasporti.</p>
                 </div>
 
                 <div class="lg:col-span-2 bg-surface rounded-xl shadow-lg p-6">
                     <h4 class="font-bold text-xl mb-4">Il Posto Medico Avanzato (PMA)</h4>
-                    <p class="text-secondary mb-4">Il PMA è un ospedale da campo temporaneo, fulcro della catena sanitaria. La sua struttura modulare è progettata per gestire il flusso dei pazienti in modo ordinato. Clicca su un'area per scoprirne la funzione.</p>
-                    <div id="pma-layout" class="mt-4 grid grid-cols-3 grid-rows-3 gap-2 p-2 border-2 border-dashed border-color rounded-lg h-96">
-                        <div data-info="Area di raccolta mezzi e ingresso controllato per i feriti trasportati dalla 'Piccola Noria'." class="pma-area col-span-1 row-span-3 bg-blue-100 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer hover:bg-blue-200 transition">Area Mezzi e Ingresso</div>
-                        <div data-info="Prima valutazione all'ingresso del PMA (triage secondario). I pazienti vengono classificati per priorità di trattamento (Rosso, Giallo, Verde, Nero)." class="pma-area col-span-1 row-span-1 bg-yellow-200 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer hover:bg-yellow-300 transition">Triage</div>
-                        <div data-info="Trattamento dei feriti minori. I 'walking wounded' ricevono cure e supporto psicologico in attesa di un trasporto non urgente." class="pma-area col-span-1 row-span-1 bg-green-200 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer hover:bg-green-300 transition">Area Verdi</div>
-                        <div data-info="Area critica per la stabilizzazione e il trattamento intensivo dei pazienti con codici Rossi (pericolo di vita) e Gialli (lesioni gravi)." class="pma-area col-span-2 row-span-1 bg-red-200 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer hover:bg-red-300 transition">Area Rossi & Gialli</div>
-                        <div data-info="Area separata e protetta per la gestione delle vittime decedute, in attesa delle procedure di identificazione da parte dell'autorità giudiziaria." class="pma-area col-span-1 row-span-1 bg-gray-300 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer hover:bg-gray-400 transition">Area Deceduti</div>
-                        <div data-info="Punto di uscita organizzato dove i pazienti stabilizzati vengono imbarcati sui mezzi della 'Grande Noria' per il trasporto verso gli ospedali." class="pma-area col-span-1 row-span-1 bg-blue-100 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer hover:bg-blue-200 transition">Uscita / Evacuazione</div>
+                    <p class="text-secondary mb-4">Il PMA sta ai margini esterni dell'area di sicurezza, con una buona viabilità di accesso e di evacuazione: può essere una struttura (tenda, modulo) o semplicemente un'area funzionale. Di norma vi accedono solo i codici giallo e rosso; i verdi vanno nella loro area, le salme in un'area a parte. Clicca su una parte del PMA per scoprirne la funzione.</p>
+                    <div id="pma-layout" class="mt-4 grid grid-cols-3 grid-rows-2 gap-2 p-2 border-2 border-dashed border-color rounded-lg h-72">
+                        <div data-info="I codici giallo e rosso arrivano dal crash o dall'area di raccolta con la piccola noria (noria di salvataggio), su indicazione del Direttore del Triage. All'ingresso vengono accettati e rivalutati." class="pma-area col-span-1 row-span-2 bg-blue-100 hover:bg-blue-200 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer transition">Entrata dei pazienti</div>
+                        <div data-info="Il PMA è diviso per codice. Medici, infermieri e soccorritori, supervisionati dal Direttore del PMA, cercano i fattori che potrebbero evolvere in condizioni potenzialmente mortali e mantengono le funzioni vitali." class="pma-area col-span-1 row-span-1 bg-red-200 hover:bg-red-300 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer transition">Settore codici rossi</div>
+                        <div data-info="Separata dall'entrata. Il Direttore del PMA decide l'evacuazione e chiede il trasporto al Direttore dei Trasporti, che ottiene dalla SOREU la destinazione ospedaliera: si parte con la grande noria (noria di evacuazione)." class="pma-area col-span-1 row-span-2 bg-blue-100 hover:bg-blue-200 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer transition">Uscita dei pazienti</div>
+                        <div data-info="Anche i gialli vengono rivalutati e stabilizzati per il trasporto. Il cartellino regionale di triage lo usa solo il personale sanitario: se il suo colore è diverso da quello del braccialetto, si tiene conto del cartellino." class="pma-area col-span-1 row-span-1 bg-yellow-200 hover:bg-yellow-300 rounded-lg flex items-center justify-center text-center p-2 cursor-pointer transition">Settore codici gialli</div>
                     </div>
-                        <p id="pma-info-box" class="mt-4 text-center text-secondary h-10">Clicca su un'area del PMA per i dettagli.</p>
+                        <p id="pma-info-box" class="mt-4 text-center text-secondary min-h-[2.5rem]">Clicca su una parte del PMA per i dettagli.</p>
                 </div>
             </div>
         </section>
