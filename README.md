@@ -31,7 +31,9 @@ La simulazione è composta da una serie di giochi sequenziali che guidano l'uten
 
 ## Materiale di supporto
 
-Nel progetto è incluso anche un **PDF** che contiene le soluzioni di alcuni giochi, utile per approfondire le risposte e analizzare le strategie proposte.
+Nel progetto è incluso anche un **PDF per gli istruttori** con le soluzioni delle 13 prove e le fonti AREU 2026. Si rigenera dai dati del gioco con `cd Gioco && node tools/soluzioni.js`, quindi dice sempre quello che dice il gioco.
+
+Ospitata in una pagina (iframe), l'esercitazione dialoga con la didattica: a ogni prova superata manda `{tipo: 'tappa', id, punteggio}`, alla fine `{tipo: 'completato', punteggio}`, e all'avvio riceve `{tipo: 'avvio', ruolo, tappeSuperate}` (vedi `Gioco/scripts/main.js`).
 
 ## Note
 

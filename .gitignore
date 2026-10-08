@@ -5,3 +5,6 @@ Gioco/node_modules/
 # File di sistema
 Thumbs.db
 .DS_Store
+
+# Generato da Gioco/tools/soluzioni.js (il PDF invece si tiene)
+Gioco/tools/soluzioni.html

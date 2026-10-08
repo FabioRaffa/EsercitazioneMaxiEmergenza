@@ -9,6 +9,11 @@
  *   completato correttamente. I giochi segnalano il completamento chiamando
  *   window.__markDone('<id>') (vedi games.js). Le sezioni informative non richiedono nulla.
  * - Al termine di tutti i giochi si sblocca la schermata finale di congratulazioni.
+ * - PONTE con la didattica (PROGETTO_DIDATTICA.md §15.4): se l'esercitazione è ospitata in una
+ *   pagina (iframe), a ogni prova superata manda {tipo:'tappa', id, punteggio} e alla fine
+ *   {tipo:'completato', punteggio}; all'avvio riceve {tipo:'avvio', ruolo, tappeSuperate} e
+ *   riprende dalla prima prova non superata. Ospitata, non c'è lo sblocco a password: lo staff
+ *   entra già come staff (ruolo diverso da 'discente') e naviga libero.
  */
 
 // Ordine ufficiale delle schermate-gioco. `id` combacia con l'id della <section>,
@@ -53,9 +58,16 @@ const CONGRATS_INDEX = SECTIONS.length; // 16 -> schermata finale
 // Per cambiarla, modifica la stringa qui sotto.
 const NAV_UNLOCK_PASSWORD = 'maxi-sblocca-2025';
 
+// Ospitata nella didattica? Allora i messaggi vanno alla pagina che la ospita
+const OSPITATA = window.parent !== window;
+
 let current = 0;
+let ripresa = 0;                        // la schermata da cui si riparte (avvio dal portale)
+let avviata = false;                    // l'overlay iniziale è stato chiuso
+let pronta = false;                     // init() finito
+let avvioInAttesa = null;               // un messaggio 'avvio' arrivato prima della fine di init()
 let navUnlocked = false;
-try { navUnlocked = sessionStorage.getItem('maxiNavUnlocked') === '1'; } catch (e) {}
+if (!OSPITATA) { try { navUnlocked = sessionStorage.getItem('maxiNavUnlocked') === '1'; } catch (e) {} }
 const done = new Set();                 // id delle sezioni-gioco completate
 const idToIndex = {};
 SECTIONS.forEach((s, i) => { idToIndex[s.id] = i; });
@@ -75,8 +87,34 @@ function frontier() {
 window.__markDone = function (id) {
   if (!REQUIRED.has(id) || done.has(id)) return;
   done.add(id);
+  // ogni prova si supera solo con la risposta giusta: per il portale vale 100
+  alPortale({ tipo: 'tappa', id, punteggio: 100 });
+  if (done.size === REQUIRED.size) alPortale({ tipo: 'completato', punteggio: 100 });
   updateNav(); // se è la sezione corrente, abilita subito "Successivo"
 };
+
+// --- Ponte con la didattica (§15.4) ---
+function alPortale(msg) {
+  if (!OSPITATA) return;
+  try { window.parent.postMessage(msg, '*'); } catch (e) {}
+}
+
+function applicaAvvio(m) {
+  (Array.isArray(m.tappeSuperate) ? m.tappeSuperate : []).forEach(id => { if (REQUIRED.has(id)) done.add(id); });
+  navUnlocked = false;
+  ripresa = frontier(); // la prima prova non superata, o la schermata finale
+  // lo staff naviga libero e parte dall'inizio
+  if (m.ruolo && m.ruolo !== 'discente') { navUnlocked = true; ripresa = 0; }
+  if (avviata) showStep(ripresa); else updateNav();
+}
+
+window.addEventListener('message', (ev) => {
+  // solo la pagina che ospita l'esercitazione può avviarla
+  if (!OSPITATA || ev.source !== window.parent) return;
+  const m = ev.data || {};
+  if (m.tipo !== 'avvio') return;
+  if (pronta) applicaAvvio(m); else avvioInAttesa = m;
+});
 
 // --- Preparazione sezioni (inline oppure fetch di fallback) ---
 async function prepareSections() {
@@ -243,6 +281,7 @@ function wireUnlock() {
   const btn = document.getElementById('unlock-button');
   const modal = document.getElementById('unlock-modal');
   if (!btn || !modal) return;
+  if (OSPITATA) { btn.style.display = 'none'; return; } // nel portale decide il ruolo
   const content = modal.querySelector('.modal-content');
   const input = document.getElementById('unlock-password');
   const feedback = document.getElementById('unlock-feedback');
@@ -285,7 +324,8 @@ function startExperience() {
     overlay.addEventListener('transitionend', () => { overlay.style.display = 'none'; }, { once: true });
   }
   document.body.classList.remove('locked');
-  showStep(0);
+  avviata = true;
+  showStep(ripresa);
 }
 
 async function init() {
@@ -307,6 +347,8 @@ async function init() {
   wireInfoModal();
   wireUnlock();
   showStep(0);
+  pronta = true;
+  if (avvioInAttesa) { applicaAvvio(avvioInAttesa); avvioInAttesa = null; }
 
   const startBtn = document.getElementById('wizard-start-btn');
   if (startBtn) startBtn.addEventListener('click', startExperience);

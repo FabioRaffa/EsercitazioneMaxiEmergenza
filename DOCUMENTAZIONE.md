@@ -22,7 +22,7 @@ alla volta** con i pulsanti Precedente/Successivo.
 EsercitazioneMaxiEmergenza_Splitting/
 ├── README.md
 ├── DOCUMENTAZIONE.md                    # questo file
-├── Maxi-Emergenza_...(Soluzioni).pdf    # soluzioni dei giochi (materiale di supporto)
+├── Maxi-Emergenza - Soluzioni per gli istruttori.pdf   # le soluzioni delle 13 prove (node Gioco/tools/soluzioni.js)
 └── Gioco/
     ├── index.html                       # ★ SHELL: head/stili, nav, overlay, <main id="app">, barra Prev/Next, modali globali
     ├── index.monolith.html.bak          #   backup della vecchia pagina monolitica (riferimento)
